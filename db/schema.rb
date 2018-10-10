@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2018_10_10_193527) do
 
   create_table "orders", force: :cascade do |t|
     t.integer "status"
-    t.integer "amount_centavos", default: 0, null: false
+    t.integer "amount_cents", default: 0, null: false
     t.jsonb "payment"
     t.bigint "plan_id"
     t.bigint "user_id"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2018_10_10_193527) do
   create_table "plans", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.integer "price_centavos", default: 0, null: false
+    t.integer "price_cents", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

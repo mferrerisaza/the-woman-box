@@ -1,2 +1,7 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<ul>
+  <% @plans.each do |plan| %>
+    <li><%= plan.name %></li>
+    <li><%= plan.description %></li>
+    <li><%= money_without_cents_and_with_symbol plan.price %></li>
+  <% end %>
+</ul>

@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6">
+      <%= form_with model: @order, local: true do |f| %>
+        <%= f.select :type_id, Type.all.collect {|type| [type.name, type.id] }, include_blank: "Seleccionar"%>
+        <%= f.select  :size,
+                      Size.all.collect {|size| [size.name, size.id] },
+                      { include_blank: "Seleccionar" },
+                      { class: "hidden" }
+        %>
+        <% Plan.all.each do |plan| %>
+          <div>
+            <img src="<%= plan.photo %>" >
+            <p><%= plan.name %></p>
+          </div>
+        <% end %>
+        <%= f.hidden_field :plan_id %>
+        <%= f.submit 'Siguiente', class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+    <div class="col-xs-6">
+      <div style=" width: 100%; height: 100%; background-color: red">
+        <p>Descripción de la orden acá</p>
+      </div>
+    </div>
+  </div>
+</div>

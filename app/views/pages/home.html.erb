@@ -1,2 +1,21 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="banner">
+  <div class="banner-content">
+    <h1>¿Administras propiedad horizontal y aún no tienes la información centralizada?</h1>
+    <p>Organiza la información, ajusta las cuentas con los copropietarios y  haz tu vida mas fácil con Peggo.</p>
+    <div class="banner-call-to-actions">
+      <%= link_to "Iniciar Sesión", new_user_session_path, class: "banner-btn--no-background" %>
+    </div>
+  </div>
+  <div class="box-pic"></div>
+</div>
+<ul>
+  <% @plans.each do |plan| %>
+    <li><%= plan.name %></li>
+    <li><%= plan.description %></li>
+    <li><%= money_without_cents_and_with_symbol plan.price %></li>
+    <%= form_with url: orders_path , local: true do |f| %>
+      <%= f.hidden_field :plan_id, value: plan.id %>
+      <%= f.submit 'Comprar', class: 'btn btn-primary' %>
+    <% end %>
+  <% end %>
+</ul>

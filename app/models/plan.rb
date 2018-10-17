@@ -1,4 +1,5 @@
 class Plan < ApplicationRecord
-  has_many :orders
-  monetize :price_centavos
+  monetize :price_cents
+
+  validates :sku, presence: true, uniqueness: true
 end

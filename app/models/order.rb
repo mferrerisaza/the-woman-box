@@ -1,6 +1,6 @@
 class Order < ApplicationRecord
-  belongs_to :plan
+  enum status: %w[Pendiente Pagada]
   belongs_to :user
 
-  monetize :amount_centavos
+  monetize :amount_cents
 end

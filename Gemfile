@@ -17,6 +17,7 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 gem 'money-rails'
+gem 'epayco-ruby', git: 'https://github.com/mferreri7/epayco-ruby'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

@@ -1,0 +1,27 @@
+<%= form_with url: order_payments_path, local: true, id: "customer-form" do |f| %>
+  <span class="card-errors"/></span/>
+  <div class="form-group"/>
+      <label/>Nombre del usuario de tarjeta</label/>
+      <input type="text" name="card[name]"//>
+  </div/>
+  <div class="form-group"/>
+      <label/>Email</label/>
+      <input type="text" name="card[email]"//>
+  </div/>
+  <div class="form-group"/>
+      <label/>Número de tarjeta de crédito</label/>
+      <input type="text" name="card[number]"//>
+  </div/>
+  <div class="form-group"/>
+      <label/>CVC</label/>
+      <input type="text" size="4" name="card[cvc]"//>
+  </div/>
+  <div class="form-group"/>
+      <label/>Mes de expiración(MM)</label/>
+      <input type="text" name="card[exp_month]"//>
+      <span/>Año de expiración(AAAA)</span/>
+      <input type="text" name="card[exp_year]"//>
+  </div/>
+
+  <button type="submit"/>¡Pagar ahora!</button/>
+<% end %>

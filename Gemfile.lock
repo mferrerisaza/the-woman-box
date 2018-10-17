@@ -1,5 +1,6 @@
-PATH
-  remote: ../epayco-ruby
+GIT
+  remote: https://github.com/mferreri7/epayco-ruby
+  revision: 66303d054220e488869b09e31145080e160e794a
   specs:
     epayco-ruby (0.0.6)
       json (~> 2.1)

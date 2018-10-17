@@ -1,3 +1,13 @@
+<div class="banner">
+  <div class="banner-content">
+    <h1>¿Administras propiedad horizontal y aún no tienes la información centralizada?</h1>
+    <p>Organiza la información, ajusta las cuentas con los copropietarios y  haz tu vida mas fácil con Peggo.</p>
+    <div class="banner-call-to-actions">
+      <%= link_to "Iniciar Sesión", new_user_session_path, class: "banner-btn--no-background" %>
+    </div>
+  </div>
+  <div class="box-pic"></div>
+</div>
 <ul>
   <% @plans.each do |plan| %>
     <li><%= plan.name %></li>

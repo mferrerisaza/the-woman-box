@@ -8,5 +8,5 @@ dan = User.create!(name: "Dan", email: "dan@gmail.com", password:"123456", phone
 puts "Done"
 
 puts "Creando planes"
-plan = Plan.create!(name: "Suscripcion Mensual", description: "Suscribite para recibir la mejor cajita todos los meses", price: 30_000)
+plan = Plan.create!(sku:"monthly01", name: "Suscripcion Mensual", description: "Suscribite para recibir la mejor cajita todos los meses", price: 30_000)
 puts "Tolis el llopo"

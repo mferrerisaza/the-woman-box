@@ -32,13 +32,27 @@ puts "Creando productos por marca"
 pad_sizes = Size.where(type: pad)
 
 pad_sizes.each do |size|
-  Plan.create!(sku:"monthly#{size.id}",size: size, name: "#{size.type.name} #{size.name} Nosotras", description: "Suscribite para recibir la mejor cajita todos los meses", price: 30_000)
+  Plan.create!(
+    sku:"monthly#{size.id}",
+    size: size,
+    name: "#{size.type.name} #{size.name} Nosotras",
+    description: "Suscribite para recibir la mejor cajita todos los meses",
+    price: 30_000,
+    photo: "https://vignette.wikia.nocookie.net/logopedia/images/e/eb/Nosotras-logo.png/revision/latest?cb=20180904011023&path-prefix=es"
+  )
 end
 
 
 tampons_sizes = Size.where(type: tampon)
 
 tampons_sizes.each do |size|
-  Plan.create!(sku:"monthly#{size.id}",size: size, name: "#{size.type.name} #{size.name} OB", description: "Suscribite para recibir la mejor cajita todos los meses", price: 30_000)
+  Plan.create!(
+    sku:"monthly#{size.id}",
+    size: size,
+    name: "#{size.type.name} #{size.name} OB",
+    description: "Suscribite para recibir la mejor cajita todos los meses",
+    price: 30_000,
+    photo: "https://seeklogo.com/images/O/o_b_-logo-C64CD5FA3B-seeklogo.com.png"
+  )
 end
 puts "Tolis el llopo"

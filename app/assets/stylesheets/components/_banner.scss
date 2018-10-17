@@ -1,49 +1,180 @@
-.banner {
-  text-align: center;
-  min-height: 100vh;
-  /* if you have a 70px navbar => height: calc(100vh - 70px); */
+.banner-container {
+  margin-top: 70px;
+  height: calc(100vh - 70px);
+  display: flex;
+}
+
+.background-white {
+  background-color: white;
+}
+
+.banner-left {
+  min-height: calc(100vh - 70px);
   background-size: cover !important;
   background-position: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: white;
-  background-image: image-url("caja-twb.jpg")
+  background-image: image-url("caja-twb.jpg");
+  width: 100%;
+  position: relative;
+  bottom: 1px;
 }
+
 .banner-content{
-  max-width: 80%;
-  text-align: left
+  // max-width: 80%;
+  // text-align: left
 }
-.box-pic {
-}
-.banner h1 {
-  font-size: 52px;
-  font-family: "Roboto";
+
+.banner-text h1 {
+  font-size: 48px;
   font-weight: normal;
-  color: $gray;
   text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
   margin-bottom: 30px;
 }
-.banner p {
-  font-size: 18px;
+
+.banner-text p {
+  font-size: 16px;
   font-weight: normal;
-  color: $gray;
   margin-bottom: 30px;
 }
 
-@media (max-width: 991px) {
-  .banner h1 {
-    font-size: 36px;
+@media (min-width: 992px) {
+  .banner-container {
+    display: flex;
   }
-  .banner p {
-    font-size: 16px;
+
+  .banner-right {
+    width: 125%;
+  }
+
+  .products-left {
+    width: 110%
+  }
+
+  .padding-right-huge {
+    padding-right: 90px;
+  }
+
+  .padding-left-big {
+  padding-left: 50px;
+  }
+
+  .desktop-hidden {
+    display: none;
   }
 }
-@media (max-width: 355px) {
-  .banner-call-to-actions {
-    display: flex;
-    a {
-      padding: 8px;
-    }
+
+@media (max-width: 991px) {
+  .banner-container {
+    flex-direction: column;
   }
+
+  .banner-text h1 {
+    font-size: 36px;
+  }
+
+  h2 {
+    font-size: 32px;
+  }
+
+  .banner-text p {
+    font-size: 16px;
+  }
+  .banner-container {
+    height: auto;
+  }
+
+  .flex-reverse {
+    flex-direction: column;
+  }
+
+  .products-right {
+    order: 1;
+  }
+
+  .products-left {
+    order: 2;
+  }
+
+  .padding-right-mid {
+    padding-right: 50px;
+  }
+
+  .display-block-mobile {
+    flex-direction: column;
+  }
+
+  .mobile-hidden {
+    display: none;
+  }
+}
+
+@media (max-width: 400px) {
+  .banner-text h1 {
+    font-size: 28px;
+  }
+  .banner-text p {
+    font-size: 12px;
+  }
+
+  .padding-left-mid {
+    padding-left: 25px;
+  }
+
+  .padding-right-mid {
+    padding-right: 25px;
+  }
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+}
+
+.padding-bottom-mid {
+  padding-bottom: 25px;
+}
+
+.padding-bottom-small {
+  padding-bottom: 10px;
+}
+
+.padding-left-xsmall {
+  padding-left: 5px;
+}
+
+.margin-top-small {
+  margin-top: 10px;
+}
+
+.padding-top-mid {
+  padding-top: 25px;
+}
+
+.no-margin-top {
+  margin-top: 0px;
+}
+
+.products-right {
+  min-height: calc(100vh - 70px);
+  background-size: cover !important;
+  background-position: center;
+  background-image: image-url("caja-twb.jpg");
+  width: 100%;
+  position: relative;
+  bottom: 1px;
+}
+
+.flex-justify-center {
+  justify-content: center;
+}
+
+.flex-justify-around {
+  justify-content: space-around;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.how-it-works-container {
+  width: 100%
 }

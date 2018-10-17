@@ -3,5 +3,9 @@
     <li><%= plan.name %></li>
     <li><%= plan.description %></li>
     <li><%= money_without_cents_and_with_symbol plan.price %></li>
+    <%= form_with url: orders_path , local: true do |f| %>
+      <%= f.hidden_field :plan_id, value: plan.id %>
+      <%= f.submit 'Comprar', class: 'btn btn-primary' %>
+    <% end %>
   <% end %>
 </ul>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_10_221712) do
+ActiveRecord::Schema.define(version: 2018_10_17_202231) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,22 @@ ActiveRecord::Schema.define(version: 2018_10_10_221712) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "sku"
+    t.bigint "size_id"
+    t.index ["size_id"], name: "index_plans_on_size_id"
+  end
+
+  create_table "sizes", force: :cascade do |t|
+    t.string "name"
+    t.bigint "type_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["type_id"], name: "index_sizes_on_type_id"
+  end
+
+  create_table "types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -55,4 +71,6 @@ ActiveRecord::Schema.define(version: 2018_10_10_221712) do
   end
 
   add_foreign_key "orders", "users"
+  add_foreign_key "plans", "sizes"
+  add_foreign_key "sizes", "types"
 end

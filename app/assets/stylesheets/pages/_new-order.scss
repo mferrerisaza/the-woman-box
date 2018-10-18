@@ -1,8 +1,9 @@
 .new-order-wrapper{
   display: flex;
   flex-wrap: wrap;
-  min-height: calc( 100vh - 70px );
+  min-height: calc( 100vh - 94px );
   padding-top: 24px;
+  padding-bottom: 24px;
   width: 90%;
   margin: 0 auto;
   // margin: 0px 32px;
@@ -13,6 +14,8 @@
 }
 .order-description-container {
   flex: 0 0 30%;
+  max-height: calc(100vh - 70px);
+
 }
 .form-headline {
   font-weight: bold;

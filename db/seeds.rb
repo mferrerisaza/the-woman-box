@@ -33,7 +33,7 @@ pad_sizes = Size.where(type: pad)
 
 pad_sizes.each do |size|
   plan = Plan.create!(
-    sku:"monthly#{size.id}",
+    sku:"monthly#{size.id}nosotras",
     size: size,
     name: "#{size.type.name} #{size.name} Nosotras",
     description: "Suscribite para recibir la mejor cajita todos los meses",
@@ -43,18 +43,42 @@ pad_sizes.each do |size|
   plan.save!
 end
 
-
-tampons_sizes = Size.where(type: tampon)
-
-tampons_sizes.each do |size|
-  plan = Plan.new(
-    sku:"monthly#{size.id}",
+  pad_sizes.each do |size|
+  plan = Plan.create!(
+    sku:"monthly#{size.id}OB",
     size: size,
     name: "#{size.type.name} #{size.name} OB",
     description: "Suscribite para recibir la mejor cajita todos los meses",
     price: 30_000
   )
   plan.remote_photo_url = "https://seeklogo.com/images/O/o_b_-logo-C64CD5FA3B-seeklogo.com.png"
+  plan.save!
+end
+
+
+tampons_sizes = Size.where(type: tampon)
+
+tampons_sizes.each do |size|
+  plan = Plan.new(
+    sku:"monthly#{size.id}OB",
+    size: size,
+    name: "#{size.type.name} #{size.name} OB",
+    description: "Suscribite para recibir la mejor cajita todos los meses",
+    price: 30_000
+  )
+  plan.remote_photo_url = "https://seeklogo.com/images/O/o_b_-logo-C64CD5FA3B-seeklogo.com.png"
+  plan.save!
+end
+
+  tampons_sizes.each do |size|
+  plan = Plan.new(
+    sku:"monthly#{size.id}nosotras",
+    size: size,
+    name: "#{size.type.name} #{size.name} Nosotras",
+    description: "Suscribite para recibir la mejor cajita todos los meses",
+    price: 30_000
+  )
+  plan.remote_photo_url = "https://vignette.wikia.nocookie.net/logopedia/images/e/eb/Nosotras-logo.png/revision/latest?cb=20180904011023&path-prefix=es"
   plan.save!
 end
 puts "Tolis el llopo"

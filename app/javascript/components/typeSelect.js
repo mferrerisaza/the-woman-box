@@ -9,16 +9,22 @@ function createHTML(sizesData){
 function toggleSizeSelect(sizesData){
   const $sizeSelect = document.getElementById("order_size");
   const $sizeSelectLabel = document.getElementById("size_select_label");
-  const $plansCardsContainer = document.querySelector(".plan-cards-container").querySelector(".row");
+  const $plansCardsContainer = document.querySelector(".plan-cards-container");
+  const $brandLabel = document.getElementById("brand_label");
 
   if (sizesData === null) {
     $sizeSelect.classList.add("hidden");
-    $sizeSelectLabel.classList.add("hidden")
+    $sizeSelectLabel.classList.add("hidden");
+    $brandLabel.classList.add("hidden");
     $plansCardsContainer.innerHTML = "";
   } else {
+    $brandLabel.classList.add("hidden");
     $sizeSelect.classList.remove("hidden");
     $sizeSelectLabel.classList.remove("hidden");
+    $plansCardsContainer.innerHTML = "";
+
     const text = `<option value="">Seleccionar</option>${createHTML(sizesData)}`
+
     $sizeSelect.innerHTML = text;
   }
 }

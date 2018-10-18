@@ -4,6 +4,8 @@ cloudinary.config({
   cloud_name: 'dnf96fubu'
 });
 
+import { addPlanCardsListener } from "./planCards.js"
+
 function planPictureOrGeneric(plan) {
   let url = ""
   if(plan.photo.url !== null) {
@@ -20,11 +22,9 @@ function createHTML(plansData){
     let plan = plansData[i];
     text +=
     `
-      <div class="col-xs-6">
-        <div class="plan-card">
-          <div class="plan-card-img" style="background-image: url('${planPictureOrGeneric(plan)}');"></div>
-          <p>${ plan.name }</p>
-        </div>
+      <div class="plan-card" data-plan-id="${plan.id}">
+        <div class="plan-card-img" style="background-image: url('${planPictureOrGeneric(plan)}');"></div>
+        <p>${ plan.name }</p>
       </div>
     `
   }
@@ -32,13 +32,18 @@ function createHTML(plansData){
 }
 
 function createPlanCards(plansData){
-  const $plansCardsContainer = document.querySelector(".plan-cards-container").querySelector(".row");
+  const $plansCardsContainer = document.querySelector(".plan-cards-container");
+  const $brandLabel = document.getElementById("brand_label");
+
   if (plansData === null) {
     $plansCardsContainer.innerHTML = "";
+    $brandLabel.classList.add("hidden");
+
   } else {
     const text = createHTML(plansData)
+    $brandLabel.classList.remove("hidden");
     $plansCardsContainer.innerHTML = text;
-    // $plansCardsContainer.insertAdjacentHTML("beforeend", text);
+    addPlanCardsListener();
   }
 }
 

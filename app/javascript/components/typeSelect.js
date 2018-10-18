@@ -9,9 +9,12 @@ function createHTML(sizesData){
 function toggleSizeSelect(sizesData){
   const $sizeSelect = document.getElementById("order_size");
   const $sizeSelectLabel = document.getElementById("size_select_label");
+  const $plansCardsContainer = document.querySelector(".plan-cards-container").querySelector(".row");
+
   if (sizesData === null) {
     $sizeSelect.classList.add("hidden");
     $sizeSelectLabel.classList.add("hidden")
+    $plansCardsContainer.innerHTML = "";
   } else {
     $sizeSelect.classList.remove("hidden");
     $sizeSelectLabel.classList.remove("hidden");

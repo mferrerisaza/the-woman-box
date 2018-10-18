@@ -20,16 +20,10 @@
         </div>
       </div>
     </div>
-    <div class="row">
       <%= f.hidden_field :plan_id %>
-      <% Plan.all.each do |plan| %>
-        <div class="col-xs-6">
-          <div class="plan-card">
-            <div class="plan-card-img" style="background-image: url('<%= cl_image_path plan.photo, effect: :blackwhite, height: 200, width: 200, crop: :fit; %>');"></div>
-            <p><%= plan.name %></p>
-          </div>
-        </div>
-      <% end %>
+    <div class="plan-cards-container">
+      <div class="row">
+      </div>
     </div>
       <%= f.submit 'Siguiente', class: 'btn btn-primary' %>
     <% end %>

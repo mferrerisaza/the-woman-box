@@ -1,17 +1,17 @@
 
-<div class="new-order-wrapper">
+<div class="new-order-wrapper container">
   <div class="form-container">
     <%= form_with model: @order, local: true, html: { class: "plan-form" } do |f| %>
     <div class="row">
-      <div class="col-xs-12 col-sm-6">
+      <div class="col-xs-12 col-sm-5 col-sm-offset-1">
         <div class="form-group">
-          <%= f.label :type_id, "Tipo" %>
+          <%= f.label :type_id, "Seleccionar tipo" %>
           <%= f.select :type_id, Type.all.collect {|type| [type.name, type.id] }, { include_blank: "Seleccionar" }, { class: "form-control" }%>
         </div>
       </div>
-      <div class="col-xs-12 col-sm-6">
+      <div class="col-xs-12 col-sm-5">
         <div class="form-group">
-          <%= f.label :size, "Tamaño", class: "hidden", id: "size_select_label"%>
+          <%= f.label :size, "Seleccionar tamaño", class: "hidden", id: "size_select_label"%>
           <%= f.select  :size,
                         Size.all.collect {|size| [size.name, size.id] },
                         { include_blank: "Seleccionar" },
@@ -19,19 +19,21 @@
           %>
         </div>
       </div>
-    </div>
-      <%= f.hidden_field :plan_id %>
-    <div class="plan-cards-container">
-      <div class="row">
+      <div class="col-xs-11 col-xs-offset-1">
+        <%= f.label :plan_id, "Seleccionar marca", class: "hidden", id: "brand_label"%>
+        <%= f.hidden_field :plan_id %>
       </div>
     </div>
-      <%= f.submit 'Siguiente', class: 'btn btn-primary' %>
+    <div class="plan-cards-container">
+    </div>
+      <%#= f.submit 'Siguiente', class: 'btn button banner-call-to-actions button-right disabled' %>
+      <input type="submit" name="commit" value="Siguiente" id="plan-selection-submit" class="btn button banner-call-to-actions button-right" data-disable-with="Siguiente" disabled>
     <% end %>
   </div>
- <div class="order-description-container">
-  <div style=" width: 100%; height: 100%; background-color: red">
-    <p>Descripción de la orden acá</p>
+  <div class="order-description-container">
+    <div style=" width: 100%; height: 100%; background-color: whitesmoke; display:flex; align-items: center;justify-content: center;">
+      <p>Descripción de la orden acá</p>
+    </div>
   </div>
- </div>
 </div>
 

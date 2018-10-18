@@ -8,15 +8,15 @@
                       { include_blank: "Seleccionar" },
                       { class: "hidden" }
         %>
-        <% Plan.all.each do |plan| %>
-          <div>
-            <img src="<%= plan.photo %>" >
-            <p><%= plan.name %></p>
-          </div>
-        <% end %>
         <%= f.hidden_field :plan_id %>
         <%= f.submit 'Siguiente', class: 'btn btn-primary' %>
       <% end %>
+        <% Plan.all.each do |plan| %>
+          <div class="plan-card">
+            <div class="plan-card-img" style="background-image: url('<%= cl_image_path plan.photo, height: 200, width: 200, crop: :fit; %>');"></div>
+            <p><%= plan.name %></p>
+          </div>
+        <% end %>
     </div>
     <div class="col-xs-6">
       <div style=" width: 100%; height: 100%; background-color: red">

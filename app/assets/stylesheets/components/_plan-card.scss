@@ -1,0 +1,15 @@
+.plan-card {
+  height: 100px;
+  border: 1px solid black;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+ .plan-card-img {
+    width: 80px;
+    height: 80px;
+    background-size: cover;
+    background-position: center;
+ }
+}

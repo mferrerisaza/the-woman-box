@@ -1,6 +1,8 @@
 .new-order-wrapper{
   display: flex;
   flex-wrap: wrap;
+  min-height: calc( 100vh - 70px );
+  // margin: 0px 32px;
 }
 .form-container{
   padding: 16px;

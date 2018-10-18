@@ -1,21 +1,139 @@
-<div class="banner">
-  <div class="banner-content">
-    <h1>¿Administras propiedad horizontal y aún no tienes la información centralizada?</h1>
-    <p>Organiza la información, ajusta las cuentas con los copropietarios y  haz tu vida mas fácil con Peggo.</p>
-    <div class="banner-call-to-actions">
-      <%= link_to "Iniciar Sesión", new_user_session_path, class: "banner-btn--no-background" %>
+<!-- Producto principal y moto -->
+<div class="banner-container background-white">
+  <div class="banner-left">
+  </div>
+  <div class="banner-right padding-bottom-mid flex-center">
+    <div class="banner-text">
+      <div class="banner-title text-left padding-left-big padding-left-mid padding-left-mid padding-right-huge padding-right-mid">
+        <h1>La caja que hace que la menstruación sea más llevadera</h1>
+      </div>
+      <div class="banner-motto text-left padding-left-big padding-left-mid padding-right-mid padding-right-huge">
+        <p> Nuestro proposito es hacer que las mujeres se sientan bien durante todo el mes.
+            Incluso cuando la menstruación puede bajar el ánimo. Despreocupate por la compra
+            de tus productos básicos con la suscripción mensual a The Women Box y recibe además
+            productos de belleza y alimentos que te ayudarán a pasar estos días duros con la mejor actitud </p>
+      </div>
+      <div class="text-left padding-left-big padding-left-mid">
+        <%= link_to "Suscríbete", new_user_session_path, class: "button banner-call-to-actions" %>
+      </div>
     </div>
   </div>
-  <div class="box-pic"></div>
 </div>
-<ul>
-  <% @plans.each do |plan| %>
-    <li><%= plan.name %></li>
-    <li><%= plan.description %></li>
-    <li><%= money_without_cents_and_with_symbol plan.price %></li>
-    <%= form_with url: orders_path , local: true do |f| %>
-      <%= f.hidden_field :plan_id, value: plan.id %>
-      <%= f.submit 'Comprar', class: 'btn btn-primary' %>
-    <% end %>
-  <% end %>
-</ul>
+<!-- Contenido de la caja y foto productos -->
+<div class="banner-container background-white no-margin-top flex-reverse padding-bottom-mid">
+  <div class="products-left flex-center">
+    <div class="banner-text padding-bottom-mid">
+      <div class="banner-title text-left padding-left-big padding-left-mid padding-right-mid padding-right-huge padding-bottom-mid">
+        <h2>Suscríbete y recibe mensualmente tus productos esenciales y otros productos sorpresa pensados especialmente para ti por solo $35.000 </h2>
+      </div>
+      <div class="banner-motto text-left padding-left-big padding-left-mid padding-right-mid padding-right-huge">
+        <div class="products-list padding-left-big padding-left-mid margin-top-mid">
+          <div class="product-item flex-center">
+            <i class="fas fa-check fa-xs"> </i>
+            <div class="padding-left-xsmall">
+              Tampones o toallas higienicas
+            </div>
+          </div>
+          <div class="product-item flex-center">
+            <i class="fas fa-check fa-xs"> </i>
+            <div class="padding-left-xsmall">
+              Artículos de maquillaje
+            </div>
+          </div>
+          <div class="product-item flex-center">
+            <i class="fas fa-check fa-xs"> </i>
+            <div class="padding-left-xsmall">
+              Chocolates y dulces
+            </div>
+          </div>
+          <div class="product-item flex-center">
+            <i class="fas fa-check fa-xs"> </i>
+            <div class="padding-left-xsmall">
+              Productos de temporada
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="products-right">
+  </div>
+</div>
+<!-- Como funciona -->
+<div class="how-it-works-container background-white padding-bottom-mid">
+  <div class="section-title padding-bottom-mid flex-center flex-justify-center">
+    <h2>¿Cómo funciona?</h2>
+  </div>
+  <div class="text-center">
+    <div class="flex-center flex-justify-around display-block-mobile">
+      <div class="step-description">
+        <div class="icon padding-bottom-small">
+          <%= image_tag "tampon.svg", class:"avatar-big"%>
+        </div>
+        <div class="avatar-big mid-font padding-bottom-small">
+          Productos esenciales para la menstruación
+        </div>
+      </div>
+      <div class="step-description">
+        <div class="icon padding-bottom-small">
+          <%= image_tag "makeup.svg", class:"avatar-big"%>
+        </div>
+        <div class="avatar-big mid-font padding-bottom-small">
+          + Productos para hacerte feliz
+        </div>
+      </div>
+      <div class="step-description">
+        <div class="icon padding-bottom-small">
+          <%= image_tag "delivery-truck.svg", class:"avatar-big"%>
+        </div>
+        <div class="avatar-big mid-font padding-bottom-small">
+          Entregados en la puerta de tu casa
+        </div>
+      </div>
+      <div class="step-description">
+        <div class="icon padding-bottom-small">
+          <%= image_tag "calendar.svg", class:"avatar-big"%>
+        </div>
+        <div class="avatar-big mid-font padding-bottom-small">
+          Una vez al mes
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Condiciones -->
+<div class="background-white padding-top-mid padding-bottom-mid">
+  <div class="flex-center flex-justify-center">
+    <div class="conditions-text text-center">
+      <h4> <strong> Por solo $35.000 al mes + envío GRATIS </strong> </h4>
+    </div>
+    <div class="text-left padding-left-big padding-left-mid  mobile-hidden">
+      <%= link_to "Suscríbete", new_user_session_path, class: "button banner-call-to-actions" %>
+    </div>
+  </div>
+  <div class="product-condditions-list flex-center flex-justify-center">
+    <div class="list-container">
+      <div class="product-item flex-center">
+        <i class="fas fa-check fa-xs"> </i>
+        <div class="padding-left-xsmall">
+          Sin compromisos
+        </div>
+      </div>
+      <div class="product-item flex-center">
+        <i class="fas fa-check fa-xs"> </i>
+        <div class="padding-left-xsmall">
+          Sin contratos
+        </div>
+      </div>
+      <div class="product-item flex-center">
+        <i class="fas fa-check fa-xs"> </i>
+        <div class="padding-left-xsmall">
+          Cancela cuando desees
+        </div>
+      </div>
+    </div>
+  </div>
+    <div class="text-center padding-left-big desktop-hidden padding-top-mid">
+      <%= link_to "Suscríbete", new_user_session_path, class: "button banner-call-to-actions" %>
+    </div>
+</div>

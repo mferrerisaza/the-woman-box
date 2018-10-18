@@ -1,54 +1,53 @@
 <!-- Producto principal y moto -->
 <div class="banner-container background-white">
-  <div class="banner-left">
+  <div class="banner-image-container">
+    <%= image_tag "caja-sola.png", class:"banner-image" %>
   </div>
-  <div class="banner-right padding-bottom-mid flex-center">
-    <div class="banner-text">
-      <div class="banner-title text-left padding-left-big padding-left-mid padding-left-mid padding-right-huge padding-right-mid">
+  <div class="banner-text-container padding-bottom-mid flex-center">
+    <div class="banner-text no-padding-right">
+      <div class="banner-title padding-left-big padding-right-mid padding-left-small padding-right-small">
         <h1>La caja que hace que la menstruación sea más llevadera</h1>
       </div>
-      <div class="banner-motto text-left padding-left-big padding-left-mid padding-right-mid padding-right-huge">
-        <p> Nuestro proposito es hacer que las mujeres se sientan bien durante todo el mes.
-            Incluso cuando la menstruación puede bajar el ánimo. Despreocupate por la compra
-            de tus productos básicos con la suscripción mensual a The Women Box y recibe además
+      <div class="banner-motto padding-left-big padding-right-mid padding-left-small padding-right-small">
+        <p> Despreocupate por la compra de tus productos básicos con la suscripción mensual a The Women Box y recibe además
             productos de belleza y alimentos que te ayudarán a pasar estos días duros con la mejor actitud </p>
       </div>
-      <div class="text-left padding-left-big padding-left-mid">
+      <div class="padding-left-big padding-left-mid padding-right-mid">
         <%= link_to "Suscríbete", new_order_path, class: "button banner-call-to-actions" %>
       </div>
     </div>
   </div>
 </div>
 <!-- Contenido de la caja y foto productos -->
-<div class="banner-container background-white no-margin-top flex-reverse padding-bottom-mid">
+<div class="banner-container background-light-pink no-margin-top flex-reverse padding-bottom-mid">
   <div class="products-left flex-center">
     <div class="banner-text padding-bottom-mid">
-      <div class="banner-title text-left padding-left-big padding-left-mid padding-right-mid padding-right-huge padding-bottom-mid">
+      <div class="banner-title padding-left-big padding-left-small padding-right-small padding-right-huge padding-bottom-mid">
         <h2>Suscríbete y recibe mensualmente tus productos esenciales y otros productos sorpresa pensados especialmente para ti por solo $35.000 </h2>
       </div>
-      <div class="banner-motto text-left padding-left-big padding-left-mid padding-right-mid padding-right-huge">
+      <div class="banner-motto padding-left-big padding-left-small padding-right-small padding-right-huge">
         <div class="products-list padding-left-big padding-left-mid margin-top-mid">
           <div class="product-item flex-center">
             <i class="fas fa-check fa-xs"> </i>
-            <div class="padding-left-xsmall">
+            <div class="padding-left-xsmall font-small">
               Tampones o toallas higienicas
             </div>
           </div>
           <div class="product-item flex-center">
             <i class="fas fa-check fa-xs"> </i>
-            <div class="padding-left-xsmall">
+            <div class="padding-left-xsmall font-small">
               Artículos de maquillaje
             </div>
           </div>
           <div class="product-item flex-center">
             <i class="fas fa-check fa-xs"> </i>
-            <div class="padding-left-xsmall">
+            <div class="padding-left-xsmall font-small">
               Chocolates y dulces
             </div>
           </div>
           <div class="product-item flex-center">
             <i class="fas fa-check fa-xs"> </i>
-            <div class="padding-left-xsmall">
+            <div class="padding-left-xsmall font-small">
               Productos de temporada
             </div>
           </div>
@@ -57,6 +56,7 @@
     </div>
   </div>
   <div class="products-right">
+    <%= image_tag "caja-sola.png", class:"banner-image" %>
   </div>
 </div>
 <!-- Como funciona -->
@@ -107,7 +107,7 @@
     <div class="conditions-text text-center">
       <h4> <strong> Por solo $35.000 al mes + envío GRATIS </strong> </h4>
     </div>
-    <div class="text-left padding-left-big padding-left-mid  mobile-hidden">
+    <div class="padding-left-big padding-left-mid  mobile-hidden">
       <%= link_to "Suscríbete", new_order_path, class: "button banner-call-to-actions" %>
     </div>
   </div>
@@ -133,7 +133,17 @@
       </div>
     </div>
   </div>
-    <div class="text-center padding-left-big desktop-hidden padding-top-mid">
-      <%= link_to "Suscríbete", new_user_session_path, class: "button banner-call-to-actions" %>
+  <div class="text-center padding-left-big desktop-hidden padding-top-small button-height">
+    <%= link_to "Suscríbete", new_user_session_path, class: "button banner-call-to-actions" %>
+  </div>
+</div>
+<div class="footer" id="contact">
+    <div class="footer-links">
+      <a href="https://www.instagram.com/12_startups/" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://wa.me/573216458798" target="_blank"><i class="fab fa-whatsapp"></i></a>
     </div>
+    <div class="footer-copyright">
+      <i class="fas fa-copyright"></i>2018 made with <i class="fa fa-heart"></i> by Scuad Team
+    </div>
+  </div>
 </div>

@@ -1,5 +1,4 @@
 .banner-container {
-  margin-top: 70px;
   height: calc(90vh - 70px);
   display: flex;
 }
@@ -27,6 +26,7 @@
 @media (min-width: 992px) {
   .banner-container {
     display: flex;
+    margin-top: 70px;
   }
 
   .banner-text-container {

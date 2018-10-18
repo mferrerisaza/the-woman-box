@@ -1,0 +1,11 @@
+.new-order-wrapper{
+  display: flex;
+  flex-wrap: wrap;
+}
+.form-container{
+  padding: 16px;
+  flex: 0 0 70%;
+}
+.order-description-container {
+  flex: 0 0 30%;
+}

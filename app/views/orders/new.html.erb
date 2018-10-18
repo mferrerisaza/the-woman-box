@@ -1,27 +1,43 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-6">
-      <%= form_with model: @order, local: true do |f| %>
-        <%= f.select :type_id, Type.all.collect {|type| [type.name, type.id] }, include_blank: "Seleccionar"%>
-        <%= f.select  :size,
-                      Size.all.collect {|size| [size.name, size.id] },
-                      { include_blank: "Seleccionar" },
-                      { class: "hidden" }
-        %>
-        <%= f.hidden_field :plan_id %>
-        <%= f.submit 'Siguiente', class: 'btn btn-primary' %>
-      <% end %>
-        <% Plan.all.each do |plan| %>
-          <div class="plan-card">
-            <div class="plan-card-img" style="background-image: url('<%= cl_image_path plan.photo, height: 200, width: 200, crop: :fit; %>');"></div>
-            <p><%= plan.name %></p>
-          </div>
-        <% end %>
-    </div>
-    <div class="col-xs-6">
-      <div style=" width: 100%; height: 100%; background-color: red">
-        <p>Descripción de la orden acá</p>
+
+<div class="new-order-wrapper">
+  <div class="form-container">
+    <%= form_with model: @order, local: true, html: { class: "plan-form" } do |f| %>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <div class="form-group">
+          <%= f.label :type_id, "Tipo" %>
+          <%= f.select :type_id, Type.all.collect {|type| [type.name, type.id] }, { include_blank: "Seleccionar" }, { class: "form-control" }%>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <div class="form-group">
+          <%= f.label :size, "Tamaño", class: "hidden", id: "size_select_label"%>
+          <%= f.select  :size,
+                        Size.all.collect {|size| [size.name, size.id] },
+                        { include_blank: "Seleccionar" },
+                        { class: "hidden form-control" }
+          %>
+        </div>
       </div>
     </div>
+    <div class="row">
+      <%= f.hidden_field :plan_id %>
+      <% Plan.all.each do |plan| %>
+        <div class="col-xs-6">
+          <div class="plan-card">
+            <div class="plan-card-img" style="background-image: url('<%= cl_image_path plan.photo, effect: :blackwhite, height: 200, width: 200, crop: :fit; %>');"></div>
+            <p><%= plan.name %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+      <%= f.submit 'Siguiente', class: 'btn btn-primary' %>
+    <% end %>
   </div>
+ <div class="order-description-container">
+  <div style=" width: 100%; height: 100%; background-color: red">
+    <p>Descripción de la orden acá</p>
+  </div>
+ </div>
 </div>
+

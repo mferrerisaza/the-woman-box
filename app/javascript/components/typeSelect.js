@@ -8,10 +8,13 @@ function createHTML(sizesData){
 
 function toggleSizeSelect(sizesData){
   const $sizeSelect = document.getElementById("order_size");
+  const $sizeSelectLabel = document.getElementById("size_select_label");
   if (sizesData === null) {
     $sizeSelect.classList.add("hidden");
+    $sizeSelectLabel.classList.add("hidden")
   } else {
     $sizeSelect.classList.remove("hidden");
+    $sizeSelectLabel.classList.remove("hidden");
     const text = `<option value="">Seleccionar</option>${createHTML(sizesData)}`
     $sizeSelect.innerHTML = text;
   }

@@ -27,6 +27,11 @@
   }
 }
 
+.button-right {
+  float: right;
+  margin-top: 16px;
+}
+
 @media (max-width: 355px) {
   .banner-call-to-actions {
     display: flex;

@@ -1,0 +1,95 @@
+
+<div class="new-order-wrapper">
+  <div class="form-container">
+  <div class="progressbar-container">
+    <span class="progressbar-line"></span>
+      <ul class="progressbar">
+          <li class="active-number">
+            <span class="num">1</span></a>
+              <p>Personaliza tu orden</p>
+          </li>
+          <li>
+            <span class="num">2</span>
+              <p>Crea tu cuenta</p>
+          </li>
+          <li>
+            <span class="num">3</span>
+              <p>Paga</p>
+          </li>
+      </ul>
+  </div>
+    <h2 class="form-headline">NUESTRO PLAN MENSUAL</h2>
+    <p class="form-subheadline">
+      Personaliza tu orden seleccionando los tampones o las toallas higiénicas que desees. No te preocupes, podrás cambiar tu selección en cualquier momento.
+    </p>
+    <%= form_with model: @order, local: true, html: { class: "plan-form" } do |f| %>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 ">
+        <div class="form-group">
+          <%= f.label :type_id, "Seleccionar tipo:" %>
+          <%= f.select  :type_id,
+                        Type.all.collect {|type| [type.name, type.id] },
+                        { include_blank: "Seleccionar" },
+                        { class: "form-control" }
+          %>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <div class="form-group">
+          <%= f.label :size, "Seleccionar tamaño:", class: "hidden", id: "size_select_label"%>
+          <%= f.select  :size,
+                        Size.all.collect {|size| [size.name, size.id] },
+                        { include_blank: "Seleccionar" },
+                        { class: "hidden form-control" }
+          %>
+        </div>
+      </div>
+      <div class="col-xs-12">
+        <%= f.label :plan_id, "Seleccionar marca:", class: "hidden", id: "brand_label"%>
+        <%= f.hidden_field :plan_id %>
+      </div>
+    </div>
+    <div class="plan-cards-container">
+    </div>
+      <%#= f.submit 'Siguiente', class: 'btn button banner-call-to-actions button-right disabled' %>
+      <input type="submit" name="commit" value="Siguiente" id="plan-selection-submit" class="btn button banner-call-to-actions button-right" data-disable-with="Siguiente" disabled>
+    <% end %>
+  </div>
+  <div class="order-description-container">
+    <div class="order-description" style="background-image: url('<%= cl_image_path("the-woman-box/the_woman_box_instagram", height: 600, width: 600, crop: :fit) %>');">
+      <%= cl_image_tag("logo3.png", height: 500, width: 500, crop: :thumb, class: "order-description-image")%>
+      <div class="order-description-list-container">
+        <ul class="order-description-list">
+          <li>
+            <span>
+              <i class="fas fa-check"></i>
+              <strong>Accede</strong> a productos esenciales para la menstruación
+            </span>
+          </li>
+          <hr>
+          <li>
+            <span>
+              <i class="fas fa-check"></i>
+              <strong>35.000</strong> al mes + envío <strong>GRATIS</strong>
+            </span>
+          </li>
+          <hr>
+          <li>
+            <span>
+              <i class="fas fa-check"></i>
+              Cada caja contiene <strong>5 regalos al mes</strong> maquillaje, chocolates, dulces, y productos de temporada
+            </span>
+          </li>
+          <hr>
+          <li>
+            <span>
+              <i class="fas fa-check"></i>
+              No hay ningún contrato, puedes <strong>cancelar cuando quieras</strong>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+

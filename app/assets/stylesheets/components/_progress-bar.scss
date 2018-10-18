@@ -1,0 +1,67 @@
+.progressbar-container{
+  display: inline-block;
+  width: 100%;
+  margin: 0px 0px 32px 0px;
+
+  position: relative;
+
+  .progressbar {
+    padding: 0;
+    position: relative;
+    z-index: 1;
+    li {
+      width: 33%;
+      text-align: center;
+      background: none;
+      display: inline-block;
+      float: left;
+      .num {
+        background: white;
+        display: inline-block;
+        height: 40px;
+        width: 40px;
+        font-weight: lighter;
+        font-size: 14px;
+        line-height: 40px;
+        color: $my-gray;
+        margin: 0 auto 12px auto;
+        border: 1px solid $my-gray;
+        }
+      p {
+        font-size: 14px;
+        line-height: 16px;
+        color: $my-gray;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        // text-transform: uppercase;
+      }
+    }
+  }
+  .progressbar-line{
+    background: $my-gray;
+    height: 1px;
+    width: 70%;
+    position: absolute;
+    top: 20px;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    z-index: 0;
+  }
+}
+
+
+.active-number {
+  .num {
+    background-color: $my-pink !important;
+    border: none !important;
+    color: #4b1414 !important;
+    font-weight: bold !important;
+  }
+  p {
+    color: #4b1414 !important;
+    font-weight: bold !important;
+  }
+}

@@ -1,0 +1,17 @@
+.plan-form {
+  select {
+    background-color: white;
+    border: 1px solid $my-light-gray;
+    // padding: 8px;
+    border-radius: 0px;
+    font-weight: bold;
+    // text-align-last:center;
+    color: $my-black;
+    font-size: 13px;
+  }
+  label {
+    font-size: 13px;
+    color: $my-black;
+    font-weight: lighter;
+  }
+}

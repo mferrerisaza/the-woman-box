@@ -1,0 +1,41 @@
+.order-description{
+  width: 100%;
+  height: 100%;
+  background-color: whitesmoke;
+  border-radius: 4px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .order-description-image{
+    width: 120px;
+    height: 120px;
+  }
+  .order-description-list-container{
+    background-color: white;
+    width: 90%;
+    border-radius: 4px;
+    .order-description-list {
+      list-style: none;
+      margin: 0;
+      padding: 8px;
+      font-size: 14px;
+      color: $my-black;
+      hr {
+        margin: 0px;
+        border: 0.5px solid $my-light-gray;
+        margin: 0px 30px;
+      }
+      li {
+        padding: 16px;
+        i {
+          color: $my-dark-pink;
+          padding-right: 8px;
+        }
+      }
+    }
+  }
+}

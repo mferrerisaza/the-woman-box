@@ -1,25 +1,28 @@
 .button {
   display: inline-block;
-  padding: 14px 30px;
+  padding: 14px 30px 10px 30px;
   border: none;
-  font-family: nexa_boldregular,sans-serif;
-  font-size: 14px;
+  font-family: $bebas-neue-font;
+  font-size: 24px;
+  font-weight: 600;
   letter-spacing: 1px;
-  line-height: 18px;
+  line-height: 1;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
   cursor: pointer;
-  border-radius: 2px;
+  border-radius: 0px;
+  float: right;
 }
 
 .banner-call-to-actions {
-  background-color: #f6b9ca;
-  color: #333;
+  background-color: $brand-primary;
+  color: #4b1414;
   transition: background-color .7s,color .1s;
+  // font-family: $muara-demo-font;
   &:hover {
-    background-color: #CA98A6;
-    color: #585858;
+    background-color: $my-purple;
+    color: $my-light-gray;
     text-decoration: none;
   }
 }
@@ -31,4 +34,8 @@
       padding: 8px;
     }
   }
+}
+
+.button-height {
+  height: 60px;
 }

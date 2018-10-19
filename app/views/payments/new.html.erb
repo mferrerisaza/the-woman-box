@@ -1,36 +1,60 @@
 <div class="new-order-wrapper">
   <div class="form-container">
     <%= render "shared/progressbar", active_tab: 3 %>
-    <h2 class="form-headline">NUESTRO PLAN MENSUAL</h2>
+    <h2 class="form-headline">YA CASI TERMINAMOS, AHORA SOLO NECESITAMOS LOS DATOS DE PAGO Y ENVÍO</h2>
     <p class="form-subheadline">
       Personaliza tu orden seleccionando los tampones o las toallas higiénicas que desees. No te preocupes, podrás cambiar tu selección en cualquier momento.
     </p>
     <%= form_with url: order_payments_path, local: true, id: "customer-form" do |f| %>
-      <span class="card-errors"/></span/>
-      <div class="form-group"/>
-          <label/>Nombre del usuario de tarjeta</label/>
-          <input type="text" name="card[name]"//>
-      </div/>
-      <div class="form-group"/>
-          <label/>Email</label/>
-          <input type="text" name="card[email]"//>
-      </div/>
-      <div class="form-group"/>
-          <label/>Número de tarjeta de crédito</label/>
-          <input type="text" name="card[number]"//>
-      </div/>
-      <div class="form-group"/>
-          <label/>CVC</label/>
-          <input type="text" size="4" name="card[cvc]"//>
-      </div/>
-      <div class="form-group"/>
-          <label/>Mes de expiración(MM)</label/>
-          <input type="text" name="card[exp_month]"//>
-          <span/>Año de expiración(AAAA)</span/>
-          <input type="text" name="card[exp_year]"//>
-      </div/>
-
-      <button type="submit"/>¡Pagar ahora!</button/>
+      <!-- div donde se imprimiran los errores (opcional) -->
+      <div class="card-errors">
+        <% if @errrors %>
+          <%=  @errors %>
+        <% end %>
+      </div>
+        <%= f.hidden_field "card[plan_sku]", value: @order.plan_sku %>
+      <div class="form-group">
+        <%= f.label "order[delivery_date]", "Fecha de entrega" %>
+        <%= f.text_field "order[delivery_date]", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label "order[address]", "Dirección de entrega" %>
+        <%= f.text_field "order[address]", class: "form-control" %>
+      </div>
+      <!-- datos necesarios para tokenizar -->
+      <div class="form-group">
+        <%= f.label "card[name]", "Nombre del titular de la tarjeta" %>
+        <%= f.text_field "card[name]", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label "card[doc_type]", "Tipo de documento del titular de la tarjeta" %>
+        <%= f.text_field "card[doc_type]", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label "card[doc_number]", "Número documento del titular de la tarjeta" %>
+        <%= f.text_field "card[doc_number]", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label "card[email]", "Email" %>
+        <%= f.text_field "card[email]", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label "card[number]", "Número de tarjeta de crédito" %>
+        <%= f.text_field "card[number]", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label "card[cvc]", "CVC" %>
+        <%= f.text_field "card[cvc]", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label "card[exp_month]", "Mes de expiración(MM)" %>
+        <%= f.text_field "card[exp_month]", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label "card[exp_year]", "Año de expiración(AAAA)" %>
+        <%= f.text_field "card[exp_year]", class: "form-control" %>
+      </div>
+      <%= f.submit 'Iniciar Suscripción', class: 'btn button banner-call-to-actions button-right' %>
     <% end %>
   </div>
   <%= render 'shared/order-description', show_order_box: true %>

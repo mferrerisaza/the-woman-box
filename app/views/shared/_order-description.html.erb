@@ -1,5 +1,5 @@
   <div class="order-description-container">
-    <% if show_order_box %>
+    <% if show_order_box && (@plan || session[:order]) %>
       <% @plan = Plan.find_by(sku: session[:order]["plan_sku"])  unless @plan %>
       <div class="order-selection">
         <div class="order-selection-top">

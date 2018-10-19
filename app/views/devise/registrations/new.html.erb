@@ -1,25 +1,80 @@
-<h2>Sign up</h2>
-
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true ,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
+<div class="new-order-wrapper">
+  <div class="form-container">
+  <div class="progressbar-container">
+    <span class="progressbar-line"></span>
+      <ul class="progressbar">
+          <li>
+            <span class="num">1</span></a>
+              <p>Personaliza tu orden</p>
+          </li>
+          <li class="active-number">
+            <span class="num">2</span>
+              <p>Crea tu cuenta</p>
+          </li>
+          <li>
+            <span class="num">3</span>
+              <p>Paga</p>
+          </li>
+      </ul>
   </div>
+    <h2 class="form-headline">AHORA NECESITAMOS ALGUNOS DATOS PARA CREAR TU CUENTA</h2>
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= f.error_notification %>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
+      <div class="form-inputs">
+        <%= f.input :email,
+                    required: true,
+                    autofocus: true ,
+                    input_html: { autocomplete: "email" }%>
+        <%= f.input :password,
+                    required: true,
+                    hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                    input_html: { autocomplete: "new-password" } %>
+        <%= f.input :password_confirmation,
+                    required: true,
+                    input_html: { autocomplete: "new-password" } %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit, "Sign up", class:"btn button banner-call-to-actions button-right" %>
+      </div>
+    <% end %>
   </div>
-<% end %>
+  <div class="order-description-container">
+    <div class="order-description" style="background-image: url('<%= cl_image_path("the-woman-box/the_woman_box_instagram", height: 600, width: 600, crop: :fit) %>');">
+      <%= cl_image_tag("logo3.png", height: 500, width: 500, crop: :thumb, class: "order-description-image")%>
+      <div class="order-description-list-container">
+        <ul class="order-description-list">
+          <li>
+            <span>
+              <i class="fas fa-check"></i>
+              <strong>Accede</strong> a productos esenciales para la menstruación
+            </span>
+          </li>
+          <hr>
+          <li>
+            <span>
+              <i class="fas fa-check"></i>
+              <strong>35.000</strong> al mes + envío <strong>GRATIS</strong>
+            </span>
+          </li>
+          <hr>
+          <li>
+            <span>
+              <i class="fas fa-check"></i>
+              Cada caja contiene <strong>5 regalos al mes</strong> maquillaje, chocolates, dulces, y productos de temporada
+            </span>
+          </li>
+          <hr>
+          <li>
+            <span>
+              <i class="fas fa-check"></i>
+              No hay ningún contrato, puedes <strong>cancelar cuando quieras</strong>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
 
-<%= render "devise/shared/links" %>

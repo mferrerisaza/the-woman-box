@@ -1,6 +1,5 @@
 // Import Google fonts
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Raleway:400,100,300,700,500");
-
 // Define fonts for body and headers
 
 // To use a font file (.woff) uncomment following lines
@@ -28,5 +27,5 @@
 $bebas-neue-font: "Bebas Neue";
 $muara-demo-font: "Muara Demo";
 
-$body-font: "Arial Narrow", Arial, sans-serif; ;
+$body-font: "Open Sans", sans-serif; //"Arial Narrow", Arial, sans-serif;
 $headers-font: $bebas-neue-font;

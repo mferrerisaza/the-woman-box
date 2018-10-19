@@ -39,3 +39,49 @@
     }
   }
 }
+.order-selection {
+  width: 100%;
+  border: 1px solid $my-black;
+  padding: 24px;
+  margin-bottom: 16px;
+  border-radius: 4px;
+
+  h4 {
+    font-weight: bold;
+    color: $my-black;
+    margin: 0px;
+  }
+
+  p {
+    font-size: 14px;
+    color: $my-black;
+    font-weight: lighter;
+    margin: 0px;
+  }
+  .order-selection-description{
+    padding-top: 16px;
+  }
+  hr {
+    border: 0.5px solid $my-light-gray;
+    margin: 24px 30px;
+  }
+}
+
+.order-selection-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  a {
+      font-size: 12px;
+      font-weight: normal;
+      text-decoration: underline;
+      color: $my-black;
+  }
+}
+
+.order-selection-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}

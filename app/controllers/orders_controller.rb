@@ -11,7 +11,7 @@ class OrdersController < ApplicationController
       order = Order.create!(plan_sku: plan.sku, amount: plan.price, status: 'Pendiente', user: current_user)
       redirect_to new_order_payment_path(order)
     else
-      session[:order] = { plan_sku: plan.sku, amount_cents: plan.price_cents, status: 'Pendiente' }
+      session[:order] = { plan_sku: plan.sku, amount: plan.price.to_i, status: 'Pendiente' }
       redirect_to new_user_registration_path
     end
   end

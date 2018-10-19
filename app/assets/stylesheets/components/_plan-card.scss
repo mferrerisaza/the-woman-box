@@ -12,14 +12,13 @@
   align-items: center;
   margin-top: 8px;
   padding: 4px 16px;
-  width: 60%;
+  width: 50vh;
   cursor: pointer;
   transition: background-color 0.5s ease;
 
   p {
     font-size: 14px;
     margin: 0px;
-    white-space: nowrap;
     color: $my-black;
   }
  .plan-card-img {

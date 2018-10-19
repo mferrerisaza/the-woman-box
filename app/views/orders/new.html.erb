@@ -1,23 +1,7 @@
 
 <div class="new-order-wrapper">
   <div class="form-container">
-  <div class="progressbar-container">
-    <span class="progressbar-line"></span>
-      <ul class="progressbar">
-          <li class="active-number">
-            <span class="num">1</span></a>
-              <p>Personaliza tu orden</p>
-          </li>
-          <li>
-            <span class="num">2</span>
-              <p>Crea tu cuenta</p>
-          </li>
-          <li>
-            <span class="num">3</span>
-              <p>Paga</p>
-          </li>
-      </ul>
-  </div>
+    <%= render "shared/progressbar", active_tab: 1 %>
     <h2 class="form-headline">NUESTRO PLAN MENSUAL</h2>
     <p class="form-subheadline">
       Personaliza tu orden seleccionando los tampones o las toallas higiénicas que desees. No te preocupes, podrás cambiar tu selección en cualquier momento.

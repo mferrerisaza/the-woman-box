@@ -1,0 +1,31 @@
+<div class="progressbar-container">
+  <span class="progressbar-line"></span>
+    <ul class="progressbar">
+        <li class="<%="active-number" if active_tab == 1 %>">
+          <%= link_to new_order_path do %>
+            <span class="num">
+              <% if active_tab > 1 %>
+                <i class="fas fa-check"></i>
+              <% else %>
+                1
+              <% end %>
+            </span>
+          <% end %>
+          <p>Personaliza tu orden</p>
+        </li>
+        <li class="<%="active-number" if active_tab == 2 %>">
+          <span class="num">
+            <% if active_tab > 2 %>
+              <i class="fas fa-check"></i>
+            <% else %>
+              2
+            <% end %>
+          </span>
+            <p>Crea tu cuenta</p>
+        </li>
+        <li class="<%="active-number" if active_tab == 3 %>">
+          <span class="num">3</span>
+            <p>Paga</p>
+        </li>
+    </ul>
+</div>

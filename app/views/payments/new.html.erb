@@ -1,27 +1,72 @@
-<%= form_with url: order_payments_path, local: true, id: "customer-form" do |f| %>
-  <span class="card-errors"/></span/>
-  <div class="form-group"/>
-      <label/>Nombre del usuario de tarjeta</label/>
-      <input type="text" name="card[name]"//>
-  </div/>
-  <div class="form-group"/>
-      <label/>Email</label/>
-      <input type="text" name="card[email]"//>
-  </div/>
-  <div class="form-group"/>
-      <label/>Número de tarjeta de crédito</label/>
-      <input type="text" name="card[number]"//>
-  </div/>
-  <div class="form-group"/>
-      <label/>CVC</label/>
-      <input type="text" size="4" name="card[cvc]"//>
-  </div/>
-  <div class="form-group"/>
-      <label/>Mes de expiración(MM)</label/>
-      <input type="text" name="card[exp_month]"//>
-      <span/>Año de expiración(AAAA)</span/>
-      <input type="text" name="card[exp_year]"//>
-  </div/>
+<div class="new-order-wrapper">
+  <div class="form-container">
+    <%= render "shared/progressbar", active_tab: 1 %>
+    <h2 class="form-headline">NUESTRO PLAN MENSUAL</h2>
+    <p class="form-subheadline">
+      Personaliza tu orden seleccionando los tampones o las toallas higiénicas que desees. No te preocupes, podrás cambiar tu selección en cualquier momento.
+    </p>
+    <%= form_with url: order_payments_path, local: true, id: "customer-form" do |f| %>
+      <span class="card-errors"/></span/>
+      <div class="form-group"/>
+          <label/>Nombre del usuario de tarjeta</label/>
+          <input type="text" name="card[name]"//>
+      </div/>
+      <div class="form-group"/>
+          <label/>Email</label/>
+          <input type="text" name="card[email]"//>
+      </div/>
+      <div class="form-group"/>
+          <label/>Número de tarjeta de crédito</label/>
+          <input type="text" name="card[number]"//>
+      </div/>
+      <div class="form-group"/>
+          <label/>CVC</label/>
+          <input type="text" size="4" name="card[cvc]"//>
+      </div/>
+      <div class="form-group"/>
+          <label/>Mes de expiración(MM)</label/>
+          <input type="text" name="card[exp_month]"//>
+          <span/>Año de expiración(AAAA)</span/>
+          <input type="text" name="card[exp_year]"//>
+      </div/>
 
-  <button type="submit"/>¡Pagar ahora!</button/>
-<% end %>
+      <button type="submit"/>¡Pagar ahora!</button/>
+    <% end %>
+  </div>
+  <div class="order-description-container">
+    <div class="order-description" style="background-image: url('<%= cl_image_path("the-woman-box/the_woman_box_instagram", height: 600, width: 600, crop: :fit) %>');">
+      <%= cl_image_tag("logo3.png", height: 500, width: 500, crop: :thumb, class: "order-description-image")%>
+      <div class="order-description-list-container">
+        <ul class="order-description-list">
+          <li>
+            <span>
+              <i class="fas fa-check"></i>
+              <strong>Accede</strong> a productos esenciales para la menstruación
+            </span>
+          </li>
+          <hr>
+          <li>
+            <span>
+              <i class="fas fa-check"></i>
+              <strong>35.000</strong> al mes + envío <strong>GRATIS</strong>
+            </span>
+          </li>
+          <hr>
+          <li>
+            <span>
+              <i class="fas fa-check"></i>
+              Cada caja contiene <strong>5 regalos al mes</strong> maquillaje, chocolates, dulces, y productos de temporada
+            </span>
+          </li>
+          <hr>
+          <li>
+            <span>
+              <i class="fas fa-check"></i>
+              No hay ningún contrato, puedes <strong>cancelar cuando quieras</strong>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

@@ -6,6 +6,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :first_name, :last_name, presence: true
+  DOC_TYPE = %w[NIT CC CE TI PPN SSN LIC DNI]
 
   def full_name
     "#{first_name} #{last_name}".split.map(&:capitalize).join(' ')

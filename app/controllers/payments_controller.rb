@@ -2,6 +2,7 @@ class PaymentsController < ApplicationController
   before_action :set_order
 
   def new
+    @plan = Plan.find_by(sku: @order.plan_sku)
   end
 
   def create

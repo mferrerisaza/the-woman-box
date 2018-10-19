@@ -1,6 +1,6 @@
 <div class="new-order-wrapper">
   <div class="form-container">
-    <%= render "shared/progressbar", active_tab: 1 %>
+    <%= render "shared/progressbar", active_tab: 3 %>
     <h2 class="form-headline">NUESTRO PLAN MENSUAL</h2>
     <p class="form-subheadline">
       Personaliza tu orden seleccionando los tampones o las toallas higiénicas que desees. No te preocupes, podrás cambiar tu selección en cualquier momento.
@@ -33,40 +33,5 @@
       <button type="submit"/>¡Pagar ahora!</button/>
     <% end %>
   </div>
-  <div class="order-description-container">
-    <div class="order-description" style="background-image: url('<%= cl_image_path("the-woman-box/the_woman_box_instagram", height: 600, width: 600, crop: :fit) %>');">
-      <%= cl_image_tag("logo3.png", height: 500, width: 500, crop: :thumb, class: "order-description-image")%>
-      <div class="order-description-list-container">
-        <ul class="order-description-list">
-          <li>
-            <span>
-              <i class="fas fa-check"></i>
-              <strong>Accede</strong> a productos esenciales para la menstruación
-            </span>
-          </li>
-          <hr>
-          <li>
-            <span>
-              <i class="fas fa-check"></i>
-              <strong>35.000</strong> al mes + envío <strong>GRATIS</strong>
-            </span>
-          </li>
-          <hr>
-          <li>
-            <span>
-              <i class="fas fa-check"></i>
-              Cada caja contiene <strong>5 regalos al mes</strong> maquillaje, chocolates, dulces, y productos de temporada
-            </span>
-          </li>
-          <hr>
-          <li>
-            <span>
-              <i class="fas fa-check"></i>
-              No hay ningún contrato, puedes <strong>cancelar cuando quieras</strong>
-            </span>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
+  <%= render 'shared/order-description', show_order_box: true %>
 </div>

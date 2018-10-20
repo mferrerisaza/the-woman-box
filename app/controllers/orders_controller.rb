@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
     plan = Plan.find(order_params[:plan_id])
     if current_user
       order = Order.create!(plan_sku: plan.sku, amount: plan.price, status: 'Pendiente', user: current_user)
-      redirect_to new_order_payment_path(order)
+      redirect_to edit_order_path(order)
     else
       session[:order] = { plan_sku: plan.sku, amount: plan.price.to_i, status: 'Pendiente' }
       redirect_to new_user_registration_path
@@ -18,13 +18,14 @@ class OrdersController < ApplicationController
   end
 
   def edit
+    @plan = Plan.find_by(sku: @order.plan_sku)
   end
 
   def update
     if @order.update(order_params)
       redirect_to new_order_payment_path(@order)
     else
-      render edit
+      render 'edit'
     end
   end
 

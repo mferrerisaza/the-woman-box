@@ -20,6 +20,7 @@ gem 'money-rails'
 gem 'epayco-ruby', git: 'https://github.com/mferreri7/epayco-ruby'
 gem 'cloudinary'
 gem 'carrierwave', '~> 1.2'
+gem 'country_select', '~> 3.1'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

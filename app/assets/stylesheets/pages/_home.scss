@@ -1,4 +1,4 @@
-.background-light-pink {
+.background-light-gray {
   background-color: $my-light-gray;
 }
 
@@ -20,7 +20,7 @@
   }
 
   .padding-left-big {
-  padding-left: 50px;
+    padding-left: 50px;
   }
 
   .padding-right-big {
@@ -39,7 +39,7 @@
     font-weight: 600;
   }
 
-  .font-small {
+  .font-small-mobile {
     font-size: 16px;
   }
 
@@ -90,6 +90,10 @@
   }
 }
 
+.flex{
+  display: flex;
+}
+
 .flex-center {
   display: flex;
   align-items: center;
@@ -114,6 +118,10 @@
 
 .margin-top-small {
   margin-top: 10px;
+}
+
+.margin-bottom-mid {
+  margin-bottom: 25px;
 }
 
 .padding-top-mid {

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+  resources :users, only: [:show]
   root to: 'pages#home'
   resources :orders, only: [:new, :create] do
     resources :payments, only: [:new, :create]

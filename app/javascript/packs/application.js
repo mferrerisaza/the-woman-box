@@ -5,4 +5,4 @@ import "../components/sizeSelect.js"
 import "../components/planSubmit.js"
 import "../components/creditCardForm.js"
 import '../components/autocomplete';
-
+import "./flatpickr.js";

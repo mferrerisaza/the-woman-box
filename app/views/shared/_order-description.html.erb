@@ -8,6 +8,16 @@
         </div>
         <p class="order-selection-description">Suscripción mensual a The Women Box (<strong><%= @plan.name %></strong>)</p>
         <hr>
+        <% if controller_name == "payments" %>
+          <div class="order-selection-top">
+             <h4>DETALLES DE ENVÍO</h6>
+             <%= link_to "Cambiar", edit_order_path(@order) %>
+          </div>
+          <p class="order-selection-description">
+            La recibirás el <strong> <%="#{@order.delivery_date.to_date.day}"%> de cada mes</strong> (o antes) en <%= "#{@order.address.downcase} #{@order.city}, #{@order.province}" %>
+          </p>
+          <hr>
+        <% end %>
         <div class="order-selection-bottom">
           <h4>TOTAL</h6>
           <p><strong><%= humanized_money_with_symbol(@plan.price) %></strong></p>

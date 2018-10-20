@@ -72,8 +72,6 @@ class PaymentsController < ApplicationController
       id_plan: plan_params[:plan_sku],
       customer: current_user.epayco_customer_id,
       token_card: current_user.epayco_token,
-      url_response: "https:/secure.payco.co/restpagos/testRest/endpagopse.php",
-      url_confirmation: "https:/secure.payco.co/restpagos/testRest/endpagopse.php",
       doc_type: plan_params[:doc_type],
       doc_number: plan_params[:doc_number]
     }

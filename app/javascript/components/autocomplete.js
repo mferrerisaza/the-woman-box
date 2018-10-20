@@ -11,7 +11,7 @@ function autocomplete(orderAddress) {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-  const $orderAddress = document.getElementById('order[address]');
+  const $orderAddress = document.getElementById('order_address');
   if ($orderAddress) {
     autocomplete($orderAddress)
   }
@@ -21,15 +21,15 @@ document.addEventListener("DOMContentLoaded", function() {
 function onPlaceChanged() {
   var place = this.getPlace();
   var components = getAddressComponents(place);
-  var $orderAddress = document.getElementById('order[address]');
+  var $orderAddress = document.getElementById('order_address');
   $orderAddress.blur();
   $orderAddress.value = components.address;
 
-  document.getElementById('order[province]').value = components.province;
-  document.getElementById('order[city]').value = components.city;
+  document.getElementById('order_province').value = components.province;
+  document.getElementById('order_city').value = components.city;
 
   if (components.country_code) {
-    document.getElementById("order[country]").querySelector('option[value="' + components.country_code + '"]').selected = true;
+    document.getElementById("order_country").querySelector('option[value="' + components.country_code + '"]').selected = true;
   }
 }
 

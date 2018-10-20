@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   skip_before_action :authenticate_user!
+  before_action :set_order, only: %i[edit update]
 
   def new
     @order = Order.new
@@ -16,9 +17,32 @@ class OrdersController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @order.update(order_params)
+      redirect_to new_order_payment_path(@order)
+    else
+      render edit
+    end
+  end
+
   private
 
+  def set_order
+    @order = Order.find(params[:id])
+  end
+
   def order_params
-    params.require(:order).permit(:plan_id)
+    params.require(:order).permit(
+      :plan_id,
+      :delivery_date,
+      :address,
+      :country,
+      :province,
+      :city,
+      :address_aditional_info
+    )
   end
 end

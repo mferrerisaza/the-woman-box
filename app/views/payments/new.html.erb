@@ -1,54 +1,13 @@
 <div class="new-order-wrapper">
   <div class="form-container">
-    <%= render "shared/progressbar", active_tab: 3 %>
-    <h2 class="form-headline">YA CASI TERMINAMOS, AHORA SOLO NECESITAMOS LOS DATOS DE PAGO Y ENVÍO</h2>
+    <%= render "shared/progressbar", active_tab: 4 %>
+    <h2 class="form-headline">Información de la tarjeta y facturación</h2>
     <p class="form-subheadline">
       Personaliza tu orden seleccionando los tampones o las toallas higiénicas que desees. No te preocupes, podrás cambiar tu selección en cualquier momento.
     </p>
     <%= form_with url: order_payments_path, local: true, id: "customer-form" do |f| %>
+      <%= f.hidden_field "card[plan_sku]", value: @order.plan_sku %>
       <div class="row">
-          <!-- div donde se imprimiran los errores (opcional) -->
-          <div class="card-errors">
-            <%=  @errors if @errrors %>
-          </div>
-          <%= f.hidden_field "card[plan_sku]", value: @order.plan_sku %>
-          <div class="col-xs-6">
-            <div class="form-group">
-              <%= f.label "order[delivery_date]", "Fecha de entrega" %>
-              <%= f.text_field "order[delivery_date]", class: "form-control" %>
-            </div>
-          </div>
-          <div class="col-xs-6">
-            <div class="form-group">
-              <%= f.label "order[address]", "Dirección de entrega" %>
-              <%= f.text_field "order[address]", class: "form-control" %>
-            </div>
-          </div>
-          <div class="col-xs-6">
-            <div class="form-group">
-              <%= f.label "order[country]","País" %>
-              <%= f.country_select("order[country]", { priority_countries: ["CO"], selected: "CO" }, { class: 'form-control' })%>
-            </div>
-          </div>
-          <div class="col-xs-6">
-            <div class="form-group">
-              <%= f.label "order[province]","Departamento / Provincia" %>
-              <%= f.text_field "order[province]", class: 'form-control' %>
-            </div>
-          </div>
-          <div class="col-xs-6">
-            <div class="form-group">
-              <%= f.label "order[city]","Ciudad" %>
-              <%= f.text_field "order[city]", class: 'form-control' %>
-            </div>
-          </div>
-          <div class="col-xs-6">
-            <div class="form-group">
-              <%= f.label "order[address_aditional_info]","Información adicional" %>
-              <%= f.text_field "order[address_aditional_info]", class: 'form-control', placeholder: "Ej: Torre 1 Apto 302" %>
-            </div>
-          </div>
-          <h2 class="form-headline">Información de la tarjeta</h2>
           <!-- datos necesarios para tokenizar -->
           <div class="col-xs-12">
             <div class="form-group">
@@ -80,10 +39,9 @@
               <%= f.text_field "card[exp_year]", class: "form-control" %>
             </div>
           </div>
-          <h2 class="form-headline">Información de facturación</h2>
           <div class="col-xs-3">
             <div class="form-group">
-              <%= f.label "card[doc_type]", "Tipo de documento" %>
+              <%= f.label "card[doc_type]", "Tipo de ID" %>
               <%= f.text_field "card[doc_type]", class: "form-control" %>
             </div>
           </div>
@@ -100,7 +58,7 @@
             </div>
           </div>
       </div>
-          <%= f.submit 'Iniciar Suscripción', class: 'btn button banner-call-to-actions button-right' %>
+      <%= f.submit 'Iniciar Suscripción', class: 'btn button banner-call-to-actions button-right' %>
     <% end %>
   </div>
   <%= render 'shared/order-description', show_order_box: true %>

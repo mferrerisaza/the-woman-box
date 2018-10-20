@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
     order.user = user
     session[:order] = nil
     if order.save
-      new_order_payment_path(order)
+      edit_order_path(order)
     else
       new_order_path
     end

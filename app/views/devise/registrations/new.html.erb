@@ -2,6 +2,7 @@
   <div class="form-container">
     <%= render "shared/progressbar", active_tab: 2 %>
     <h2 class="form-headline">AHORA NECESITAMOS ALGUNOS DATOS PARA CREAR TU CUENTA</h2>
+    <p class="form-subheadline">Con tu cuenta podrás modificar, agregar o cancelar tus suscripciones. También usaremos algunos datos para contactarte en caso de que necesitemos hacerlo, no te precupes no te enviaremos spam</p>
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <div class="form-inputs">
         <div class="row">

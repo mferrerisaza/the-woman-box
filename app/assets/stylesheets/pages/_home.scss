@@ -121,7 +121,7 @@
 }
 
 .margin-bottom-mid {
-  margin-bottom: 25px;
+  margin-bottom: 25px !important;
 }
 
 .padding-top-mid {
@@ -144,6 +144,10 @@
 
 .flex-justify-around {
   justify-content: space-around;
+}
+
+.flex-justify-between {
+  justify-content: space-between;
 }
 
 .flex-column {

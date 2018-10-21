@@ -44,3 +44,15 @@
 .button-height {
   height: 60px;
 }
+
+.cancel-btn {
+  background-color: $my-dark-gray;
+  color: $my-light-gray;
+  transition: background-color .7s,color .1s;
+  // font-family: $muara-demo-font;
+  &:hover {
+    background-color: #4b1414;
+    color: $my-light-gray;
+    text-decoration: none;
+  }
+}

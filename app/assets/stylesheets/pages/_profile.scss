@@ -25,7 +25,7 @@
 .profile-section-container {
   width: 60%;
   margin: 0 auto;
-  margin-bottom: 25px;
+  // margin-bottom: 25px;
   .title {
     font-weight: 600;
   }
@@ -37,4 +37,13 @@
 
 .font-small {
   font-size: 14px;
+}
+
+.show-contaier {
+  min-height: calc(100vh - 281px);
+}
+
+.plans-list {
+  width: 90%;
+  margin: 0 auto;
 }

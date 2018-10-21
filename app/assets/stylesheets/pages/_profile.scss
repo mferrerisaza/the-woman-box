@@ -23,7 +23,9 @@
 }
 
 .profile-section-container {
-  width: 60%;
+  @media (min-width: 992px) {
+    width: 60%;
+  }
   margin: 0 auto;
   // margin-bottom: 25px;
   .title {

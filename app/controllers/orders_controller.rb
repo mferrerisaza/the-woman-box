@@ -1,6 +1,10 @@
 class OrdersController < ApplicationController
   skip_before_action :authenticate_user!
 
+  def index
+    @orders = policy_scope(Order).order(created_at: :desc)
+  end
+
   def new
     @order = Order.new
   end

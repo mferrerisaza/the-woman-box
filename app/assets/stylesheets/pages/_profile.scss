@@ -1,0 +1,51 @@
+.background-light-pink {
+  background-color: $my-light-gray-purple;
+}
+
+@media (min-width: 992px) {
+  .margin-left-huge {
+    margin-left: 90px;
+  }
+
+  .margin-right-huge {
+    margin-right: 90px;
+  }
+
+  .padding-side-desktop {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+}
+
+.padding-section-mid {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.profile-section-container {
+  @media (min-width: 992px) {
+    width: 60%;
+  }
+  margin: 0 auto;
+  // margin-bottom: 25px;
+  .title {
+    font-weight: 600;
+  }
+}
+
+.fields {
+  display: inline-block;
+}
+
+.font-small {
+  font-size: 14px;
+}
+
+.show-contaier {
+  min-height: calc(100vh - 281px);
+}
+
+.plans-list {
+  width: 90%;
+  margin: 0 auto;
+}

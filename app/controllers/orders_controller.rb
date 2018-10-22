@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   skip_before_action :authenticate_user!
   before_action :set_order, only: %i[edit update]
+  skip_after_action :verify_authorized, only: :create
 
   def index
     @orders = policy_scope(Order).order(created_at: :desc)
@@ -8,6 +9,7 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
+    authorize @order
   end
 
   def create
@@ -22,10 +24,12 @@ class OrdersController < ApplicationController
   end
 
   def edit
+    authorize @order
     @plan = Plan.find_by(sku: @order.plan_sku)
   end
 
   def update
+    authorize @order
     if @order.update(order_params)
       redirect_to new_order_payment_path(@order)
     else

@@ -3,6 +3,7 @@ class PaymentsController < ApplicationController
 
   def new
     @plan = Plan.find_by(sku: @order.plan_sku)
+    authorize @order, :order_of_current_user?
   end
 
   def create

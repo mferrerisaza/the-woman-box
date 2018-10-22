@@ -16,7 +16,6 @@ class ApplicationController < ActionController::Base
     redirect_to(root_path)
   end
 
-
   def after_sign_in_path_for(resource)
     if session[:order].present?
       create_order_after_user_sign_up(current_user)

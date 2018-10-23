@@ -8,9 +8,9 @@
     </div>
   </div>
 </div>
-<div class="show-contaier padding-bottom-mid padding-top-mid background-light-pink">
+<div class="show-container padding-bottom-mid padding-top-mid background-light-pink padding-left-xsmall padding-right-xsmall">
   <div class="profile-section-container margin-bottom-mid background-light-pink-transparent padding-section-mid padding-side-desktop">
-    <div class="title margin-bottom-mid">
+    <div class="title margin-bottom-mid padding-left-small">
       Editar información personal
     </div>
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -19,7 +19,7 @@
         <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
       <% end %>
       <div class="form-inputs">
-        <div class="row">
+        <div class="row no-margin">
           <div class="col-xs-12 col-sm-6 font-small">
             <%= f.input :first_name, label: "Nombre", required: false, autofocus: true %>
           </div>
@@ -63,8 +63,8 @@
         <%= f.button :submit, "Actualizar datos" %>
       </div>
     <% end %>
-    <p>¿No estás satisfecho? <%= link_to "Cancela mi cuenta", registration_path(resource_name), data: { confirm: "¿Estás seguro que deseas eliminar tu cuenta?" }, method: :delete, class:"link-decoration-none do-underline font-small" %></p>
-
-    <%= link_to "Volver", :back, class:"link-decoration-none do-underline font-small"  %>
+    <div class="margin-bottom-mid">
+      <%= link_to "Volver", :back, class:"link-decoration-none do-underline font-small padding-left-small margin-bottom-huge"  %>
+    </div>
+    <p class="font-small padding-left-small">¿No estás satisfecha? <%= link_to "Cancelar mi cuenta", registration_path(resource_name), data: { confirm: "¿Estás segura que deseas eliminar tu cuenta?" }, method: :delete, class:"link-decoration-none do-underline font-small" %></p>
   </div>
-

@@ -19,4 +19,10 @@
     color: $my-black;
     font-size: 13px;
   }
+  .payment-form-bottom{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap-reverse;
+  }
 }

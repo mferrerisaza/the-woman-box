@@ -1,18 +1,30 @@
 <div class="new-order-wrapper">
   <div class="form-container">
     <%= render "shared/progressbar", active_tab: 4 %>
-    <h2 class="form-headline">Información de la tarjeta y facturación</h2>
+    <h2 class="form-headline">YA CASI TERMINAMOS, SOLO NOS FALTAN LOS DATOS DE PAGO </h2>
     <p class="form-subheadline">
-      Personaliza tu orden seleccionando los tampones o las toallas higiénicas que desees. No te preocupes, podrás cambiar tu selección en cualquier momento.
+        <i class="fas fa-info-circle"></i>Por seguridad no almacenamos ninguna información relacionada con tus datos de pago, por este motivo en caso de querer comprar otra suscripción deberas introducir todos estos datos nuevamente.
     </p>
-    <%= form_with url: order_payments_path, local: true, id: "customer-form" do |f| %>
+    <div class="payment-methods">
+      <h2 class="form-headline">Seleccionar Forma de pago</h2>
+      <div class="methods-pic-wrapper">
+        <div class="methods-pic-container">
+          <div class="methods-pic" style="background-image: url('<%= cl_image_path("the-woman-box/medios_de_pago.png")%>');">
+          </div>
+          <p class="form-subheadline text-center">Tarjeta de crédito</p>
+        </div>
+        <%#= cl_image_tag("") %>
+      </div>
+
+    </div>
+    <%= form_with url: order_payments_path, local: true, class:"hidden", id: "customer-form" do |f| %>
       <%= f.hidden_field "card[plan_sku]", value: @order.plan_sku %>
       <div class="row">
           <!-- datos necesarios para tokenizar -->
           <div class="col-xs-12">
             <div class="form-group">
-              <%= f.label "card[name]", "Nombre como aparece en tarjeta" %>
-              <%= f.text_field "card[name]", class: "form-control" %>
+              <%= f.label "card[name]", "Nombre como aparece en tarjeta"%>
+              <%= f.text_field "card[name]", class: "form-control", value: current_user.full_name  %>
             </div>
           </div>
           <div class="col-xs-9">
@@ -42,7 +54,7 @@
           <div class="col-xs-3">
             <div class="form-group">
               <%= f.label "card[doc_type]", "Tipo de ID" %>
-              <%= f.text_field "card[doc_type]", class: "form-control" %>
+              <%= f.select "card[doc_type]",User::DOC_TYPE,  { selected: "CC"}, { class: "form-control" } %>
             </div>
           </div>
           <div class="col-xs-9">
@@ -54,11 +66,20 @@
           <div class="col-xs-12">
             <div class="form-group">
               <%= f.label "card[email]", "Correo Electrónico" %>
-              <%= f.text_field "card[email]", class: "form-control" %>
+              <%= f.text_field "card[email]", class: "form-control", value: current_user.email %>
             </div>
           </div>
       </div>
-      <%= f.submit 'Iniciar Suscripción', class: 'btn button banner-call-to-actions button-right' %>
+      <div class="payment-form-bottom">
+        <div class="powered-by-epayco">
+          <p>
+            <i class="fa fa-lock fa-lg" style="color: #2ECC71" aria-hidden="true"></i>
+            Powered by
+            <%= image_tag "epayco-logo.png", alt: "Logo epayco", height: "20" %>
+          </p>
+        </div>
+        <%= f.submit 'Iniciar Suscripción', class: 'btn button banner-call-to-actions button-right' %>
+      </div>
     <% end %>
   </div>
   <%= render 'shared/order-description', show_order_box: true %>

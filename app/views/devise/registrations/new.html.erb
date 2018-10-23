@@ -2,7 +2,7 @@
   <div class="form-container">
     <%= render "shared/progressbar", active_tab: 2 %>
     <h2 class="form-headline">AHORA NECESITAMOS ALGUNOS DATOS PARA CREAR TU CUENTA</h2>
-    <p class="form-subheadline">Con tu cuenta podrás modificar, agregar o cancelar tus suscripciones. También usaremos algunos datos para contactarte en caso de que necesitemos hacerlo, no te precupes no te enviaremos spam</p>
+    <p class="form-subheadline">Con tu cuenta podrás modificar, agregar o cancelar tus suscripciones. También usaremos algunos datos para contactarte en caso de que necesitemos hacerlo, no te precupes <strong>no te enviaremos spam.</strong></p>
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <div class="form-inputs">
         <div class="row">
@@ -15,14 +15,13 @@
           </div>
           <div class="col-xs-12 col-sm-12 col-md-6">
             <%= f.input :last_name,
-                        label: "Tu apellido",
+                        label: "Tus apellidos",
                         required: true,
                         autofocus: true %>
           </div>
           <div class="col-xs-12 col-sm-12 col-md-6">
             <%= f.input :phone,
                         label: "Tu teléfono de contacto",
-                        placeholder: "Opcional",
                         autofocus: true ,
                         input_html: { autocomplete: "phone" }%>
           </div>

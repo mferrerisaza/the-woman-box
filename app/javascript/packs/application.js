@@ -7,3 +7,4 @@ import "../components/creditCardForm.js"
 import '../components/autocomplete';
 import "./flatpickr.js";
 import '../components/paymentForm.js';
+import "./cleave.js";

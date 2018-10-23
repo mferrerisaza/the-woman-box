@@ -13,7 +13,7 @@ function autocomplete(orderAddress) {
 document.addEventListener("DOMContentLoaded", function() {
   const $orderAddress = document.getElementById('order_address');
   if ($orderAddress) {
-    autocomplete($orderAddress)
+    autocomplete($orderAddress);
   }
 });
 

@@ -1,8 +1,11 @@
+import { addCardInputListener } from "./creditCardForm.js"
+
 function showPaymentForm(methodBtn) {
   const $paymentForm = document.getElementById("customer-form");
   methodBtn.classList.toggle("method-selected");
   $paymentForm.classList.remove("hidden");
   document.querySelector(".payment-methods").classList.add("hidden");
+  addCardInputListener();
 }
 
 function addmethodBtnListener(methodBtn) {

@@ -1,14 +1,34 @@
 var valid = require('card-validator');
-var numberValidation = valid.number('4111');
 
-if (!numberValidation.isPotentiallyValid) {
-  renderInvalidCardNumber();
+
+function maskCardInput(cardInput, lengths) {
+
 }
 
-if (numberValidation.card) {
-  console.log(numberValidation); // 'visa'
+function validateCard(card) {
+  const numberValidation = valid.number(card.value);
+
+  // if (!numberValidation.isPotentiallyValid) {
+  //   renderInvalidCardNumber();
+  // }
+
+  if (numberValidation.card) {
+    maskCardInput(card, numberValidation.card.lengths); // 'visa'
+  }
+}
+
+export function addCardInputListener(){
+  const $cardInput = document.getElementById("card[number]");
+  console.log("added");
+  $cardInput.addEventListener("keyup", (event) => {
+    validateCard(event.currentTarget);
+  })
 }
 
 document.addEventListener("DOMContentLoaded", ()=> {
+  const $cardInput = document.querySelector(".card[number]");
 
+  if ($cardInput) {
+    addCardInputListener();
+  }
 })

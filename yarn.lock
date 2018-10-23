@@ -1177,6 +1177,10 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
+cleave.js@^1.4.4:
+  version "1.4.4"
+  resolved "https://registry.yarnpkg.com/cleave.js/-/cleave.js-1.4.4.tgz#7dc5a14384402328cb931a1de55288af5fa97694"
+
 cliui@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/cliui/-/cliui-2.1.0.tgz#4b475760ff80264c762c3a1719032e91c7fea0d1"

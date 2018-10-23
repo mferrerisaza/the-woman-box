@@ -71,13 +71,15 @@
           </div>
       </div>
       <div class="payment-form-bottom">
-        <div class="powered-by-epayco">
-          <p>
-            <i class="fa fa-lock fa-lg" style="color: #2ECC71" aria-hidden="true"></i>
-            Powered by
-            <%= image_tag "epayco-logo.png", alt: "Logo epayco", height: "20" %>
-          </p>
-        </div>
+        <a href="https://epayco.co/" target="_blank">
+          <div class="powered-by-epayco">
+            <p>
+              <i class="fa fa-lock fa-lg" style="color: #2ECC71" aria-hidden="true"></i>
+              Powered by
+              <%= image_tag "epayco-logo.png", alt: "Logo epayco", height: "20" %>
+            </p>
+          </div>
+        </a>
         <%= f.submit 'Iniciar Suscripción', class: 'btn button banner-call-to-actions button-right' %>
       </div>
     <% end %>

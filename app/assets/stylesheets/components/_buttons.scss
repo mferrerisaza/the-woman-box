@@ -68,3 +68,12 @@
     color: $my-black;
   }
 }
+
+.do-underline {
+  border-bottom: 1px solid #F6EFF1;
+  transition: all 0.2s ease-in;
+  &:hover {
+    border-bottom: 1px solid $my-black;
+  }
+}
+

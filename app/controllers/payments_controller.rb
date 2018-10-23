@@ -7,10 +7,10 @@ class PaymentsController < ApplicationController
   end
 
   def create
-    create_card_token(card_params)
-    create_epayco_customer(card_params)
+    authorize @order, :order_of_current_user?
+    create_card_token(card_params) unless current_user.tokenized?
+    create_epayco_customer(card_params) unless current_user.is_epayco_customer?
     create_epayco_suscription(card_params)
-    # create_epayco_customer(card_params)
   end
 
   private
@@ -25,18 +25,14 @@ class PaymentsController < ApplicationController
 
     begin
       token = Epayco::Token.create credit_info
-      puts token
     rescue Epayco::Error => e
       p e
     end
 
-    token_id = token[:id]
-
-    if token_id
-      current_user.update(epayco_token: token_id)
+    if token[:status]
+      current_user.update(epayco_token: token[:id])
     else
-      flash.now[:alert] = "No hemos podido completar tu solicitud, intentalo nuevamente"
-      @errors = token
+      flash.now[:alert] = "#{token[:data][:description]}"
       render 'new'
     end
   end
@@ -52,18 +48,14 @@ class PaymentsController < ApplicationController
 
     begin
       customer = Epayco::Customers.create customer_info
-      puts customer
     rescue Epayco::Error => e
       puts e
     end
 
-    customer_id = customer[:data][:customerId]
-
-    if customer_id
-      current_user.update(epayco_customer_id: customer_id)
+    if customer[:status]
+      current_user.update(epayco_customer_id: customer[:data][:customerId])
     else
-      flash.now[:alert] = "No hemos podido completar tu solicitud, intentalo nuevamente"
-      @errors = customer
+      flash.now[:alert] = "#{customer[:data][:description]}"
       render 'new'
     end
   end
@@ -79,21 +71,22 @@ class PaymentsController < ApplicationController
 
     begin
       Epayco::Subscriptions.create subscription_info
-      subscription = Epayco::Subscriptions.charge subscription_info
-      puts subscription
+      charge = Epayco::Subscriptions.charge subscription_info
     rescue Epayco::Error => e
       puts e
     end
 
-    # customer_id = customer[:data][:customerId]
-
-    # if customer_id
-    #   current_user.update(epayco_customer_id: customer_id)
-    # else
-    #   flash.now[:alert] = "No hemos podido completar tu solicitud, intentalo nuevamente"
-    #   @errors = customer
-    #   render 'new'
-    # end
+    if charge[:subscription]
+      if charge[:subscription][:status] == "active"
+        @order.update(payment: charge.to_json, status: 'Pagada')
+      else
+        @order.update(payment: charge.to_json)
+      end
+      redirect_to order_path(@order)
+    else
+      flash.now[:alert] = "#{charge[:data][:description]}"
+      render 'new'
+    end
   end
 
   def set_order

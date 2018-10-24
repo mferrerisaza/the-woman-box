@@ -41,6 +41,23 @@ pad_sizes.each do |size|
   )
   plan.remote_photo_url = "https://vignette.wikia.nocookie.net/logopedia/images/e/eb/Nosotras-logo.png/revision/latest?cb=20180904011023&path-prefix=es"
   plan.save!
+
+  plan_info = {
+    id_plan: plan.sku,
+    name: plan.name,
+    description: plan.description,
+    amount: plan.price.to_i,
+    currency: "cop",
+    interval: "day",
+    interval_count: 1,
+    trial_days: 0
+  }
+
+  begin
+      plan = Epayco::Plan.create plan_info
+  rescue Epayco::Error => e
+      puts e
+  end
 end
 
   pad_sizes.each do |size|
@@ -53,6 +70,23 @@ end
   )
   plan.remote_photo_url = "https://seeklogo.com/images/O/o_b_-logo-C64CD5FA3B-seeklogo.com.png"
   plan.save!
+
+    plan_info = {
+    id_plan: plan.sku,
+    name: plan.name,
+    description: plan.description,
+    amount: plan.price.to_i,
+    currency: "cop",
+    interval: "day",
+    interval_count: 1,
+    trial_days: 0
+  }
+
+  begin
+      plan = Epayco::Plan.create plan_info
+  rescue Epayco::Error => e
+      puts e
+  end
 end
 
 
@@ -68,6 +102,23 @@ tampons_sizes.each do |size|
   )
   plan.remote_photo_url = "https://seeklogo.com/images/O/o_b_-logo-C64CD5FA3B-seeklogo.com.png"
   plan.save!
+
+    plan_info = {
+    id_plan: plan.sku,
+    name: plan.name,
+    description: plan.description,
+    amount: plan.price.to_i,
+    currency: "cop",
+    interval: "day",
+    interval_count: 1,
+    trial_days: 0
+  }
+
+  begin
+      plan = Epayco::Plan.create plan_info
+  rescue Epayco::Error => e
+      puts e
+  end
 end
 
   tampons_sizes.each do |size|
@@ -80,5 +131,22 @@ end
   )
   plan.remote_photo_url = "https://vignette.wikia.nocookie.net/logopedia/images/e/eb/Nosotras-logo.png/revision/latest?cb=20180904011023&path-prefix=es"
   plan.save!
+
+    plan_info = {
+    id_plan: plan.sku,
+    name: plan.name,
+    description: plan.description,
+    amount: plan.price.to_i,
+    currency: "cop",
+    interval: "day",
+    interval_count: 1,
+    trial_days: 0
+  }
+
+  begin
+      plan = Epayco::Plan.create plan_info
+  rescue Epayco::Error => e
+      puts e
+  end
 end
 puts "Tolis el llopo"

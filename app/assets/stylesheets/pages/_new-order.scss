@@ -24,4 +24,10 @@
 .form-subheadline {
   font-size: 16px;
   color: $my-black;
+  i {
+    color: $brand-primary;
+    border-radius: 60%;
+    margin-right: 8px;
+    background-color: purple;
+  }
 }

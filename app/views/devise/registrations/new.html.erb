@@ -2,32 +2,36 @@
   <div class="form-container">
     <%= render "shared/progressbar", active_tab: 2 %>
     <h2 class="form-headline">AHORA NECESITAMOS ALGUNOS DATOS PARA CREAR TU CUENTA</h2>
+    <p class="form-subheadline">Con tu cuenta podrás modificar, agregar o cancelar tus suscripciones. También usaremos algunos datos para contactarte en caso de que necesitemos hacerlo, no te precupes <strong>no te enviaremos spam.</strong></p>
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <div class="form-inputs">
         <div class="row">
           <div class="col-xs-12 col-sm-12 col-md-6">
             <%= f.input :first_name,
                         label: "Tu nombre",
+                        placeholder: "Ej: Kim",
                         required: true,
                         autofocus: true,
                         input_html: { autocomplete: "name" } %>
           </div>
           <div class="col-xs-12 col-sm-12 col-md-6">
             <%= f.input :last_name,
-                        label: "Tu apellido",
+                        label: "Tus apellidos",
+                        placeholder: "Ej: Kardashian West",
                         required: true,
                         autofocus: true %>
           </div>
           <div class="col-xs-12 col-sm-12 col-md-6">
             <%= f.input :phone,
                         label: "Tu teléfono de contacto",
-                        placeholder: "Opcional",
+                        placeholder: "Ej: 3148509472",
                         autofocus: true ,
                         input_html: { autocomplete: "phone" }%>
           </div>
           <div class="col-xs-12 col-sm-12 col-md-6">
             <%= f.input :email,
                         label: "Tu cuenta de correo",
+                        placeholder: "Ej: me@kimkardashian.com",
                         required: true,
                         autofocus: true ,
                         input_html: { autocomplete: "email" }%>
@@ -35,12 +39,14 @@
           <div class="col-xs-12 col-sm-12 col-md-6">
             <%= f.input :password,
                         label: "Una contraseña",
+                        placeholder: "Ej: ***********",
                         required: true,
                         input_html: { autocomplete: "new-password" } %>
           </div>
           <div class="col-xs-12 col-sm-12 col-md-6">
             <%= f.input :password_confirmation,
                         label: "Porfavor confirma tu contraseña",
+                        placeholder: "Ej: ***********",
                         required: true,
                         input_html: { autocomplete: "new-password" } %>
           </div>
@@ -52,54 +58,6 @@
       </div>
     <% end %>
   </div>
-  <div class="order-description-container">
-    <% plan = Plan.find_by(sku: session[:order]["plan_sku"]) %>
-    <div class="order-selection">
-      <div class="order-selection-top">
-        <h4>RESUMEN DE TU ORDEN</h6>
-        <%= link_to "Cambiar", new_order_path %>
-      </div>
-      <p class="order-selection-description">Suscripción mensual a The Women Box (<strong><%= plan.name %></strong>)</p>
-      <hr>
-      <div class="order-selection-bottom">
-        <h4>TOTAL</h6>
-        <p><strong><%= humanized_money_with_symbol(plan.price) %></strong></p>
-      </div>
-    </div>
-    <div class="order-description" style="background-image: url('<%= cl_image_path("the-woman-box/the_woman_box_instagram", height: 600, width: 600, crop: :fit) %>');">
-      <%= cl_image_tag("logo3.png", height: 500, width: 500, crop: :thumb, class: "order-description-image")%>
-      <div class="order-description-list-container">
-        <ul class="order-description-list">
-          <li>
-            <span>
-              <i class="fas fa-check"></i>
-              <strong>Accede</strong> a productos esenciales para la menstruación
-            </span>
-          </li>
-          <hr>
-          <li>
-            <span>
-              <i class="fas fa-check"></i>
-              <strong>35.000</strong> al mes + envío <strong>GRATIS</strong>
-            </span>
-          </li>
-          <hr>
-          <li>
-            <span>
-              <i class="fas fa-check"></i>
-              Cada caja contiene <strong>5 regalos al mes</strong> maquillaje, chocolates, dulces, y productos de temporada
-            </span>
-          </li>
-          <hr>
-          <li>
-            <span>
-              <i class="fas fa-check"></i>
-              No hay ningún contrato, puedes <strong>cancelar cuando quieras</strong>
-            </span>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
+  <%= render 'shared/order-description', show_order_box: true %>
 </div>
 

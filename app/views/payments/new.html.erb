@@ -42,25 +42,20 @@
               </div>
             </div>
           </div>
-          <div class="col-xs-4">
+          <div class="col-xs-7">
             <div class="form-group">
               <%= f.label "card[exp_month]" do%>
-                Mes de expiración(MM)
+                Fecha de expiración
                 <abbr title="required">*</abbr>
               <% end %>
-              <%= f.text_field "card[exp_month]", class: "form-control", required: true %>
+              <div class="no-input-style-container">
+                <%= f.text_field "card[exp_month]", class: "form-control credit-card-date text-center",placeholder: "MM", maxlength: 2, required: true %>
+                <span class="date-separator">/</span>
+                <%= f.text_field "card[exp_year]", class: "form-control credit-card-date text-center", placeholder: "AAAA", maxlength: 4, required: true %>
+              </div>
             </div>
           </div>
-          <div class="col-xs-4">
-            <div class="form-group">
-              <%= f.label "card[exp_year]" do%>
-                Año de expiración(AAAA)
-                <abbr title="required">*</abbr>
-              <% end %>
-              <%= f.text_field "card[exp_year]", class: "form-control", required: true %>
-            </div>
-          </div>
-          <div class="col-xs-4">
+          <div class="col-xs-5">
             <div class="form-group">
               <%= f.label "card[cvc]" do %>
                 CVC
@@ -68,7 +63,7 @@
               <% end %>
               <div class="no-input-style-container">
                 <%= f.telephone_field "card[cvc]", class: "form-control credit-card-cvc", maxlength: 4, required: true, autocomplete:"cc-csc" %>
-                <a class="no-follow" onClick="event.preventDefault();" data-toggle="tooltip" data-placement="top" title="Es el codigo de 3 o 4 cifras generalmente en la parte trasera de tu tarjeta.">
+                <a class="no-follow" data-toggle="tooltip" data-placement="top" title="Código de 3 o 4 cifras en la parte trasera de tu tarjeta.">
                   <i class="fas fa-question-circle"></i>
                 </a>
               </div>
@@ -89,7 +84,7 @@
                 Número de documento
                 <abbr title="required">*</abbr>
               <% end %>
-              <%= f.text_field "card[doc_number]", class: "form-control", required: true %>
+              <%= f.text_field "card[doc_number]", class: "form-control", maxlength: 20, required: true %>
             </div>
           </div>
           <div class="col-xs-12">

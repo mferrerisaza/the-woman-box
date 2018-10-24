@@ -55,5 +55,6 @@ document.addEventListener("DOMContentLoaded", ()=> {
   if ($cardInput && $cvcInput) {
     const cleave = new Cleave('.credit-card', { creditCard: true });
     const cvc = new Cleave('.credit-card-cvc', { blocks: [6], numericOnly: true })
+    const date = new Cleave('.credit-card-date', { blocks: [6], numericOnly: true })
   }
 })

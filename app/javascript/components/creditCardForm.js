@@ -39,6 +39,12 @@ function validateCard(card) {
       $cardPicture.setAttribute("src", cloudinary.url("the-woman-box/disable.png"));
     }
   }
+
+  if (numberValidation.isValid) {
+    card.dataset.numberValid = "true";
+  } else {
+    delete card.dataset.numberValid;
+  }
 }
 
 export function addCardInputListener(){

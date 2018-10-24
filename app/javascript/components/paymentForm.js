@@ -14,10 +14,38 @@ function addmethodBtnListener(methodBtn) {
   })
 }
 
+function toggleDisabledOnSubmitPaymentForm() {
+  const cardNameValue = document.getElementById("card[name]").value;
+  const cardNumberValid = document.getElementById("card[number]").dataset.numberValid;
+  const cardNumberMonthValue = document.getElementById("card[exp_month]").value;
+  const cardNumberYearValue = document.getElementById("card[exp_year]").value;
+  const cardCvcValue = document.getElementById("card[cvc]").value;
+  const cardDocTypeValue = document.getElementById("card[doc_type]").value;
+  const cardDocNumberValue = document.getElementById("card[doc_number]").value
+  const cardEmailValue = document.getElementById("card[email]").value
+
+  const $paymentSubmit = document.getElementById("payment-details-submit");
+
+
+  if(cardNameValue && cardNumberValid && cardNumberMonthValue && cardNumberYearValue && cardCvcValue  && cardDocTypeValue && cardDocNumberValue && cardEmailValue) {
+    $paymentSubmit.removeAttribute("disabled");
+  } else {
+    $paymentSubmit.setAttribute("disabled", "true");
+  }
+}
+
+
 document.addEventListener("DOMContentLoaded", () => {
   const $methodBtn = document.querySelector(".methods-pic-container");
+  const $form = document.getElementById("customer-form");
 
   if($methodBtn) {
     addmethodBtnListener($methodBtn);
   }
+
+  if ($form) {
+    $form.addEventListener("keydown", (event) => { toggleDisabledOnSubmitPaymentForm() })
+  }
+
 })
+

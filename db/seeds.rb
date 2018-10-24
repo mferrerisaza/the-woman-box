@@ -3,8 +3,8 @@ Plan.destroy_all
 Order.destroy_all
 
 puts "Creando usuarios"
-mike = User.create!(first_name: "Mike", last_name: "Ferrer", email: "mike@gmail.com", password:"123456", phone: "3148509472", address: "Calle 11a 42 18")
-dan = User.create!(first_name: "Dan", last_name: "López", email: "dan@gmail.com", password:"123456", phone: "3148509472", address: "Calle 11a 42 18")
+mike = User.create!(first_name: "Mike", last_name: "Ferrer", email: "mike@gmail.com", password:"123456", phone: "3148509472")
+dan = User.create!(first_name: "Dan", last_name: "López", email: "dan@gmail.com", password:"123456", phone: "3148509472")
 puts "Done"
 
 puts "Creando tipos"

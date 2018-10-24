@@ -13,7 +13,6 @@
           </div>
           <p class="form-subheadline text-center">Tarjeta de crédito</p>
         </div>
-        <%#= cl_image_tag("") %>
       </div>
 
     </div>
@@ -27,7 +26,7 @@
                 Nombre como aparece en tarjeta
                 <abbr title="required">*</abbr>
               <% end %>
-              <%= f.text_field "card[name]", class: "form-control", value: current_user.full_name, required: true, autocomplete:"cc-name"  %>
+              <%= f.text_field "card[name]", class: "form-control", placeholder: "Ej: Kim Kardashian West", value: current_user.full_name, required: true, autocomplete:"cc-name"  %>
             </div>
           </div>
           <div class="col-xs-12 col-md-5">
@@ -37,7 +36,7 @@
                 <abbr title="required">*</abbr>
               <% end %>
               <div class="no-input-style-container">
-                <%= f.telephone_field "card[number]", class: "form-control credit-card", maxlength: 19, required: true, autocomplete:"cc-number"%>
+                <%= f.telephone_field "card[number]", class: "form-control credit-card", placeholder: "Ej: 4242 4242 4242 4242", maxlength: 19, required: true, autocomplete:"cc-number"%>
                 <%= cl_image_tag("the-woman-box/disable.png", class: "card-brand-picture", width: 35)  %>
               </div>
             </div>
@@ -49,9 +48,9 @@
                 <abbr title="required">*</abbr>
               <% end %>
               <div class="no-input-style-container">
-                <%= f.text_field "card[exp_month]", class: "form-control credit-card-date text-center",placeholder: "MM", maxlength: 2, required: true %>
+                <%= f.telephone_field "card[exp_month]", class: "form-control credit-card-date text-center",placeholder: "MM", maxlength: 2, required: true %>
                 <span class="date-separator">/</span>
-                <%= f.text_field "card[exp_year]", class: "form-control credit-card-date text-center", placeholder: "AAAA", maxlength: 4, required: true %>
+                <%= f.telephone_field "card[exp_year]", class: "form-control credit-card-date text-center", placeholder: "AAAA", maxlength: 4, required: true %>
               </div>
             </div>
           </div>
@@ -62,7 +61,7 @@
                 <abbr title="required">*</abbr>
               <% end %>
               <div class="no-input-style-container">
-                <%= f.telephone_field "card[cvc]", class: "form-control credit-card-cvc", maxlength: 4, required: true, autocomplete:"cc-csc" %>
+                <%= f.telephone_field "card[cvc]", class: "form-control credit-card-cvc", placeholder: "Ej: 123", maxlength: 4, required: true, autocomplete:"cc-csc" %>
                 <a class="no-follow" data-toggle="tooltip" data-placement="top" title="Código de 3 o 4 cifras en la parte trasera de tu tarjeta.">
                   <i class="fas fa-question-circle"></i>
                 </a>
@@ -84,7 +83,7 @@
                 Número de documento
                 <abbr title="required">*</abbr>
               <% end %>
-              <%= f.text_field "card[doc_number]", class: "form-control", maxlength: 20, required: true %>
+              <%= f.text_field "card[doc_number]", class: "form-control", placeholder: "Ej: 1040182864", maxlength: 20, required: true %>
             </div>
           </div>
           <div class="col-xs-12">
@@ -93,7 +92,7 @@
                 Correo Electrónico
                 <abbr title="required">*</abbr>
               <% end %>
-              <%= f.text_field "card[email]", class: "form-control", value: current_user.email, required: true, autocomplete:"email"  %>
+              <%= f.text_field "card[email]", class: "form-control", placeholder: "Ej: me@kimkardashian.com", value: current_user.email, required: true, autocomplete:"email"  %>
             </div>
           </div>
       </div>

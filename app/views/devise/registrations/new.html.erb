@@ -9,6 +9,7 @@
           <div class="col-xs-12 col-sm-12 col-md-6">
             <%= f.input :first_name,
                         label: "Tu nombre",
+                        placeholder: "Ej: Kim",
                         required: true,
                         autofocus: true,
                         input_html: { autocomplete: "name" } %>
@@ -16,18 +17,21 @@
           <div class="col-xs-12 col-sm-12 col-md-6">
             <%= f.input :last_name,
                         label: "Tus apellidos",
+                        placeholder: "Ej: Kardashian West",
                         required: true,
                         autofocus: true %>
           </div>
           <div class="col-xs-12 col-sm-12 col-md-6">
             <%= f.input :phone,
                         label: "Tu teléfono de contacto",
+                        placeholder: "Ej: 3148509472",
                         autofocus: true ,
                         input_html: { autocomplete: "phone" }%>
           </div>
           <div class="col-xs-12 col-sm-12 col-md-6">
             <%= f.input :email,
                         label: "Tu cuenta de correo",
+                        placeholder: "Ej: me@kimkardashian.com",
                         required: true,
                         autofocus: true ,
                         input_html: { autocomplete: "email" }%>
@@ -35,12 +39,14 @@
           <div class="col-xs-12 col-sm-12 col-md-6">
             <%= f.input :password,
                         label: "Una contraseña",
+                        placeholder: "Ej: ***********",
                         required: true,
                         input_html: { autocomplete: "new-password" } %>
           </div>
           <div class="col-xs-12 col-sm-12 col-md-6">
             <%= f.input :password_confirmation,
                         label: "Porfavor confirma tu contraseña",
+                        placeholder: "Ej: ***********",
                         required: true,
                         input_html: { autocomplete: "new-password" } %>
           </div>

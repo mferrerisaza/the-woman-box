@@ -8,19 +8,23 @@
     <%= simple_form_for(@order)  do |f| %>
       <div class="row">
         <div class="col-xs-12 col-sm-6">
-          <%= f.input :delivery_date, label: "Fecha de entrega", input_html: {class: "datepicker"} %>
+          <%= f.input :delivery_date,
+                      label: "Fecha de entrega",
+                      placeholder: "Ej: 10 Nov 2018",
+                      input_html: {class: "datepicker"}
+          %>
         </div>
         <div class="col-xs-12 col-sm-6">
-          <%= f.input :address, label: "Dirección de entrega" %>
+          <%= f.input :address, placeholder: "Ej: Calle 11a # 42-18",label: "Dirección de entrega" %>
         </div>
         <div class="col-xs-12 col-sm-6">
           <%= f.input :country, label: "País", priority_countries: ["CO"], selected: "CO" %>
         </div>
         <div class="col-xs-12 col-sm-6">
-          <%= f.input :province, label: "Departamento / Provincia" %>
+          <%= f.input :province, placeholder: "Ej: Antioquia",label: "Departamento / Provincia" %>
         </div>
         <div class="col-xs-12 col-sm-6">
-          <%= f.input :city, label: "Ciudad" %>
+          <%= f.input :city, placeholder: "Ej: Medellín", label: "Ciudad" %>
         </div>
         <div class="col-xs-12 col-sm-6">
           <%= f.input :address_aditional_info, label: "Información adicional", placeholder: "Ej: Torre 1 Apto 302" %>

@@ -1,27 +1,114 @@
-<%= form_with url: order_payments_path, local: true, id: "customer-form" do |f| %>
-  <span class="card-errors"/></span/>
-  <div class="form-group"/>
-      <label/>Nombre del usuario de tarjeta</label/>
-      <input type="text" name="card[name]"//>
-  </div/>
-  <div class="form-group"/>
-      <label/>Email</label/>
-      <input type="text" name="card[email]"//>
-  </div/>
-  <div class="form-group"/>
-      <label/>Número de tarjeta de crédito</label/>
-      <input type="text" name="card[number]"//>
-  </div/>
-  <div class="form-group"/>
-      <label/>CVC</label/>
-      <input type="text" size="4" name="card[cvc]"//>
-  </div/>
-  <div class="form-group"/>
-      <label/>Mes de expiración(MM)</label/>
-      <input type="text" name="card[exp_month]"//>
-      <span/>Año de expiración(AAAA)</span/>
-      <input type="text" name="card[exp_year]"//>
-  </div/>
+<div class="new-order-wrapper">
+  <div class="form-container">
+    <%= render "shared/progressbar", active_tab: 4 %>
+    <h2 class="form-headline">YA CASI TERMINAMOS, SOLO NOS FALTAN LOS DATOS DE PAGO </h2>
+    <p class="form-subheadline">
+        <i class="fas fa-info-circle"></i>Por seguridad no almacenamos ninguna información relacionada con tus datos de pago, por este motivo en caso de querer comprar otra suscripción deberas introducir todos los datos nuevamente.
+    </p>
+    <div class="payment-methods">
+      <h2 class="form-headline">Seleccionar Forma de pago</h2>
+      <div class="methods-pic-wrapper">
+        <div class="methods-pic-container">
+          <div class="methods-pic" style="background-image: url('<%= cl_image_path("the-woman-box/medios_de_pago.png")%>');">
+          </div>
+          <p class="form-subheadline text-center">Tarjeta de crédito</p>
+        </div>
+      </div>
 
-  <button type="submit"/>¡Pagar ahora!</button/>
-<% end %>
+    </div>
+    <%= form_with url: order_payments_path, local: true, class:"hidden", id: "customer-form" do |f| %>
+      <%= f.hidden_field "card[plan_sku]", value: @order.plan_sku %>
+      <div class="row">
+          <!-- datos necesarios para tokenizar -->
+          <div class="col-xs-12">
+            <div class="form-group">
+              <%= f.label "card[name]" do %>
+                Nombre como aparece en tarjeta
+                <abbr title="required">*</abbr>
+              <% end %>
+              <%= f.text_field "card[name]", class: "form-control", placeholder: "Ej: Kim Kardashian West", value: current_user.full_name, required: true, autocomplete:"cc-name"  %>
+            </div>
+          </div>
+          <div class="col-xs-12 col-md-5">
+            <div class="form-group">
+              <%= f.label "card[number]" do %>
+                Número de tarjeta de crédito
+                <abbr title="required">*</abbr>
+              <% end %>
+              <div class="no-input-style-container">
+                <%= f.telephone_field "card[number]", class: "form-control credit-card", placeholder: "Ej: 4242 4242 4242 4242", maxlength: 19, required: true, autocomplete:"cc-number"%>
+                <%= cl_image_tag("the-woman-box/disable.png", class: "card-brand-picture", width: 35)  %>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-7 col-md-4">
+            <div class="form-group">
+              <%= f.label "card[exp_month]" do%>
+                Fecha de expiración
+                <abbr title="required">*</abbr>
+              <% end %>
+              <div class="no-input-style-container">
+                <%= f.telephone_field "card[exp_month]", class: "form-control credit-card-date text-center",placeholder: "MM", maxlength: 2, required: true %>
+                <span class="date-separator">/</span>
+                <%= f.telephone_field "card[exp_year]", class: "form-control credit-card-date text-center", placeholder: "AAAA", maxlength: 4, required: true %>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-5 col-md-3">
+            <div class="form-group">
+              <%= f.label "card[cvc]" do %>
+                CVC
+                <abbr title="required">*</abbr>
+              <% end %>
+              <div class="no-input-style-container">
+                <%= f.telephone_field "card[cvc]", class: "form-control credit-card-cvc", placeholder: "Ej: 123", maxlength: 4, required: true, autocomplete:"cc-csc" %>
+                <a class="no-follow" data-toggle="tooltip" data-placement="top" title="Código de 3 o 4 cifras en la parte trasera de tu tarjeta.">
+                  <i class="fas fa-question-circle"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-4">
+            <div class="form-group">
+              <%= f.label "card[doc_type]" do %>
+                Tipo de ID
+                <abbr title="required">*</abbr>
+              <% end %>
+              <%= f.select "card[doc_type]",User::DOC_TYPE,  { selected: "CC"}, { class: "form-control", required: true } %>
+            </div>
+          </div>
+          <div class="col-xs-8">
+            <div class="form-group">
+              <%= f.label "card[doc_number]" do %>
+                Número de documento
+                <abbr title="required">*</abbr>
+              <% end %>
+              <%= f.text_field "card[doc_number]", class: "form-control", placeholder: "Ej: 1040182864", maxlength: 20, required: true %>
+            </div>
+          </div>
+          <div class="col-xs-12">
+            <div class="form-group">
+              <%= f.label "card[email]" do%>
+                Correo Electrónico
+                <abbr title="required">*</abbr>
+              <% end %>
+              <%= f.text_field "card[email]", class: "form-control", placeholder: "Ej: me@kimkardashian.com", value: current_user.email, required: true, autocomplete:"email"  %>
+            </div>
+          </div>
+      </div>
+      <div class="payment-form-bottom">
+        <a href="https://epayco.co/" target="_blank">
+          <div class="powered-by-epayco">
+            <p>
+              <i class="fa fa-lock fa-lg" style="color: #2ECC71" aria-hidden="true"></i>
+              Paga seguro con
+              <%= image_tag "epayco-logo.png", alt: "Logo epayco", height: "20" %>
+            </p>
+          </div>
+        </a>
+        <%= f.submit 'Iniciar Suscripción', id: "payment-details-submit", class: 'btn button banner-call-to-actions button-right', disabled: true %>
+      </div>
+    <% end %>
+  </div>
+  <%= render 'shared/order-description', show_order_box: true %>
+</div>

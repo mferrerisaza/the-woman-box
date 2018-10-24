@@ -1,0 +1,28 @@
+.payment-methods{
+  .methods-pic-wrapper {
+    max-width: 300px;
+    margin: 0 auto;
+    .methods-pic-container {
+      cursor: pointer;
+      border: 1px solid $my-gray;
+      padding: 16px;
+      width: 100%;
+      margin: 0 auto;
+      .methods-pic{
+        width: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        height: 30px;
+        max-height: 30px;
+      }
+      p {
+        margin: 0px;
+        margin-top: 16px;
+      }
+      &:hover, .method-selected {
+        background-color: $my-light-pink;
+      }
+    }
+  }
+}

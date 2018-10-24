@@ -1,0 +1,61 @@
+  <div class="order-description-container">
+    <% if show_order_box && (@plan || session[:order]) %>
+      <% @plan = Plan.find_by(sku: session[:order]["plan_sku"])  unless @plan %>
+      <div class="order-selection">
+        <div class="order-selection-top">
+          <h4>RESUMEN DE TU ORDEN</h6>
+          <%= link_to "Cambiar", new_order_path %>
+        </div>
+        <p class="order-selection-description">Suscripción mensual a The Women Box (<strong><%= @plan.name %></strong>)</p>
+        <hr>
+        <% if controller_name == "payments" %>
+          <div class="order-selection-top">
+             <h4>DETALLES DE ENVÍO</h6>
+             <%= link_to "Cambiar", edit_order_path(@order) %>
+          </div>
+          <p class="order-selection-description">
+            La recibirás el <strong> <%="#{@order.delivery_date.to_date.day}"%> de cada mes</strong> (o antes) en <%= "#{@order.address.downcase} #{@order.city}, #{@order.province}" %>
+          </p>
+          <hr>
+        <% end %>
+        <div class="order-selection-bottom">
+          <h4>TOTAL</h6>
+          <p><strong><%= humanized_money_with_symbol(@plan.price) %></strong></p>
+        </div>
+      </div>
+    <% end %>
+    <div class="order-description" style="background-image: url('<%= cl_image_path("the-woman-box/the_woman_box_instagram", height: 600, width: 600, crop: :fit) %>');">
+      <%= cl_image_tag("logo3.png", height: 500, width: 500, crop: :thumb, class: "order-description-image")%>
+      <div class="order-description-list-container">
+        <ul class="order-description-list">
+          <li>
+            <span>
+              <i class="fas fa-check"></i>
+              <strong>Accede</strong> a productos esenciales para la menstruación
+            </span>
+          </li>
+          <hr>
+          <li>
+            <span>
+              <i class="fas fa-check"></i>
+              <strong>35.000</strong> al mes + envío <strong>GRATIS</strong>
+            </span>
+          </li>
+          <hr>
+          <li>
+            <span>
+              <i class="fas fa-check"></i>
+              Cada caja contiene <strong>5 regalos al mes</strong> maquillaje, chocolates, dulces, y productos de temporada
+            </span>
+          </li>
+          <hr>
+          <li>
+            <span>
+              <i class="fas fa-check"></i>
+              No hay ningún contrato, puedes <strong>cancelar cuando quieras</strong>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>

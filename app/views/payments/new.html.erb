@@ -21,7 +21,7 @@
       <%= f.hidden_field "card[plan_sku]", value: @order.plan_sku %>
       <div class="row">
           <!-- datos necesarios para tokenizar -->
-          <div class="col-xs-12">
+          <div class="col-xs-12 col-sm-6">
             <div class="form-group">
               <%= f.label "card[name]" do %>
                 Nombre como aparece en tarjeta
@@ -30,7 +30,7 @@
               <%= f.text_field "card[name]", class: "form-control", value: current_user.full_name, required: true, autocomplete:"cc-name"  %>
             </div>
           </div>
-          <div class="col-xs-12">
+          <div class="col-xs-12 col-sm-6">
             <div class="form-group">
               <%= f.label "card[number]" do %>
                 Número de tarjeta de crédito
@@ -42,7 +42,7 @@
               </div>
             </div>
           </div>
-          <div class="col-xs-7">
+          <div class="col-xs-7 col-sm-4">
             <div class="form-group">
               <%= f.label "card[exp_month]" do%>
                 Fecha de expiración
@@ -55,7 +55,7 @@
               </div>
             </div>
           </div>
-          <div class="col-xs-5">
+          <div class="col-xs-5 col-sm-4 col-sm-offset-2">
             <div class="form-group">
               <%= f.label "card[cvc]" do %>
                 CVC

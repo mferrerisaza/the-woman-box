@@ -82,7 +82,7 @@ class PaymentsController < ApplicationController
       else
         @order.update(payment: charge.to_json)
       end
-      redirect_to order_path(@order)
+      redirect_to orders_path
     else
       flash.now[:alert] = "#{charge[:data][:description]}"
       render 'new'

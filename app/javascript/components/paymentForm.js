@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   if ($form) {
-    $form.addEventListener("keydown", (event) => { toggleDisabledOnSubmitPaymentForm() })
+    $form.addEventListener("keyup", (event) => { toggleDisabledOnSubmitPaymentForm() })
   }
 
 })

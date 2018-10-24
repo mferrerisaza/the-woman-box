@@ -23,50 +23,82 @@
           <!-- datos necesarios para tokenizar -->
           <div class="col-xs-12">
             <div class="form-group">
-              <%= f.label "card[name]", "Nombre como aparece en tarjeta"%>
-              <%= f.text_field "card[name]", class: "form-control", value: current_user.full_name  %>
-            </div>
-          </div>
-          <div class="col-xs-9">
-            <div class="form-group">
-              <%= f.label "card[number]", "Número de tarjeta de crédito" %>
-              <%= f.telephone_field "card[number]", class: "form-control credit-card", maxlength: 19 %>
-            </div>
-          </div>
-          <div class="col-xs-3">
-            <div class="form-group">
-              <%= f.label "card[cvc]", "CVC" %>
-              <%= f.text_field "card[cvc]", class: "form-control" %>
-            </div>
-          </div>
-          <div class="col-xs-6">
-            <div class="form-group">
-              <%= f.label "card[exp_month]", "Mes de expiración(MM)" %>
-              <%= f.text_field "card[exp_month]", class: "form-control" %>
-            </div>
-          </div>
-          <div class="col-xs-6">
-            <div class="form-group">
-              <%= f.label "card[exp_year]", "Año de expiración(AAAA)" %>
-              <%= f.text_field "card[exp_year]", class: "form-control" %>
-            </div>
-          </div>
-          <div class="col-xs-4">
-            <div class="form-group">
-              <%= f.label "card[doc_type]", "Tipo de ID" %>
-              <%= f.select "card[doc_type]",User::DOC_TYPE,  { selected: "CC"}, { class: "form-control" } %>
-            </div>
-          </div>
-          <div class="col-xs-8">
-            <div class="form-group">
-              <%= f.label "card[doc_number]", "Número de documento" %>
-              <%= f.text_field "card[doc_number]", class: "form-control" %>
+              <%= f.label "card[name]" do %>
+                Nombre como aparece en tarjeta
+                <abbr title="required">*</abbr>
+              <% end %>
+              <%= f.text_field "card[name]", class: "form-control", value: current_user.full_name, required: true, autocomplete:"cc-name"  %>
             </div>
           </div>
           <div class="col-xs-12">
             <div class="form-group">
-              <%= f.label "card[email]", "Correo Electrónico" %>
-              <%= f.text_field "card[email]", class: "form-control", value: current_user.email %>
+              <%= f.label "card[number]" do %>
+                Número de tarjeta de crédito
+                <abbr title="required">*</abbr>
+              <% end %>
+              <div class="no-input-style-container">
+                <%= f.telephone_field "card[number]", class: "form-control credit-card", maxlength: 19, required: true, autocomplete:"cc-number"%>
+                <%= cl_image_tag("the-woman-box/disable.png", class: "card-brand-picture", width: 35)  %>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-4">
+            <div class="form-group">
+              <%= f.label "card[exp_month]" do%>
+                Mes de expiración(MM)
+                <abbr title="required">*</abbr>
+              <% end %>
+              <%= f.text_field "card[exp_month]", class: "form-control", required: true %>
+            </div>
+          </div>
+          <div class="col-xs-4">
+            <div class="form-group">
+              <%= f.label "card[exp_year]" do%>
+                Año de expiración(AAAA)
+                <abbr title="required">*</abbr>
+              <% end %>
+              <%= f.text_field "card[exp_year]", class: "form-control", required: true %>
+            </div>
+          </div>
+          <div class="col-xs-4">
+            <div class="form-group">
+              <%= f.label "card[cvc]" do %>
+                CVC
+                <abbr title="required">*</abbr>
+              <% end %>
+              <div class="no-input-style-container">
+                <%= f.telephone_field "card[cvc]", class: "form-control credit-card-cvc", maxlength: 4, required: true, autocomplete:"cc-csc" %>
+                <a class="no-follow" onClick="event.preventDefault();" data-toggle="tooltip" data-placement="top" title="Es el codigo de 3 o 4 cifras generalmente en la parte trasera de tu tarjeta.">
+                  <i class="fas fa-question-circle"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-4">
+            <div class="form-group">
+              <%= f.label "card[doc_type]" do %>
+                Tipo de ID
+                <abbr title="required">*</abbr>
+              <% end %>
+              <%= f.select "card[doc_type]",User::DOC_TYPE,  { selected: "CC"}, { class: "form-control", required: true } %>
+            </div>
+          </div>
+          <div class="col-xs-8">
+            <div class="form-group">
+              <%= f.label "card[doc_number]" do %>
+                Número de documento
+                <abbr title="required">*</abbr>
+              <% end %>
+              <%= f.text_field "card[doc_number]", class: "form-control", required: true %>
+            </div>
+          </div>
+          <div class="col-xs-12">
+            <div class="form-group">
+              <%= f.label "card[email]" do%>
+                Correo Electrónico
+                <abbr title="required">*</abbr>
+              <% end %>
+              <%= f.text_field "card[email]", class: "form-control", value: current_user.email, required: true, autocomplete:"email"  %>
             </div>
           </div>
       </div>

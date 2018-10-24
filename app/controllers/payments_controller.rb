@@ -17,7 +17,7 @@ class PaymentsController < ApplicationController
 
   def create_card_token(card_params)
     credit_info = {
-        'card[number]': card_params[:number],
+        'card[number]': card_params[:number].gsub(/\s+/, ""),
         'card[exp_year]': card_params[:exp_year],
         'card[exp_month]': card_params[:exp_month],
         'card[cvc]': card_params[:cvc]
@@ -33,7 +33,7 @@ class PaymentsController < ApplicationController
       current_user.update(epayco_token: token[:id])
     else
       flash.now[:alert] = "#{token[:data][:description]}"
-      render 'new'
+      # render 'new'
     end
   end
 
@@ -56,7 +56,7 @@ class PaymentsController < ApplicationController
       current_user.update(epayco_customer_id: customer[:data][:customerId])
     else
       flash.now[:alert] = "#{customer[:data][:description]}"
-      render 'new'
+      # render 'new'
     end
   end
 

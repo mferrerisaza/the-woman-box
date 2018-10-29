@@ -18,10 +18,14 @@
         <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
           <li>
-            <%= link_to "Mi cuenta", user_path(current_user), class: "navbar-wagon-item navbar-wagon-link"%>
+            <%= link_to user_path(current_user), class: "navbar-wagon-item navbar-wagon-link" do %>
+              <i class="fas fa-user"></i>
+              Mi Cuenta
+            <% end %>
           </li>
           <li>
             <%= link_to destroy_user_session_path, class: "navbar-wagon-item navbar-wagon-link", method: :delete do %>
+              <i class="fas fa-sign-out-alt"></i>
               <%= t(".sign_out", default: "Cerrar Sesión") %>
             <% end %>
           </li>
@@ -30,10 +34,10 @@
     </div>
   <% else %>
     <div class="navbar-wagon-right hidden-xs hidden-sm">
-      <%= link_to t(".sign_in", default: "Iniciar Sesión"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to t(".sign_in", default: "Iniciar Sesión"), new_user_session_path, class: "navbar-wagon-link" %>
     </div>
     <div class="navbar-wagon-item hidden-md hidden-lg">
-      <%= link_to t(".sign_in", default: "Iniciar Sesión"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to t(".sign_in", default: "Iniciar Sesión"), new_user_session_path, class: "navbar-wagon-link" %>
     </div>
   <% end %>
 </div>

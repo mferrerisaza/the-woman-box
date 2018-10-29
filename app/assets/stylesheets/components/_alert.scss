@@ -5,11 +5,17 @@
 .alert {
   margin: 0;
   text-align: center;
-  color: white;
+  font-family:  "Open Sans", sans-serif;
 }
 .alert-info {
-  background: $green;
+  background: $my-green;
+  color: #488135;
+  font-weight: bold;
+  border: none;
 }
 .alert-warning {
-  background: $red;
+  background: $my-dark-pink;
+  color: #4b1414;
+  font-weight: bold;
+  border: none;
 }

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [ :show ]
+  before_action :set_user, only: [:show]
 
   def show
     authorize @user
@@ -10,5 +10,4 @@ class UsersController < ApplicationController
   def set_user
     @user = User.find(params[:id])
   end
-
 end

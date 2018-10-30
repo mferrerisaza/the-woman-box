@@ -1,5 +1,5 @@
 class PaymentsController < ApplicationController
-  before_action :set_order
+  before_action :set_order, except: :cancel
 
   def new
     @plan = Plan.find_by(sku: @order.plan_sku)
@@ -11,6 +11,10 @@ class PaymentsController < ApplicationController
     create_card_token(card_params) unless current_user.tokenized?
     create_epayco_customer(card_params) unless current_user.is_epayco_customer?
     create_epayco_suscription(card_params)
+  end
+
+  def cancel
+    cancel_epayco_subscription(set_cancel_order)
   end
 
   private
@@ -89,6 +93,20 @@ class PaymentsController < ApplicationController
     end
   end
 
+  def cancel_epayco_subscription(order)
+    authorize @order, :order_of_current_user?
+    begin
+      sub = Epayco::Subscriptions.cancel JSON.parse(@order.payment)["subscription"]["_id"]
+    rescue Epayco::Error => e
+      puts e
+    end
+    if sub[:status]
+      @order.update(status: 'Cancelada')
+      flash[:notice] = "La suscripción ha sido cancelada"
+    end
+    redirect_to orders_path
+  end
+
   def set_order
     @order = current_user.orders.where(status: 'Pendiente').find(params[:order_id])
   end
@@ -109,5 +127,9 @@ class PaymentsController < ApplicationController
 
   def order_params
     params.require(:order).permit(:delivery_date, :address)
+  end
+
+  def set_cancel_order
+    @order = Order.find(params[:order_id])
   end
 end

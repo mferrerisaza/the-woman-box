@@ -41,11 +41,21 @@
   font-size: 14px;
 }
 
-.show-contaier {
+.show-container {
   min-height: calc(100vh - 281px);
 }
 
 .plans-list {
   width: 90%;
   margin: 0 auto;
+}
+
+.no-margin {
+  margin: 0;
+}
+
+.padding-inline-start-small {
+  @media (max-width: 991px) {
+    padding-inline-start: 20px
+  }
 }

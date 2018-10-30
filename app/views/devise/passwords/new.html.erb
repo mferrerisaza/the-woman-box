@@ -1,18 +1,29 @@
-<h2>Forgot your password?</h2>
+<div class="devise-wrapper" style="background-image: url('https://images.unsplash.com/photo-1498842812179-c81beecf902c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=121db2298c113c690bb49153824e54eb&auto=format&fit=crop&w=1534&q=80')">
+  <div class="container devise-form-container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+        <div class="devise-form">
+        <h2 class="text-center form-headline">¿OLVIDASTE LA CONTRASEÑA?</h2>
+        <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+          <%= f.error_notification %>
 
-<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= f.error_notification %>
+            <%= f.input :email,
+                        required: true,
+                        autofocus: true,
+                        input_html: { autocomplete: "email" } %>
 
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
+          <div class="form-actions">
+            <%= f.button :submit, "RESTABLECER CONTRASEÑA", class: "btn new-user-form-button banner-call-to-actions button-right" %>
+          </div>
+          <div class="text-right">
+            <%= render "devise/shared/links" %>
+          </div>
+        <% end %>
+        </div>
+
+      </div>
+    </div>
   </div>
+</div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+<%= render 'shared/footer', background: "background-white" %>

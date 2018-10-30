@@ -15,6 +15,23 @@
   float: right;
 }
 
+.new-user-form-button {
+  display: inline-block;
+  padding: 14px 30px 10px 30px;
+  border: none;
+  font-family: $bebas-neue-font;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 0px;
+  width: 100%
+}
+
 .banner-call-to-actions {
   background-color: $brand-primary;
   color: #4b1414;
@@ -34,7 +51,6 @@
 
 @media (max-width: 355px) {
   .banner-call-to-actions {
-    display: flex;
     a {
       padding: 8px;
     }
@@ -63,7 +79,20 @@
     text-decoration: none;
     color: $my-black;
   }
+  &:focus {
+    text-decoration: none;
+    color: $my-black;
+  }
 }
+
+.do-underline {
+  border-bottom: 1px solid #F6EFF1;
+  transition: all 0.2s ease-in;
+  &:hover {
+    border-bottom: 1px solid $my-black;
+  }
+}
+
 .powered-by-epayco{
   padding: 0 10px 0 10px;
   font-size: 12px;

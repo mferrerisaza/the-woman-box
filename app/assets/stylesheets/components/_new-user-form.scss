@@ -47,12 +47,32 @@
       right: 25px;
       position: absolute;
     }
-    // .date-separator{
-    //   margin: 0 auto;
-    //   position: absolute;
-    // }
     .no-follow {
       cursor: help;
+    }
+  }
+}
+
+.devise-wrapper{
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  min-height: calc( 100vh - 170px);
+  .devise-form-container {
+    height: 100%;
+
+    a {
+      color: black;
+      text-decoration: underline;
+      font-size: 13px;
+    }
+    .form-headline{
+      font-size: 36px;
+    }
+    .devise-form{
+      padding: 24px;
+      background: rgba(255,255,255,0.8);
+      margin: 16px;
     }
   }
 }

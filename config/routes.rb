@@ -4,9 +4,8 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :orders, except: [:delete] do
     resources :payments, only: [:new, :create]
+    post 'payments/cancel', to: "payments#cancel"
   end
   resources :plans, only: :index
   resources :sizes, only: :index
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

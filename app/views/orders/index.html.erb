@@ -9,24 +9,37 @@
     </div>
   </div>
 </div>
-<div class="show-container padding-bottom-mid padding-top-mid background-light-pink padding-left-xsmall padding-right-xsmall">
-  <div class="profile-section-container margin-bottom-mid background-light-pink-transparent padding-section-mid padding-side-desktop">
-    <div class="title margin-bottom-mid padding-left-small">
-      Planes activos
+<div class="show-contaier padding-bottom-mid padding-top-mid background-light-pink">
+  <div class="profile-section-container margin-bottom-mid background-light-pink-transparent padding-section-mid padding-side-desktop padding-top-mid">
+    <div class="title margin-bottom-mid">
+      <% if @orders.empty? %>
+        No cuentas con ningun plan activo
+      <% else %>
+        Planes activos
+      <% end %>
     </div>
-    <div class="flex flex-justify-between font-small plans-list">
-      <div class="main-info">
-        <div class="bold">
-          Plan mensual
+    <% unless @orders.empty? %>
+      <% @orders.each do |order| %>
+        <div class="flex flex-justify-between font-small plans-list flex-center padding-bottom-mid">
+          <div class="main-info">
+            <div class="bold">
+              <%= Plan.find_by(sku: order.plan_sku).name %>
+            </div>
+            <div class="normal">
+              <%= order.address %>
+            </div>
+            <div class="normal">
+              <%= order.status %>
+            </div>
+          </div>
+          <% if order.status == "Pagada" %>
+            <div class="button cancel-btn font-small">
+              <%= link_to "Cancelar", order_payments_cancel_path(order.id), method: :post %>
+            </div>
+          <% end %>
         </div>
-        <div class="normal">
-          Dirección
-        </div>
-      </div>
-      <div class="button cancel-btn font-small">
-        Cancelar plan
-      </div>
-    </div>
+      <% end %>
+    <% end %>
   </div>
 </div>
 <%= render 'shared/footer', background: "background-light-pink" %>

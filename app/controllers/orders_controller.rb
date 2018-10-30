@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
   skip_after_action :verify_authorized, only: :create
 
   def index
-    @orders = policy_scope(Order).order(created_at: :desc)
+    @orders = policy_scope(Order).order(status: :asc, created_at: :desc)
   end
 
   def new

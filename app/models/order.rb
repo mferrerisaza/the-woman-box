@@ -1,5 +1,5 @@
 class Order < ApplicationRecord
-  enum status: %w[Pendiente Pagada]
+  enum status: %w[Pendiente Pagada Cancelada]
   belongs_to :user
 
   validates :delivery_date, :address, :country, :province, :city, presence: true, on: :update

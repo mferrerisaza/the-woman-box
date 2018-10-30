@@ -21,7 +21,7 @@
             Nombre:
           </div>
           <div>
-            Daniel José
+            <%= @user.first_name %>
           </div>
         </li>
         <li>
@@ -29,23 +29,7 @@
             Apellidos:
           </div>
           <div>
-            López González
-          </div>
-        </li>
-        <li>
-          <div class="bold">
-            Fecha de nacimiento:
-          </div>
-          <div>
-            16 / jun / 1994
-          </div>
-        </li>
-        <li>
-          <div class="bold">
-            Email:
-          </div>
-          <div>
-            dlopez.10g@gmail.com
+            <%= @user.last_name %>
           </div>
         </li>
         <li>
@@ -53,49 +37,7 @@
             Teléfono:
           </div>
           <div>
-            3185743187
-          </div>
-        </li>
-        <li>
-          <div class="bold">
-            Contraseña:
-          </div>
-          <div>
-            **********
-          </div>
-        </li>
-      </ul>
-    </div>
-    <%= link_to "Editar datos personales", edit_user_registration_path, class:"link-decoration-none font-small do-underline padding-left-small"  %>
-  </div>
-  <div class="profile-section-container margin-bottom-mid background-light-pink-transparent padding-section-mid padding-side-desktop">
-    <div class="title padding-left-small">
-      Información de envío
-    </div>
-    <div class="fields">
-      <ul class="padding-top-mid font-small padding-inline-start-small">
-        <li>
-          <div class="bold">
-            Nombre:
-          </div>
-          <div>
-            Daniel José
-          </div>
-        </li>
-        <li>
-          <div class="bold">
-            Apellidos:
-          </div>
-          <div>
-            López González
-          </div>
-        </li>
-        <li>
-          <div class="bold">
-            Fecha de nacimiento:
-          </div>
-          <div>
-            16 / jun / 1994
+            <%= @user.phone %>
           </div>
         </li>
         <li>
@@ -103,15 +45,7 @@
             Email:
           </div>
           <div>
-            dlopez.10g@gmail.com
-          </div>
-        </li>
-        <li>
-          <div class="bold">
-            Teléfono:
-          </div>
-          <div>
-            3185743187
+            <%= @user.email %>
           </div>
         </li>
         <li>

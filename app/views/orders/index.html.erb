@@ -2,7 +2,7 @@
 <div class="horizontal-menu-container-desktop padding-section-mid background-light-pink">
   <div class="flex flex-justify-around underlined margin-left-huge margin-right-huge padding-bottom-small">
     <div class="menu-item">
-      <%= link_to "Datos personales", user_path(User.last), class:"link-decoration-none" %>
+      <%= link_to "Datos personales", user_path(current_user), class:"link-decoration-none" %>
     </div>
     <div class="menu-item active-item">
       Planes activos

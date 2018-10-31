@@ -37,7 +37,7 @@ pad_sizes.each do |size|
     size: size,
     name: "#{size.type.name} #{size.name} Nosotras",
     description: "Suscribite para recibir la mejor cajita todos los meses",
-    price: 30_000
+    price: 35_000
   )
   plan.remote_photo_url = "https://vignette.wikia.nocookie.net/logopedia/images/e/eb/Nosotras-logo.png/revision/latest?cb=20180904011023&path-prefix=es"
   plan.save!
@@ -48,7 +48,7 @@ pad_sizes.each do |size|
     description: plan.description,
     amount: plan.price.to_i,
     currency: "cop",
-    interval: "day",
+    interval: "month",
     interval_count: 1,
     trial_days: 0
   }
@@ -66,7 +66,7 @@ end
     size: size,
     name: "#{size.type.name} #{size.name} OB",
     description: "Suscribite para recibir la mejor cajita todos los meses",
-    price: 30_000
+    price: 35_000
   )
   plan.remote_photo_url = "https://seeklogo.com/images/O/o_b_-logo-C64CD5FA3B-seeklogo.com.png"
   plan.save!
@@ -98,7 +98,7 @@ tampons_sizes.each do |size|
     size: size,
     name: "#{size.type.name} #{size.name} OB",
     description: "Suscribite para recibir la mejor cajita todos los meses",
-    price: 30_000
+    price: 35_000
   )
   plan.remote_photo_url = "https://seeklogo.com/images/O/o_b_-logo-C64CD5FA3B-seeklogo.com.png"
   plan.save!
@@ -127,7 +127,7 @@ end
     size: size,
     name: "#{size.type.name} #{size.name} Nosotras",
     description: "Suscribite para recibir la mejor cajita todos los meses",
-    price: 30_000
+    price: 35_000
   )
   plan.remote_photo_url = "https://vignette.wikia.nocookie.net/logopedia/images/e/eb/Nosotras-logo.png/revision/latest?cb=20180904011023&path-prefix=es"
   plan.save!

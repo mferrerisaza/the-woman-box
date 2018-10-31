@@ -1,5 +1,6 @@
 class PaymentsController < ApplicationController
   before_action :set_order, except: :cancel
+  before_action :set_cancel_order, only: :cancel
 
   def new
     @plan = Plan.find_by(sku: @order.plan_sku)
@@ -14,7 +15,8 @@ class PaymentsController < ApplicationController
   end
 
   def cancel
-    cancel_epayco_subscription(set_cancel_order)
+    authorize @order, :order_of_current_user?
+    cancel_epayco_subscription(@order)
   end
 
   private
@@ -94,14 +96,13 @@ class PaymentsController < ApplicationController
   end
 
   def cancel_epayco_subscription(order)
-    authorize @order, :order_of_current_user?
     begin
-      sub = Epayco::Subscriptions.cancel JSON.parse(@order.payment)["subscription"]["_id"]
+      subscription = Epayco::Subscriptions.cancel JSON.parse(order.payment)["subscription"]["_id"]
     rescue Epayco::Error => e
       puts e
     end
-    if sub[:status]
-      @order.update(status: 'Cancelada')
+    if subscription[:status]
+      order.update(status: 'Cancelada')
       flash[:notice] = "La suscripción ha sido cancelada"
     end
     redirect_to orders_path

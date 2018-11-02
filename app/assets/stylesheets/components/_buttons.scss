@@ -73,15 +73,22 @@
   }
 }
 
-.link-decoration-none {
+.btn-color-black {
   color: $my-black;
   &:hover {
-    text-decoration: none;
     color: $my-black;
   }
   &:focus {
-    text-decoration: none;
     color: $my-black;
+  }
+}
+.link-decoration-none {
+  &:hover {
+    text-decoration: none;
+  }
+  &:focus {
+    text-decoration: none;
+    // color: $my-black;
   }
 }
 

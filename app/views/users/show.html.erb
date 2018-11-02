@@ -4,9 +4,7 @@
     <div class="menu-item active-item">
       Datos personales
     </div>
-    <div class="menu-item">
-        <%= link_to "Planes activos", orders_path, class:"link-decoration-none" %>
-    </div>
+      <%= link_to "Planes activos", orders_path, class:"link-decoration-none menu-item btn-color-black" %>
   </div>
 </div>
 <div class="show-container padding-bottom-mid padding-top-mid background-light-pink padding-left-xsmall padding-right-xsmall">
@@ -58,6 +56,7 @@
         </li>
       </ul>
     </div>
+    <%= link_to "Edita tu información personal", edit_user_registration_path, class:"padding-left-mid font-small btn-color-black"  %>
   </div>
 </div>
 <%= render 'shared/footer', background: "background-light-pink" %>

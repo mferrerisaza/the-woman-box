@@ -29,10 +29,12 @@
             <div class="normal">
               <%= order.status %>
             </div>
-            <div class="normal">
-              <% JSON %>
-              Fecha próxima pago: <%= order.next_period_start %>
-            </div>
+            <% if order.status == "Pagada" %>
+              <div class="normal">
+                <% JSON %>
+                Fecha próximo pago: <%= order.next_period_start %>
+              </div>
+            <% end %>
           </div>
           <% if order.status == "Pagada" %>
             <%= link_to "Cancelar", order_payments_cancel_path(order.id), method: :post, class:"link-decoration-none button cancel-btn font-small" %>

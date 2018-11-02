@@ -1,11 +1,7 @@
 <div class="background-light-pink horizontal-menu-container-desktop padding-section-mid">
   <div class="flex flex-justify-around underlined margin-left-huge margin-right-huge padding-bottom-small">
-    <div class="menu-item">
-      <%= link_to "Datos personales", user_path(User.last), class:"link-decoration-none" %>
-    </div>
-    <div class="menu-item">
-        <%= link_to "Planes activos", orders_path, class:"link-decoration-none" %>
-    </div>
+    <%= link_to "Datos personales", user_path(User.last), class:"link-decoration-none menu-item btn-color-black" %>
+    <%= link_to "Tus planes", orders_path, class:"link-decoration-none menu-item btn-color-black" %>
   </div>
 </div>
 <div class="show-container padding-bottom-mid padding-top-mid background-light-pink padding-left-xsmall padding-right-xsmall">
@@ -27,7 +23,7 @@
             <%= f.input :last_name, label: "Apellidos", required: false %>
           </div>
           <div class="col-xs-12 col-sm-6 font-small">
-            <%= f.input :address, label: "Cambiar por fecha de cumpleaños" %>
+            <%= f.input :doc_number, label: "Número de documento" %>
           </div>
           <div class="col-xs-12 col-sm-6 font-small">
             <%= f.input :phone, label: "Teléfono de contacto" %>
@@ -57,11 +53,12 @@
         </div>
       </div>
       <div class="form-actions">
-        <%= f.button :submit, "Actualizar datos" %>
+        <%= f.button :submit, "Actualizar datos", class:"banner-call-to-actions" %>
       </div>
     <% end %>
     <div class="margin-bottom-mid">
-      <%= link_to "Volver", :back, class:"link-decoration-none do-underline font-small padding-left-small margin-bottom-huge"  %>
+      <%= link_to "Volver", :back, class:"link-decoration-none do-underline font-small padding-left-small margin-bottom-huge btn-color-black"  %>
     </div>
-    <p class="font-small padding-left-small">¿No estás satisfecha? <%= link_to "Cancelar mi cuenta", registration_path(resource_name), data: { confirm: "¿Estás segura que deseas eliminar tu cuenta?" }, method: :delete, class:"link-decoration-none do-underline font-small" %></p>
+    <p class="font-small padding-left-small">¿No estás satisfecha? <%= link_to "Quiero eliminar mi cuenta", registration_path(resource_name), data: { confirm: "¿Estás segura que deseas eliminar tu cuenta?" }, method: :delete, class:"link-decoration-none do-underline font-small btn-color-black" %></p>
   </div>
+</div>

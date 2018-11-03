@@ -36,6 +36,10 @@
             <div class="button cancel-btn font-small">
               <%= link_to "Cancelar", order_payments_cancel_path(order.id), method: :post %>
             </div>
+          <% elsif order.status == "Cancelada" && !current_user.active_orders? %>
+            <div class="button cancel-btn font-small">
+              <%= link_to "Reactivar suscripción", new_order_path %>
+            </div>
           <% end %>
         </div>
       <% end %>

@@ -9,8 +9,8 @@ class PaymentsController < ApplicationController
 
   def create
     authorize @order, :order_of_current_user?
-    create_card_token(card_params) unless current_user.tokenized?
-    create_epayco_customer(card_params) unless current_user.is_epayco_customer?
+    create_card_token(card_params) # unless current_user.tokenized?
+    create_epayco_customer(card_params) # unless current_user.is_epayco_customer?
     create_epayco_suscription(card_params)
   end
 
@@ -23,10 +23,10 @@ class PaymentsController < ApplicationController
 
   def create_card_token(card_params)
     credit_info = {
-        'card[number]': card_params[:number].gsub(/\s+/, ""),
-        'card[exp_year]': card_params[:exp_year],
-        'card[exp_month]': card_params[:exp_month],
-        'card[cvc]': card_params[:cvc]
+      'card[number]': card_params[:number].gsub(/\s+/, ""),
+      'card[exp_year]': card_params[:exp_year],
+      'card[exp_month]': card_params[:exp_month],
+      'card[cvc]': card_params[:cvc]
     }
 
     begin

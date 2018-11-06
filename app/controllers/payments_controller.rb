@@ -127,7 +127,7 @@ class PaymentsController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:delivery_date, :address)
+    params.require(:order).permit(:last_period, :address)
   end
 
   def set_cancel_order

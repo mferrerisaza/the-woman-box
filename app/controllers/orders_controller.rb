@@ -46,7 +46,7 @@ class OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(
       :plan_id,
-      :delivery_date,
+      :last_period,
       :address,
       :country,
       :province,

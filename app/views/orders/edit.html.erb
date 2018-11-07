@@ -8,13 +8,6 @@
     <%= simple_form_for(@order)  do |f| %>
       <div class="row">
         <div class="col-xs-12 col-sm-6">
-          <%= f.input :delivery_date,
-                      label: "Fecha de entrega",
-                      placeholder: "Ej: 10 Nov 2018",
-                      input_html: {class: "datepicker"}
-          %>
-        </div>
-        <div class="col-xs-12 col-sm-6">
           <%= f.input :address, placeholder: "Ej: Calle 11a # 42-18",label: "Dirección de entrega" %>
         </div>
         <div class="col-xs-12 col-sm-6">
@@ -29,6 +22,14 @@
         <div class="col-xs-12 col-sm-6">
           <%= f.input :address_aditional_info, label: "Información adicional", placeholder: "Ej: Torre 1 Apto 302" %>
         </div>
+        <div class="col-xs-12 col-sm-6">
+          <%= f.input :last_period,
+                      label: "¿En qué fecha comenzó tu último periodo?",
+                      placeholder: "Ej: 10 Nov 2018",
+                      input_html: {class: "datepicker"}
+          %>
+        </div>
+
       </div>
         <%= f.button :submit, "Siguente", class:"btn button banner-call-to-actions button-right" %>
     <% end %>

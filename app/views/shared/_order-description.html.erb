@@ -14,7 +14,7 @@
              <%= link_to "Cambiar", edit_order_path(@order) %>
           </div>
           <p class="order-selection-description">
-            La recibirás el <strong> <%="#{@order.delivery_date.to_date.day}"%> de cada mes</strong> (o antes) en <%= "#{@order.address.downcase} #{@order.city}, #{@order.province}" %>
+            La recibirás el <strong> <%="#{@order.delivery_date}"%> de cada mes</strong> en la dirección: <%= "#{@order.address.downcase} #{@order.city}, #{@order.province}" %>
           </p>
           <hr>
         <% end %>

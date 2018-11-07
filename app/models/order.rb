@@ -14,11 +14,9 @@ class Order < ApplicationRecord
   end
 
   def delivery_date
-    created_at = self.created_at.to_date.day
-    delivery_margin = created_at + 10
-    return 10 if (delivery_margin > 30 && delivery_margin <= 40) && self.created_at.end_of_month.day < 31
-    return 20 if (delivery_margin > 10 && delivery_margin <= 20) || delivery_margin > 40
-    return "último día" unless self.created_at.end_of_month.day < 29
-    return 10
+    delivery_margin = self.created_at + 10.days
+    return 10 if delivery_margin.day >= 1 && delivery_margin.day <= 10
+    return 20 if delivery_margin.day > 10 && delivery_margin.day <= 20
+    return "último día"
   end
 end

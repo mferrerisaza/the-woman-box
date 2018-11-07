@@ -8,4 +8,7 @@ Rails.application.routes.draw do
   end
   resources :plans, only: :index
   resources :sizes, only: :index
+  get 'privacy_policy', to: "pages#privacy_policy", as: :privacy_policy
+  get 'terms_and_conditions', to: "pages#terms_and_conditions", as: :terms_and_conditions
+
 end

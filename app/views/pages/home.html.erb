@@ -1,140 +1,147 @@
 <!-- Producto principal y moto -->
-<div class="banner-container background-white padding-bottom-big">
-  <div class="banner-image-container">
-    <%= image_tag "caja-sola.png", class:"banner-image" %>
-  </div>
-  <div class="banner-text-container padding-bottom-mid flex-center">
-    <div class="banner-text no-padding-right">
-      <div class="banner-title padding-left-big padding-right-mid padding-left-small padding-right-small">
-        <h1>La caja que hace que la menstruación sea más llevadera</h1>
-      </div>
-      <div class="banner-motto padding-left-big padding-right-mid padding-left-small padding-right-small">
-        <p> Despreocupate por la compra de tus productos básicos con la suscripción mensual a The Women Box y recibe además
-            productos de belleza y alimentos que te ayudarán a pasar estos días duros con la mejor actitud </p>
-      </div>
-      <div class="padding-left-big padding-left-mid padding-right-mid">
-        <%= link_to "Suscríbete", new_order_path, class: "button banner-call-to-actions" %>
-      </div>
-    </div>
+<div class="banner" style="background-image:
+linear-gradient(to top, #4143457a, #4143457a),
+url('<%= cl_image_path("the-woman-box/banner_final.png") %>');">
+  <div class="banner-content">
+    <h1>lo esencial para el período en tu puerta</h1>
+    <p>Recibe toallas o tampones de tu elección y regalos de temporada todos los meses</p>
+    <%= link_to "Suscríbete", new_order_path, class: "button2 banner-call-to-actions" %>
   </div>
 </div>
+
 <!-- Contenido de la caja y foto productos -->
-<div class="banner-container background-light-gray no-margin-top padding-section flex-reverse padding-bottom-mid">
-  <div class="products-text-container flex-center">
+<div class="banner-container background-white no-margin-top padding-section flex-reverse padding-bottom-mid">
+  <div class="flex-center">
     <div class="banner-text padding-bottom-mid">
-      <div class="banner-title padding-left-big padding-left-small padding-right-small padding-right-huge padding-bottom-mid">
-        <h2>Suscríbete y recibe mensualmente tus productos esenciales y otros productos sorpresa pensados especialmente para ti por solo $35.000 </h2>
+      <div class="banner-title padding-left-big padding-left-small padding-right-small padding-bottom-mid">
+        <h2>Cada caja contiene los esenciales que elijas y otros productos sorpresa diseñados para hacerte más feliz. Solo <i style="color: #EC96AB;">$34.900 / Mes</i></h2>
       </div>
       <div class="banner-motto padding-left-big padding-left-small padding-right-small padding-right-huge">
         <div class="products-list padding-left-big padding-left-mid margin-top-mid">
           <div class="product-item flex-center">
-            <i class="fas fa-check fa-xs"> </i>
-            <div class="padding-left-xsmall font-small-mobile">
+            <i class="fas fa-check fa-sm"> </i>
+            <p class="product-item-text padding-left-xsmall font-small-mobile">
               Tampones o toallas higienicas
-            </div>
+            </p>
           </div>
           <div class="product-item flex-center">
-            <i class="fas fa-check fa-xs"> </i>
-            <div class="padding-left-xsmall font-small-mobile">
+            <i class="fas fa-check fa-sm"> </i>
+            <p class="product-item-text padding-left-xsmall font-small-mobile">
+              Protectores
+            </p>
+          </div>
+          <div class="product-item flex-center">
+            <i class="fas fa-check fa-sm"> </i>
+            <p class="product-item-text padding-left-xsmall font-small-mobile">
+              Pañitos húmedos
+            </p>
+          </div>
+          <div class="product-item flex-center">
+            <i class="fas fa-check fa-sm"> </i>
+            <p class="product-item-text padding-left-xsmall font-small-mobile">
               Artículos de maquillaje
-            </div>
+            </p>
           </div>
           <div class="product-item flex-center">
-            <i class="fas fa-check fa-xs"> </i>
-            <div class="padding-left-xsmall font-small-mobile">
-              Chocolates y dulces
-            </div>
+            <i class="fas fa-check fa-sm"> </i>
+            <p class="product-item-text padding-left-xsmall font-small-mobile">
+              Chocolates, snacks o dulces
+            </p>
           </div>
           <div class="product-item flex-center">
-            <i class="fas fa-check fa-xs"> </i>
-            <div class="padding-left-xsmall font-small-mobile">
-              Productos de temporada
-            </div>
+            <i class="fas fa-check fa-sm"> </i>
+            <p class="product-item-text padding-left-xsmall font-small-mobile">
+              Otros productos de temporada
+            </p>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="products-image-container">
-    <%= image_tag "caja-sola.png", class:"banner-image" %>
+  <div class=" banner-image" style="background-image: url('<%= cl_image_path("the-woman-box/box_content.jpg", width: 500, height: 500)%>');">
   </div>
 </div>
 <!-- Como funciona -->
-<div class="how-it-works-container background-white padding-bottom-mid padding-section">
-  <div class="section-title padding-bottom-mid flex-center flex-justify-center">
-    <h2>¿Cómo funciona?</h2>
-  </div>
-  <div class="text-center">
-    <div class="flex-center flex-justify-around display-block-mobile">
-      <div class="step-description">
-        <div class="icon padding-bottom-small">
-          <%= image_tag "tampon.svg", class:"avatar-big"%>
-        </div>
-        <div class="avatar-big mid-font padding-bottom-small">
-          Productos esenciales para la menstruación
-        </div>
-      </div>
-      <div class="step-description">
-        <div class="icon padding-bottom-small">
-          <%= image_tag "makeup.svg", class:"avatar-big"%>
-        </div>
-        <div class="avatar-big mid-font padding-bottom-small">
-          + Productos para hacerte feliz
-        </div>
-      </div>
-      <div class="step-description">
-        <div class="icon padding-bottom-small">
-          <%= image_tag "delivery-truck.svg", class:"avatar-big"%>
-        </div>
-        <div class="avatar-big mid-font padding-bottom-small">
-          Entregados en la puerta de tu casa
-        </div>
-      </div>
-      <div class="step-description">
-        <div class="icon padding-bottom-small">
-          <%= image_tag "calendar.svg", class:"avatar-big"%>
-        </div>
-        <div class="avatar-big mid-font padding-bottom-small">
-          Una vez al mes
-        </div>
-      </div>
+<div class="how-it-works-container background-white" style="background-image: url('<%=cl_image_path("the-woman-box/the_woman_box_instagram_2.jpg")%>')">
+  <div class="how-it-works-section background-white">
+    <div class="how-it-works-section-title padding-bottom-mid flex-center flex-justify-center padding-top-mid">
+      <h2 class="banner-title">¿Cómo funciona?</h2>
     </div>
-  </div>
-  <!-- Condiciones -->
-  <div class="background-white padding-top-mid padding-bottom-mid">
-    <div class="flex-center flex-justify-center">
-      <div class="conditions-text text-center">
-        <h4> <strong> Por solo $35.000 al mes + envío GRATIS </strong> </h4>
-      </div>
-      <div class="padding-left-big padding-left-mid  mobile-hidden">
-        <%= link_to "Suscríbete", new_order_path, class: "button banner-call-to-actions" %>
-      </div>
-    </div>
-    <div class="product-condditions-list flex-center flex-justify-center">
-      <div class="list-container">
-        <div class="product-item flex-center">
-          <i class="fas fa-check fa-xs"> </i>
-          <div class="padding-left-xsmall">
-            Sin compromisos
+    <div class="text-center">
+      <div class="flex-center flex-justify-around display-block-mobile">
+        <div class="step-description">
+          <div class="icon padding-bottom-small">
+            <%= image_tag "tampon.svg", class:"avatar-big"%>
+          </div>
+          <div class="avatar-big mid-font padding-bottom-small">
+            <p>Arma tu caja con tus productos favoritos.</p>
           </div>
         </div>
-        <div class="product-item flex-center">
-          <i class="fas fa-check fa-xs"> </i>
-          <div class="padding-left-xsmall">
-            Sin contratos
+        <div class="step-description">
+          <div class="icon padding-bottom-small">
+            <%= image_tag "checklist.svg", class:"avatar-big"%>
+          </div>
+          <div class="avatar-big mid-font padding-bottom-small">
+            <p>Llena los datos y paga tu suscripción.</p>
           </div>
         </div>
-        <div class="product-item flex-center">
-          <i class="fas fa-check fa-xs"> </i>
-          <div class="padding-left-xsmall">
-            Cancela cuando desees
+        <div class="step-description">
+          <div class="icon padding-bottom-small">
+            <%= image_tag "makeup.svg", class:"avatar-big"%>
+          </div>
+          <div class="avatar-big mid-font padding-bottom-small">
+            <p>Agregamos regalos para hacerte feliz.</p>
+          </div>
+        </div>
+        <div class="step-description">
+          <div class="icon padding-bottom-small">
+            <%= image_tag "delivery-truck.svg", class:"avatar-big"%>
+          </div>
+          <div class="avatar-big mid-font padding-bottom-small">
+            <p>Recibirás todo en casa, una vez al mes.</p>
           </div>
         </div>
       </div>
     </div>
-    <div class="text-center padding-left-big desktop-hidden padding-top-small button-height">
-      <%= link_to "Suscríbete", new_user_session_path, class: "button banner-call-to-actions" %>
+    <hr style="border: 0.5px solid #33333e; margin-right: 30%; margin-left: 30%;">
+    <!-- Condiciones -->
+    <div class="padding-top-mid padding-bottom-mid">
+      <div class="flex-center flex-justify-center">
+        <div class="conditions-text text-center">
+          <h4 class="banner-title"><strong>Por solo $34.900 al mes + <u>envío GRATIS</u></strong></h4>
+        </div>
+        <div class="padding-left-big padding-left-mid  mobile-hidden">
+          <%= link_to "Suscríbete", new_order_path, class: "button2 banner-call-to-actions" %>
+        </div>
+      </div>
+      <div class="product-condditions-list flex-center flex-justify-center">
+        <div class="list-container">
+          <div class="product-item flex-center">
+            <i class="fas fa-check fa-sm"> </i>
+            <div class="padding-left-xsmall">
+              <p class="product-item-text">Sin cláusulas de permanencia</p>
+            </div>
+          </div>
+          <div class="product-item flex-center">
+            <i class="fas fa-check fa-sm"> </i>
+            <div class="padding-left-xsmall">
+              <p class="product-item-text">Sin contratos</p>
+            </div>
+          </div>
+          <div class="product-item flex-center">
+            <i class="fas fa-check fa-sm"> </i>
+            <div class="padding-left-xsmall">
+              <p class="product-item-text">Cancela cuando quieras</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center padding-left-big desktop-hidden button-height margin-top-big">
+        <%= link_to "Suscríbete", new_order_path, class: "button2 banner-call-to-actions" %>
+      </div>
     </div>
+
   </div>
 </div>
-<%= render 'shared/footer', background: "background-white" %>
+<%= render 'shared/footer', background: "background-white", border_top:"no-border-top" %>
+<%= render 'shared/tawk-landing' %>

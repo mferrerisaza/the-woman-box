@@ -19,4 +19,8 @@ class User < ApplicationRecord
   def is_epayco_customer?
     epayco_customer_id ? true : false
   end
+
+  def active_orders?
+    orders.where(status: "Pagada").size >= 1
+  end
 end

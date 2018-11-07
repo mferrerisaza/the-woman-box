@@ -3,7 +3,7 @@
     <%= render "shared/progressbar", active_tab: 3 %>
     <h2 class="form-headline">AHORA VAMOS A NECESITAR ALGUNOS DATOS PARA EL ENVÍO</h2>
     <p class="form-subheadline">
-      Cuéntanos dónde y cuándo quieres que te enviemos la caja todos los meses, se lo más especifica que puedas por favor, esto facilitará nuestro trabajo más adelante. Por ahora solo tenemos envios en Colombia
+      Cuéntanos dónde quieres que te enviemos la caja todos los meses, se lo más especifica que puedas por favor, esto facilitará nuestro trabajo más adelante. También vamos a necesitar saber cuándo fue tú último período para elegir la mejor fecha de envío <strong>(por ahora solo tenemos envios disponibles en Colombia).</strong>
     </p>
     <%= simple_form_for(@order)  do |f| %>
       <div class="row">
@@ -36,3 +36,5 @@
   </div>
   <%= render 'shared/order-description', show_order_box: true %>
 </div>
+<%= render 'shared/footer', background: "background-white", border_top:"" %>
+<%= render 'shared/tawk-payment' %>

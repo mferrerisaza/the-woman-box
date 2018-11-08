@@ -4,6 +4,7 @@ class OrdersController < ApplicationController
   skip_after_action :verify_authorized, only: :create
 
   def index
+    Order.update_status(current_user)
     @orders = policy_scope(Order).order(status: :asc, created_at: :desc)
   end
 
@@ -15,10 +16,10 @@ class OrdersController < ApplicationController
   def create
     plan = Plan.find(order_params[:plan_id])
     if current_user
-      order = Order.create!(plan_sku: plan.sku, amount: plan.price, status: 'Pendiente', user: current_user)
+      order = Order.create!(plan_sku: plan.sku, amount: plan.price, status: 'Incompleta', user: current_user)
       redirect_to edit_order_path(order)
     else
-      session[:order] = { plan_sku: plan.sku, amount: plan.price.to_i, status: 'Pendiente' }
+      session[:order] = { plan_sku: plan.sku, amount: plan.price.to_i, status: 'Incompleta' }
       redirect_to new_user_registration_path
     end
   end

@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!
+  skip_before_action :authenticate_user!, only: [:home, :privacy_policy, :terms_and_conditions]
 
   def home
     @plans = Plan.all

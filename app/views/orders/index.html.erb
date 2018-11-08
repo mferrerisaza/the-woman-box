@@ -3,7 +3,7 @@
   <div class="flex flex-justify-around underlined margin-left-huge margin-right-huge padding-bottom-small">
       <%= link_to "Datos personales", user_path(current_user), class:"link-decoration-none menu-item btn-color-black" %>
     <div class="menu-item active-item">
-      Tus planes
+      Suscripciones
     </div>
   </div>
 </div>
@@ -11,9 +11,9 @@
   <div class="profile-section-container margin-bottom-mid background-light-pink-transparent padding-section-mid padding-side-desktop padding-top-mid">
     <div class="title margin-bottom-mid">
       <% if @orders.empty? %>
-        No cuentas con ningun plan activo
+        No cuentas con ninguna suscripción
       <% else %>
-        Tus planes
+        Suscripciones
       <% end %>
     </div>
     <% unless @orders.empty? %>
@@ -38,11 +38,16 @@
           </div>
           <% if order.status == "Pagada" %>
             <%= link_to "Cancelar", order_payments_cancel_path(order.id), method: :post, class: "link-decoration-none button cancel-btn font-small" %>
-          <% elsif order.status == "Cancelada" && !current_user.active_orders? %>
-            <%= link_to "Reactivar suscripción", new_order_path, class: "link-decoration-none button cancel-btn font-small" %>
+          <% elsif order.status == "Incompleta" && order.address.nil? %>
+            <%= link_to "Completar suscripción", edit_order_path(order), class: "link-decoration-none button cancel-btn font-small"  %>
+          <% elsif order.status == "Incompleta" && order.address %>
+            <%= link_to "Completar suscripción", new_order_payment_path(order), class: "link-decoration-none button cancel-btn font-small"  %>
           <% end %>
         </div>
       <% end %>
+    <% end %>
+    <% if current_user.all_orders_cancelled? %>
+      <%= link_to "Suscribirme", new_order_path, class: "link-decoration-none button2 cancel-btn font-small" %>
     <% end %>
   </div>
 </div>

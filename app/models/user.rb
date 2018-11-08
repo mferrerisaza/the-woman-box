@@ -20,7 +20,7 @@ class User < ApplicationRecord
     epayco_customer_id ? true : false
   end
 
-  def active_orders?
-    orders.where(status: "Pagada").size >= 1
+  def all_orders_cancelled?
+    orders.where(status: "Cancelada").size == orders.size
   end
 end

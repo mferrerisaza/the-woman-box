@@ -39,7 +39,6 @@ class PaymentsController < ApplicationController
       current_user.update(epayco_token: token[:id])
     else
       flash.now[:alert] = "#{token[:data][:description]}"
-      # render 'new'
     end
   end
 
@@ -62,7 +61,6 @@ class PaymentsController < ApplicationController
       current_user.update(epayco_customer_id: customer[:data][:customerId])
     else
       flash.now[:alert] = "#{customer[:data][:description]}"
-      # render 'new'
     end
   end
 
@@ -83,12 +81,36 @@ class PaymentsController < ApplicationController
     end
 
     if charge[:subscription]
-      if charge[:subscription][:status] == "active"
+      subscription_status = charge[:subscription][:status]
+      if subscription_status == "active"
         @order.update(payment: charge.to_json, status: 'Pagada')
+        flash[:notice] = "Tu pago ha sido procesado con éxito, bienvenida a The Women Box"
+        redirect_to orders_path
+      elsif subscription_status == "canceled"
+        @order.update(payment: charge.to_json, status: "Cancelada")
+        transaction_status = charge[:data][:estado]
+        transaction_response = charge[:data][:respuesta]
+        flash[:alert] = "Transacción #{transaction_status.downcase}, #{transaction_response.downcase}"
+        redirect_to orders_path
+      elsif subscription_status == "pending"
+        @order.update(payment: charge.to_json, status: "Pendiente")
+        transaction_status = charge[:data][:estado]
+        transaction_response = charge[:data][:respuesta]
+        flash[:alert] = "Transacción #{transaction_status.downcase}, #{transaction_response.downcase}"
+        redirect_to orders_path
+      elsif subscription_status == "inactive"
+        @order.update(payment: charge.to_json, status: "Inactiva")
+        transaction_status = charge[:data][:estado]
+        transaction_response = charge[:data][:respuesta]
+        flash.now[:alert] = "Transacción #{transaction_status.downcase}, #{transaction_response.downcase}"
+        render 'new'
       else
-        @order.update(payment: charge.to_json)
+        @order.update(payment: charge.to_json, status: "Incompleta")
+        transaction_status = charge[:data][:estado]
+        transaction_response = charge[:data][:respuesta]
+        flash.now[:alert] = "Transacción #{transaction_status.downcase}, #{transaction_response.downcase}"
+        render 'new'
       end
-      redirect_to orders_path
     else
       flash.now[:alert] = "#{charge[:data][:description]}"
       render 'new'
@@ -109,7 +131,7 @@ class PaymentsController < ApplicationController
   end
 
   def set_order
-    @order = current_user.orders.where(status: 'Pendiente').find(params[:order_id])
+    @order = current_user.orders.where(status: ['Incompleta', 'Inactiva']).find(params[:order_id])
   end
 
   def card_params

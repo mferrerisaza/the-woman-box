@@ -29,6 +29,7 @@
 .footer-links {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 .footer-links a {
   color: black;
@@ -59,5 +60,11 @@
 @media (max-width: 509px) {
   .footer {
     padding: 0px 16px;
+  }
+}
+
+@media (max-width: 582px) {
+  .footer {
+    display: block;
   }
 }

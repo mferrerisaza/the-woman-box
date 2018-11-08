@@ -23,6 +23,7 @@ gem 'cloudinary'
 gem 'carrierwave', '~> 1.2'
 gem 'country_select', '~> 3.1'
 gem 'mailjet'
+gem 'activeadmin'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

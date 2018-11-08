@@ -1,7 +1,7 @@
 <div class="background-light-pink horizontal-menu-container-desktop padding-section-mid">
   <div class="flex flex-justify-around underlined margin-left-huge margin-right-huge padding-bottom-small">
     <%= link_to "Datos personales", user_path(User.last), class:"link-decoration-none menu-item btn-color-black" %>
-    <%= link_to "Tus planes", orders_path, class:"link-decoration-none menu-item btn-color-black" %>
+    <%= link_to "Suscripciones", orders_path, class:"link-decoration-none menu-item btn-color-black" %>
   </div>
 </div>
 <div class="show-container padding-bottom-mid padding-top-mid background-light-pink padding-left-xsmall padding-right-xsmall">
@@ -62,6 +62,6 @@
     <div class="margin-bottom-mid">
       <%= link_to "Volver", :back, class:"link-decoration-none do-underline font-small padding-left-small margin-bottom-huge btn-color-black"  %>
     </div>
-    <p class="font-small padding-left-small">¿No estás satisfecha? <%= link_to "Quiero eliminar mi cuenta", registration_path(resource_name), data: { confirm: "¿Estás segura que deseas eliminar tu cuenta?" }, method: :delete, class:"link-decoration-none do-underline font-small btn-color-black" %></p>
+    <p class="font-small padding-left-small">¿No estás satisfecha? <%= link_to "Quiero eliminar mi cuenta", registration_path(resource_name), method: :delete, data: { confirm: "¿Estás segura que deseas eliminar tu cuenta?" }, class:"link-decoration-none do-underline font-small btn-color-black" %></p>
   </div>
 </div>

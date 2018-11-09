@@ -23,4 +23,8 @@ class User < ApplicationRecord
   def all_orders_cancelled?
     orders.where(status: "Cancelada").size == orders.size
   end
+
+  def active_orders?
+    orders.where(status: "Pagada").size.positive?
+  end
 end

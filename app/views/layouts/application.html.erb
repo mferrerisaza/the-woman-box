@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <title><%= meta_title %></title>
+    <%= render 'shared/google-tag-manager-head' if Rails.env.production? %>
     <meta name="description" content="<%= meta_description %>">
 
     <!-- Facebook Open Graph data -->
@@ -31,6 +31,7 @@
     <%= render 'shared/google_analytics_tag' if Rails.env.production? %>
   </head>
   <body>
+    <%= render 'shared/google-tag-manager-body' if Rails.env.production? %>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
     <%= yield %>

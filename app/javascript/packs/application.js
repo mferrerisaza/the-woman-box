@@ -8,3 +8,4 @@ import '../components/autocomplete';
 import "./flatpickr.js";
 import '../components/paymentForm.js';
 import '../components/toolTip.js';
+import '../components/loader.js';

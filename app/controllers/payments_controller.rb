@@ -24,7 +24,7 @@ class PaymentsController < ApplicationController
   def create_card_token(card_params)
     credit_info = {
       'card[number]': card_params[:number].gsub(/\s+/, ""),
-      'card[exp_year]': card_params[:exp_year],
+      'card[exp_year]': card_params[:exp_year].length == 2 ? "20#{card_params[:exp_year]}" : card_params[:exp_year],
       'card[exp_month]': card_params[:exp_month],
       'card[cvc]': card_params[:cvc]
     }
@@ -70,7 +70,10 @@ class PaymentsController < ApplicationController
       customer: current_user.epayco_customer_id,
       token_card: current_user.epayco_token,
       doc_type: plan_params[:doc_type],
-      doc_number: plan_params[:doc_number]
+      doc_number: plan_params[:doc_number],
+      address: @order.address,
+      phone: current_user.phone,
+      cell_phone: current_user.phone
     }
 
     begin

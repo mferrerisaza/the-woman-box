@@ -3,7 +3,7 @@ namespace :orders do
   task update_all_status: :environment do
     users = User.all
     users.each do |user|
-      UpdateOrderStatusJob.perform_later(user.id)
+      UpdateOrderStatusJob.perform_now(user.id)
     end
   end
 end

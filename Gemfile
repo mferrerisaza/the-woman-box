@@ -24,6 +24,8 @@ gem 'carrierwave', '~> 1.2'
 gem 'country_select', '~> 3.1'
 gem 'mailjet'
 gem 'activeadmin'
+gem 'sidekiq'
+gem 'sidekiq-failures', '~> 1.0'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

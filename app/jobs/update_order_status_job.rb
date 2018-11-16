@@ -1,9 +1,10 @@
 class UpdateOrderStatusJob < ApplicationJob
   queue_as :default
 
-  def perform
-    orders = Order.where.not(status: "Incompleta")
-    orders.each do |order|
+  def perform(user_id)
+    user = User.find(user_id)
+    user_orders = Order.where(user: user).where.not(status: "Incompleta")
+    user_orders.each do |order|
       subscription_id = JSON.parse(order.payment)["subscription"]["_id"]
       subscription = Epayco::Subscriptions.get subscription_id
       subscription_status = subscription[:status_plan]

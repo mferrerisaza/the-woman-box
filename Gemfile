@@ -47,4 +47,3 @@ group :development, :test do
   gem 'chromedriver-helper'
   gem 'launchy'
 end
-

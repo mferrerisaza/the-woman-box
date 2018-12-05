@@ -129,7 +129,6 @@ RSpec.feature "Subscriptions", type: :feature do
       interval_count: 1,
       trial_days: 0
     }
-
     begin
       Epayco::Plan.create plan_info
     rescue Epayco::Error => e

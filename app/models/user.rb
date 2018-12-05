@@ -16,7 +16,7 @@ class User < ApplicationRecord
     epayco_token ? true : false
   end
 
-  def is_epayco_customer?
+  def epayco_customer?
     epayco_customer_id ? true : false
   end
 

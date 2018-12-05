@@ -1,7 +1,6 @@
 class Order < ApplicationRecord
   enum status: %w[Pendiente Pagada Cancelada Inactiva Incompleta]
   belongs_to :user
-
   validates :last_period, :address, :country, :province, :city, presence: true, on: :update
   validates :country, inclusion: { in: ["CO"], message: "No disponbile para envío " }, on: :update
 

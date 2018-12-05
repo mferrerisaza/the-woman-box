@@ -10,8 +10,8 @@ RSpec.feature "Subscriptions", type: :feature do
     end
   end
 
-  scenario "full subscribe proccess succesfully", js: true do
-    create_plans
+  scenario "user subscribes succesfully (from banner to order summary)", js: true do
+    data_setup
     click_landing_call_to_action
     select_subscription_plan
     create_account
@@ -21,7 +21,7 @@ RSpec.feature "Subscriptions", type: :feature do
 
   private
 
-  def create_plans
+  def data_setup
     @type = FactoryBot.create(:type)
     @size = FactoryBot.create(:size, type: @type)
     @plan = FactoryBot.create(:plan, size: @size)

@@ -24,10 +24,13 @@ gem 'carrierwave', '~> 1.2'
 gem 'country_select', '~> 3.1'
 gem 'mailjet'
 gem 'activeadmin'
+gem 'sidekiq'
+gem 'sidekiq-failures', '~> 1.0'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
   gem "letter_opener"
+  gem "spring-commands-rspec"
 end
 
 group :development, :test do
@@ -37,4 +40,10 @@ group :development, :test do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'dotenv-rails'
+  gem 'rspec-rails', '~> 3.8'
+  gem 'factory_bot_rails'
+  gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'chromedriver-helper'
+  gem 'launchy'
 end

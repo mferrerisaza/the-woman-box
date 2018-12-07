@@ -1,0 +1,24 @@
+language: ruby
+cache:
+  bundler: true
+  yarn: true
+services:
+- redis-server
+sudo: required
+before_install:
+- sudo apt-get update
+- sudo apt-get install google-chrome-stable
+addons:
+  postgresql: '9.6'
+before_script:
+- psql -c 'create database the_woman_box_test;' -U postgres
+script:
+- bundle exec rake db:create
+- bundle exec rake db:migrate RAILS_ENV=test
+- bundle exec rake db:schema:load
+- bundle exec rake db:test:prepare
+- SECRET_KEY_BASE=a RAILS_ENV=production bundle exec rake assets:precompile
+- bundle exec rspec
+env:
+  global:
+    secure: aC/0LR1KyF70TJVtwZVdSpkKObiBzShdG/qv6u2t8UpAFUg5sHuKRs1254yq1iIhhT2zZvXOED3Gp+v8Egc86xsvSi776yTvnshqYexxZ0FwF2lksGtgvi/QX39pSBX045fHm1Dw+FIPbe4WsgSb+RqBGbQujkZWzLhT3t5KoCabOD5UMFfz+ID2tEb8x1VMrffk7D0lnNmvBnjygpRuyC/S4G0nB/g4Ei9jC1SSRF0HqCsnoIWUdah6lB7L/zcglQVnRNuvURPazz9h/7OSWvFoSovpnnNFHClp+hhaFvGGzmDT/mL6MqbRxQKesd2BB981fdtXfLmCZIBEV9Qf6Zi6XIJN6EDqzKuk1a3ECTstXjhMG3muFykhFhbaueG7f4nVhXj0d0+RD88I8T906nfs+EEXZnTXbSonOLVFWh7vvaPlDh8Ce7yxO9+UDQxDs/cHs1iqXd3GHjTtaOi44RO1pVLYPkUpt6o1x2HlIqSPEsl9f9Zg8NzqqKqYkNOFNICdL/PKT32B6BnBF3mb/jauJxci2Xl38QlTZJ/DHw1zwMSaaA30oXK13bhgDVxQEJu/MHHr6czan8ak6P5IfKQL62sKot5WFEVFRNBrK1f5hRDbuLLoka3ZiFYLCFsOj8fwtMfryDRguhKkFEvmwQWvOAK6NFGzXMMi9p/mNNg=

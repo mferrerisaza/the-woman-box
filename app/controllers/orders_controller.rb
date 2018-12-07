@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
   skip_after_action :verify_authorized, only: :create
 
   def index
-    Order.update_status(current_user)
+    UpdateOrderStatusJob.perform_now(current_user.id)
     @orders = policy_scope(Order).order(status: :asc, created_at: :desc)
   end
 

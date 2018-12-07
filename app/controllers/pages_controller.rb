@@ -10,4 +10,9 @@ class PagesController < ApplicationController
 
   def terms_and_conditions
   end
+
+  def deliveries
+    @users = policy_scope(User).order(created_at: :desc)
+    authorize @users
+  end
 end

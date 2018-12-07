@@ -41,6 +41,19 @@ RSpec.describe User, type: :model do
       user_with_orders = FactoryBot.create(:user, :with_orders)
       expect(user_with_orders.orders.size).to eq 10
     end
+
+    it "can have many referred users" do
+      user_referring = FactoryBot.create(:user)
+      FactoryBot.create(:user, referred_by: user_referring.id)
+      FactoryBot.create(:user, referred_by: user_referring.id)
+      expect(User.number_of_referred_users(user_referring.id)).to eq 2
+    end
+
+    it "belongs to one referrer" do
+      user_referring = FactoryBot.create(:user)
+      new_user = FactoryBot.create(:user, referred_by: user_referring.id)
+      expect(new_user.referrer).to eq user_referring
+    end
   end
 
   context "instance methods" do

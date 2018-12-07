@@ -11,5 +11,5 @@ Rails.application.routes.draw do
   resources :sizes, only: :index
   get 'privacy_policy', to: "pages#privacy_policy", as: :privacy_policy
   get 'terms_and_conditions', to: "pages#terms_and_conditions", as: :terms_and_conditions
-
+  get 'deliveries', to: "pages#deliveries", as: :deliveries
 end

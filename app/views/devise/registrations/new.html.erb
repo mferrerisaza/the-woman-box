@@ -7,6 +7,7 @@
       <div class="form-inputs">
         <div class="row">
           <div class="col-xs-12 col-sm-12 col-md-6">
+            <%= f.hidden_field :referred_by, value: session[:referred_by] %>
             <%= f.input :first_name,
                         label: "Tu nombre",
                         placeholder: "Ej: Kim",

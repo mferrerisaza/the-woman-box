@@ -12,11 +12,26 @@ class Order < ApplicationRecord
     Date.parse(subscription[:current_period_end]) + 1
   end
 
+  def delivery_date_message
+    unless self.delivery_date.day == 30
+      return delivery_date.day
+    end
+    return "último día"
+    # delivery_margin = created_at + 10.days
+    # return 10 if delivery_margin.day >= 1 && delivery_margin.day <= 10
+    # return 20 if delivery_margin.day > 10 && delivery_margin.day <= 20
+    # return "último día"
+  end
+
   def delivery_date
     delivery_margin = created_at + 10.days
-    return 10 if delivery_margin.day >= 1 && delivery_margin.day <= 10
-    return 20 if delivery_margin.day > 10 && delivery_margin.day <= 20
-    return "último día"
+    if delivery_margin.day >= 1 && delivery_margin.day <= 10
+      parse_delivery_date(10, delivery_margin)
+    elsif delivery_margin.day > 10 && delivery_margin.day <= 20
+      parse_delivery_date(20, delivery_margin)
+    else
+      parse_delivery_date(30, delivery_margin)
+    end
   end
 
   def epayco_status_transform(epayco_status)
@@ -34,4 +49,51 @@ class Order < ApplicationRecord
     end
     order_status
   end
+
+  def deliveries
+    0
+  end
+
+
+  def double_box?
+    period_duration = 28
+    (Order.last.days_between_use_and_next_delivery).to_i > ((Order.last.double_box_counter) * period_duration)
+  end
+
+  def first_period_subsribed
+    period_t = Date.parse(last_period) + 28
+    period_t
+    # return period_t if period_t >= Order.last.next_delivery
+    # return period_t + 28
+  end
+
+  def anticipation_days
+    # How many days in advance we delivered fisthe box against next user period
+    ((Order.last.first_period_subsribed + (30 * Order.last.deliveries).days) - Order.last.next_delivery).to_i
+  end
+
+  def delivery_dates_difference
+    ((Order.last.next_delivery + 1.month) - Order.last.next_delivery).to_i
+  end
+
+  def days_between_use_and_next_delivery
+    # How many days between the use of the box and the next delivery
+    (Order.last.delivery_dates_difference - Order.last.anticipation_days).to_i
+  end
+
+  def double_box_counter
+    count = 0
+    if Order.last.days_between_use_and_next_delivery > (28 * count + 1)
+      count += 1
+    end
+    count
+  end
+
+
+  private
+
+  def parse_delivery_date(day, delivery_margin)
+    Date.parse("`#{day}-#{delivery_margin.month}-#{delivery_margin.year}`")
+  end
+
 end

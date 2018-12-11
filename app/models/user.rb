@@ -30,7 +30,10 @@ class User < ApplicationRecord
   end
 
   def self.number_of_referred_users(id)
-    # Cambar para que funcione pasando solo los usuarios referidos con ordenes activas
     where(referred_by: id).count
+  end
+
+  def self.number_of_referred_users_with_active_orders(id)
+    where(referred_by: id).joins(:orders).where( orders: { status: "Pagada" }).count
   end
 end

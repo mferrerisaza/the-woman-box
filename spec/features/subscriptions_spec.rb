@@ -10,7 +10,7 @@ RSpec.feature "Subscriptions", type: :feature do
     end
   end
 
-  scenario "user subscribes succesfully (from banner to order summary)", js: true do
+  scenario "user subscribes succesfully (from banner to order summary)", js: true, vcr: true do
     data_setup
     click_landing_call_to_action
     select_subscription_plan
@@ -19,14 +19,14 @@ RSpec.feature "Subscriptions", type: :feature do
     fill_payment_details
   end
 
-  scenario "user subscribes succesfully from referrer link", js: true do
+  scenario "user subscribes succesfully from referrer link", js: true, vcr: true do
     data_setup
     click_landing_call_to_action(@referrer.id)
     select_subscription_plan
     create_account
     fill_delivery_details
     fill_payment_details
-    expect(User.number_of_referred_users(@referrer.id)).to eq 1
+    expect(User.number_of_referred_users_with_active_orders(@referrer.id)).to eq 1
   end
 
   private

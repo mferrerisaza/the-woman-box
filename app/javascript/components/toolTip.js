@@ -5,6 +5,9 @@
     });
   }
 document.addEventListener("DOMContentLoaded", () =>  {
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
   const $tooltipBtn = document.querySelector(".no-follow");
   if ($tooltipBtn) {
     addListenerToTooltip($tooltipBtn);

@@ -1,0 +1,18 @@
+.link-container{
+  input {
+    border: 1px solid $my-light-gray;
+    border-radius: 0px;
+    font-weight: bold;
+    color: $my-black;
+    font-size: 13px;
+    width: 80%;
+    text-align: center;
+  }
+}
+.social-btns-container{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}

@@ -9,20 +9,42 @@
 </div>
 <div class="show-container padding-bottom-mid padding-top-mid background-light-pink">
   <div class="profile-section-container margin-bottom-mid background-light-pink-transparent padding-section-mid padding-side-desktop padding-top-mid">
-    <input type="text" value="<%= root_url(referred_by: current_user.id) %>">
-    <div class="fb-share-button"
-      data-href="https://www.thewomenbox.com?referred_by=<%= current_user.id %>"
-      data-layout="button"
-      data-size="large"
-      data-mobile-iframe="false">
-  </div>
-  <a class="twitter-share-button"
-    href="https://twitter.com/intent/tweet?"
-    data-size="large"
-    data-text="Hello World"
-    data-url="<%= root_url(referred_by: current_user.id)%>"
-  >
-  Tweet</a>
+    <div class="link-container">
+      <input id="referral-link" type="text" value="<%= root_url(referred_by: current_user.id) %>" disabled>
+      <button class="btn clipboard-copier" data-clipboard-text="<%= root_url(referred_by: current_user.id) %>" data-toggle="tooltip" data-placement="bottom" title="Copiado" data-trigger="click">
+          <i class="far fa-copy"></i>
+      </button>
+    </div>
+    <div class="social-btns-container">
+      <div class="social-btn">
+        <div class="fb-share-button"
+            data-href="https://www.thewomenbox.com?referred_by=<%= current_user.id %>"
+            data-layout="button"
+            data-size="small"
+            data-mobile-iframe="false">
+        </div>
+      </div>
+      <div class="social-btn">
+        <a class="twitter-share-button"
+          href="https://twitter.com/intent/tweet?"
+          data-size="small"
+          data-text="Hello World"
+          data-url="https://www.thewomenbox.com?referred_by=<%= current_user.id %>"
+        >
+          Tweet
+        </a>
+      </div>
+      <div class="social-btn">
+        <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: es_ES</script>
+        <script type="IN/Share" data-url="https://www.thewomenbox.com?referred_by=<%= current_user.id %>"></script>
+      </div>
+      <div class="social-btn">
+          <a target="_blank" class="share-on-whatsapp-btn" href="https://wa.me/?text=https://www.thewomenbox.com?referred_by=<%= current_user.id %>">
+            <i class="fab fa-whatsapp"></i>
+              Compartir
+          </a>
+      </div>
+    </div>
 </div>
 <%= render 'shared/footer', background: "background-light-pink", border_top:"" %>
 

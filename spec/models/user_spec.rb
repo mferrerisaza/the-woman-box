@@ -49,6 +49,13 @@ RSpec.describe User, type: :model do
       expect(User.number_of_referred_users(user_referring.id)).to eq 2
     end
 
+    it "counts the referred user with active orders" do
+      user_referring = FactoryBot.create(:user)
+      FactoryBot.create(:user, referred_by: user_referring.id)
+      FactoryBot.create(:user, :with_active_orders, referred_by: user_referring.id)
+      expect(User.number_of_referred_users_with_active_orders(user_referring.id)).to eq 1
+    end
+
     it "belongs to one referrer" do
       user_referring = FactoryBot.create(:user)
       new_user = FactoryBot.create(:user, referred_by: user_referring.id)
@@ -94,6 +101,11 @@ RSpec.describe User, type: :model do
     it "returns true if user has at least 1 active subscription" do
       user_with_orders = FactoryBot.create(:user, :with_active_orders)
       expect(user_with_orders.active_orders?).to eq true
+    end
+
+    it "returns false if user has at least 0 active subscription" do
+      user_with_orders = FactoryBot.create(:user)
+      expect(user_with_orders.active_orders?).to eq false
     end
 
     it "returns false if user do not have an active subscription" do

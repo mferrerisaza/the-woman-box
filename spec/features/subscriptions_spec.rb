@@ -10,7 +10,7 @@ RSpec.feature "Subscriptions", type: :feature do
     end
   end
 
-  scenario "user subscribes succesfully (from banner to order summary)", js: true, vcr: true do
+  scenario "user subscribes succesfully (from banner to order summary)", js: true do
     data_setup
     click_landing_call_to_action
     select_subscription_plan
@@ -19,7 +19,7 @@ RSpec.feature "Subscriptions", type: :feature do
     fill_payment_details
   end
 
-  scenario "user subscribes succesfully from referrer link", js: true, vcr: true do
+  scenario "user subscribes succesfully from referrer link", js: true do
     data_setup
     click_landing_call_to_action(@referrer.id)
     select_subscription_plan

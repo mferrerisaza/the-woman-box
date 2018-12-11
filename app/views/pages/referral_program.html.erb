@@ -9,6 +9,13 @@
 </div>
 <div class="show-container padding-bottom-mid padding-top-mid background-light-pink">
   <div class="profile-section-container margin-bottom-mid background-light-pink-transparent padding-section-mid padding-side-desktop padding-top-mid">
+    <div class="">
+      <% if @referred_users.zero? %>
+        <p>Aún no has referido a nadie</p>
+      <% else %>
+        <p>Has referido <%= pluralize(@referred_users, "suscriptora", "suscriptoras") %></p>
+      <% end %>
+    </div>
     <div class="link-container">
       <input id="referral-link" type="text" value="<%= root_url(referred_by: current_user.id) %>" disabled>
       <button class="btn clipboard-copier" data-clipboard-text="<%= root_url(referred_by: current_user.id) %>" data-toggle="tooltip" data-placement="bottom" title="Copiado" data-trigger="click">

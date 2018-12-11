@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :sizes, only: :index
   get 'privacy_policy', to: "pages#privacy_policy", as: :privacy_policy
   get 'terms_and_conditions', to: "pages#terms_and_conditions", as: :terms_and_conditions
+  get 'referral_program', to: "pages#referral_program", as: :referral_program
   require "sidekiq/web"
   authenticate :user, lambda { |u| u.admin } do
     mount Sidekiq::Web => '/sidekiq'

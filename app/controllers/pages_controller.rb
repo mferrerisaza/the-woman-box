@@ -10,4 +10,7 @@ class PagesController < ApplicationController
 
   def terms_and_conditions
   end
+
+  def referral_program
+  end
 end

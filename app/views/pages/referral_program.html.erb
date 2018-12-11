@@ -1,0 +1,23 @@
+<!-- Horionztal Menu Profile page -->
+<div class="horizontal-menu-container-desktop padding-section-mid background-light-pink">
+  <div class="flex flex-justify-around underlined margin-left-huge margin-right-huge padding-bottom-small">
+      <%= link_to "Datos personales", user_path(current_user), class:"link-decoration-none menu-item btn-color-black" %>
+    <div class="menu-item active-item">
+      Suscripciones
+    </div>
+  </div>
+</div>
+<div class="show-container padding-bottom-mid padding-top-mid background-light-pink">
+  <div class="profile-section-container margin-bottom-mid background-light-pink-transparent padding-section-mid padding-side-desktop padding-top-mid">
+    <input type="text" value="<%= root_url(referred_by: current_user.id) %>">
+    <div class="fb-share-button"
+      data-href="https://www.thewomenbox.com?referred_by=<%= current_user.id %>"
+      data-layout="button"
+      data-size="large"
+      data-mobile-iframe="false">
+  </div>
+</div>
+<%= render 'shared/footer', background: "background-light-pink", border_top:"" %>
+
+
+

@@ -4,6 +4,7 @@
   <% end %>
   <% if user_signed_in? %>
     <div class="navbar-wagon-right hidden-xs hidden-sm">
+      <%= link_to "¡Refiere y Gana!", referral_program_path, class: "navbar-wagon-item navbar-wagon-link link-bold link-underline" %>
       <%= link_to user_path(current_user), class: "navbar-wagon-item navbar-wagon-link" do %>
         <i class="fas fa-user"></i>
         Mi Cuenta

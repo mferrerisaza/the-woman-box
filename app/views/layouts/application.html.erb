@@ -33,6 +33,8 @@
   </head>
   <body>
     <%= render 'shared/google-tag-manager-body' if Rails.env.production? %>
+    <%= render 'shared/facebook_sdk' %>
+    <%= render 'shared/twitter_widgets' %>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
     <%= yield %>

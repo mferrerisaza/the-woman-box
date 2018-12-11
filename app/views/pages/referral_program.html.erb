@@ -16,6 +16,13 @@
       data-size="large"
       data-mobile-iframe="false">
   </div>
+  <a class="twitter-share-button"
+    href="https://twitter.com/intent/tweet?"
+    data-size="large"
+    data-text="Hello World"
+    data-url="<%= root_url(referred_by: current_user.id)%>"
+  >
+  Tweet</a>
 </div>
 <%= render 'shared/footer', background: "background-light-pink", border_top:"" %>
 

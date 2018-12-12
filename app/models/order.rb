@@ -54,43 +54,43 @@ class Order < ApplicationRecord
     0
   end
 
-
   def double_box?
     period_duration = 28
-    (Order.last.days_between_use_and_next_delivery).to_i > ((Order.last.double_box_counter) * period_duration)
+    days_between_use_and_next_delivery.to_i > ((double_box_counter) * period_duration)
   end
+
+  private
 
   def first_period_subsribed
     period_t = Date.parse(last_period) + 28
-    period_t
-    # return period_t if period_t >= Order.last.next_delivery
-    # return period_t + 28
+    return period_t if (period_t >= next_delivery)
+    return (period_t + 28)
   end
+
 
   def anticipation_days
     # How many days in advance we delivered fisthe box against next user period
-    ((Order.last.first_period_subsribed + (30 * Order.last.deliveries).days) - Order.last.next_delivery).to_i
+    ((first_period_subsribed + (30 * deliveries).days) - next_delivery).to_i
   end
 
   def delivery_dates_difference
-    ((Order.last.next_delivery + 1.month) - Order.last.next_delivery).to_i
+    ((next_delivery + 1.month) - next_delivery).to_i
   end
+
 
   def days_between_use_and_next_delivery
     # How many days between the use of the box and the next delivery
-    (Order.last.delivery_dates_difference - Order.last.anticipation_days).to_i
+    (delivery_dates_difference - anticipation_days).to_i
   end
+
 
   def double_box_counter
     count = 0
-    if Order.last.days_between_use_and_next_delivery > (28 * count + 1)
+    if days_between_use_and_next_delivery > (28 * count + 1)
       count += 1
-    end
+    endo
     count
   end
-
-
-  private
 
   def parse_delivery_date(day, delivery_margin)
     Date.parse("`#{day}-#{delivery_margin.month}-#{delivery_margin.year}`")

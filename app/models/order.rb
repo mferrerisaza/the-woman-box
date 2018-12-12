@@ -64,9 +64,8 @@ class Order < ApplicationRecord
   def first_period_subsribed
     period_t = Date.parse(last_period) + 28
     return period_t if (period_t >= next_delivery)
-    return (period_t + 28)
+    return period_t + 28
   end
-
 
   def anticipation_days
     # How many days in advance we delivered fisthe box against next user period
@@ -88,12 +87,11 @@ class Order < ApplicationRecord
     count = 0
     if days_between_use_and_next_delivery > (28 * count + 1)
       count += 1
-    endo
+    end
     count
   end
 
   def parse_delivery_date(day, delivery_margin)
     Date.parse("`#{day}-#{delivery_margin.month}-#{delivery_margin.year}`")
   end
-
 end

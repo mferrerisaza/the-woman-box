@@ -20,8 +20,9 @@ ActiveAdmin.register Order do
         min_date: 40.days.ago.to_date,
         max_date: 0.days.ago.to_date
       }
+      f.input :next_double
     end
     f.actions
   end
-  permit_params :plan_sku, :status,:amount, :user_id, :last_period, :next_delivery, :address, :country, :province, :city, :address_aditional_info
+  permit_params :plan_sku, :status,:amount, :user_id, :last_period, :next_delivery, :next_double, :address, :country, :province, :city, :address_aditional_info
 end

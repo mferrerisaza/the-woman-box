@@ -17,20 +17,16 @@ class Order < ApplicationRecord
       return delivery_date.day
     end
     return "último día"
-    # delivery_margin = created_at + 10.days
-    # return 10 if delivery_margin.day >= 1 && delivery_margin.day <= 10
-    # return 20 if delivery_margin.day > 10 && delivery_margin.day <= 20
-    # return "último día"
   end
 
   def delivery_date
     delivery_margin = created_at + 10.days
     if delivery_margin.day >= 1 && delivery_margin.day <= 10
-      parse_delivery_date(10, delivery_margin)
+      parse_delivery_date(10, delivery_margin, self)
     elsif delivery_margin.day > 10 && delivery_margin.day <= 20
-      parse_delivery_date(20, delivery_margin)
+      parse_delivery_date(20, delivery_margin, self)
     else
-      parse_delivery_date(30, delivery_margin)
+      parse_delivery_date(30, delivery_margin, self)
     end
   end
 
@@ -87,7 +83,8 @@ class Order < ApplicationRecord
     count
   end
 
-  def parse_delivery_date(day, delivery_margin)
-    Date.parse("`#{day}-#{delivery_margin.month}-#{delivery_margin.year}`")
+  def parse_delivery_date(day, delivery_margin, order)
+    next_delivery = Date.parse("`#{day}-#{delivery_margin.month}-#{delivery_margin.year}`")
+    next_delivery + order.deliveries.months
   end
 end

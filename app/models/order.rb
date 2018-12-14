@@ -50,10 +50,6 @@ class Order < ApplicationRecord
     order_status
   end
 
-  def deliveries
-    0
-  end
-
   def double_box?
     period_duration = 28
     days_between_use_and_next_delivery.to_i > ((double_box_counter) * period_duration)

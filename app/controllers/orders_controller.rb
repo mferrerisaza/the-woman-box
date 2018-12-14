@@ -32,7 +32,7 @@ class OrdersController < ApplicationController
   def update
     authorize @order
     if @order.update(order_params)
-      @order.update(next_delivery: @order.delivery_date)
+      @order.update(next_delivery: @order.delivery_date, next_double: @order.double_box?)
       redirect_to new_order_payment_path(@order)
     else
       render 'edit'

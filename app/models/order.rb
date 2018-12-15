@@ -6,6 +6,8 @@ class Order < ApplicationRecord
 
   monetize :amount_cents
 
+  PERIOD_DURATION = 28
+
   def next_period_start
     subscription_id = JSON.parse(payment)["subscription"]["_id"]
     subscription = Epayco::Subscriptions.get subscription_id
@@ -47,21 +49,25 @@ class Order < ApplicationRecord
   end
 
   def double_box?
-    period_duration = 28
-    days_between_use_and_next_delivery.to_i > ((double_box_counter) * period_duration)
+    # period_duration = 28
+    # p days_between_use_and_next_delivery.to_i > period_duration
+    days_between_use_and_next_delivery.to_i > PERIOD_DURATION
   end
 
   private
 
   def first_period_subsribed
-    period_t = Date.parse(last_period) + 28
-    return period_t if (period_t >= next_delivery)
+    period_t = Date.parse(last_period) + PERIOD_DURATION
+    return period_t if (period_t >= (next_delivery - deliveries.months))
     return period_t + 28
   end
 
   def anticipation_days
     # How many days in advance we delivered fisthe box against next user period
-    ((first_period_subsribed + (30 * deliveries).days) - next_delivery).to_i
+    ad = ((first_period_subsribed + (PERIOD_DURATION * deliveries).days) - next_delivery).to_i
+    return ad if ad > 0
+    ad += 30 while ad < 0
+    return ad
   end
 
   def delivery_dates_difference
@@ -72,15 +78,6 @@ class Order < ApplicationRecord
   def days_between_use_and_next_delivery
     # How many days between the use of the box and the next delivery
     (delivery_dates_difference - anticipation_days).to_i
-  end
-
-
-  def double_box_counter
-    count = 0
-    if days_between_use_and_next_delivery > (28 * count + 1)
-      count += 1
-    end
-    count
   end
 
   def parse_delivery_date(day, delivery_margin, order)

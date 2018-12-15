@@ -9,7 +9,7 @@ namespace :orders do
 
   desc "Update next delivery dates"
   task update_next_deliveries: :environment do
-    orders = Order.where(status: "Incompleta")
+    orders = Order.where(status: "Pagada")
     orders.each do |order|
       UpdateOrderDeliveryDateJob.perform_now(order.id)
     end

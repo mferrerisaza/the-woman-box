@@ -49,8 +49,6 @@ class Order < ApplicationRecord
   end
 
   def double_box?
-    # period_duration = 28
-    # p days_between_use_and_next_delivery.to_i > period_duration
     days_between_use_and_next_delivery.to_i > PERIOD_DURATION
   end
 
@@ -71,7 +69,11 @@ class Order < ApplicationRecord
   end
 
   def delivery_dates_difference
-    ((next_delivery + 1.month) - next_delivery).to_i
+    if next_delivery
+      return ((next_delivery + 1.month) - next_delivery).to_i
+    end
+    # self.update(next_delivery: delivery_date)
+    # ((next_delivery + 1.month) - next_delivery).to_i
   end
 
 

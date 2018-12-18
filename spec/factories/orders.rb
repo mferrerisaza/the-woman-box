@@ -10,5 +10,7 @@ FactoryBot.define do
     province "Antioquia"
     country "Colombia"
     address_aditional_info "Edificio el recinto apto 302"
+    deliveries 0
+    created_at Date.parse("2018-12-18")
   end
 end

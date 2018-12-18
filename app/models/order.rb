@@ -69,11 +69,9 @@ class Order < ApplicationRecord
   end
 
   def delivery_dates_difference
-    if next_delivery
-      return ((next_delivery + 1.month) - next_delivery).to_i
-    end
-    # self.update(next_delivery: delivery_date)
-    # ((next_delivery + 1.month) - next_delivery).to_i
+    return ((next_delivery + 1.month) - next_delivery).to_i if next_delivery
+    self.update(next_delivery: delivery_date)
+    ((next_delivery + 1.month) - next_delivery).to_i
   end
 
 

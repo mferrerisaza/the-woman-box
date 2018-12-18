@@ -20,7 +20,7 @@ class OrdersController < ApplicationController
                 status: 'Incompleta', user: current_user, deliveries: 0)
       redirect_to edit_order_path(order)
     else
-      session[:order] = { plan_sku: plan.sku, amount: plan.price.to_i, status: 'Incompleta' }
+      session[:order] = { plan_sku: plan.sku, amount: plan.price.to_i, status: 'Incompleta', deliveries: 0}
       redirect_to new_user_registration_path
     end
   end

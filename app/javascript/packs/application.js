@@ -10,3 +10,4 @@ import '../components/paymentForm.js';
 import '../components/toolTip.js';
 import '../components/loader.js';
 import "./clipboard.js";
+import '../components/modalReferral.js';

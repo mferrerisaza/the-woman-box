@@ -1,57 +1,103 @@
 <!-- Horionztal Menu Profile page -->
 <div class="horizontal-menu-container-desktop padding-section-mid background-light-pink">
   <div class="flex flex-justify-around underlined margin-left-huge margin-right-huge padding-bottom-small">
-      <%= link_to "Datos personales", user_path(current_user), class:"link-decoration-none menu-item btn-color-black" %>
-    <div class="menu-item active-item">
-      Suscripciones
-    </div>
+    <h1 class="page-title">Refiere a una amiga y gana</h1>
   </div>
 </div>
-<div class="show-container padding-bottom-mid padding-top-mid background-light-pink">
-  <div class="profile-section-container margin-bottom-mid background-light-pink-transparent padding-section-mid padding-side-desktop padding-top-mid">
-    <div class="">
-      <% if @referred_users.zero? %>
-        <p>Aún no has referido a nadie</p>
-      <% else %>
-        <p>Has referido <%= pluralize(@referred_users, "suscriptora", "suscriptoras") %></p>
-      <% end %>
-    </div>
-    <div class="link-container">
-      <input id="referral-link" type="text" value="<%= root_url(referred_by: current_user.id) %>" disabled>
-      <button class="btn clipboard-copier" data-clipboard-text="<%= root_url(referred_by: current_user.id) %>" data-toggle="tooltip" data-placement="bottom" title="Copiado" data-trigger="click">
-          <i class="far fa-copy"></i>
-      </button>
-    </div>
-    <div class="social-btns-container">
-      <div class="social-btn">
-        <div class="fb-share-button"
-            data-href="https://www.thewomenbox.com?referred_by=<%= current_user.id %>"
-            data-layout="button"
-            data-size="small"
-            data-mobile-iframe="false">
+<div class="background-light-pink">
+  <div class="container padding-bottom-mid">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <div class="order-description" style="background-image: url('<%= cl_image_path("the-woman-box/the_woman_box_instagram_2", height: 600, width: 600, crop: :fit) %>');">
+          <%= cl_image_tag("logo.png", height: 500, width: 500, crop: :thumb, class: "order-description-image")%>
+          <div class="order-description-list-container">
+            <p class="text-center">En <strong>The Women Box</strong> queremos darte más motivos para que <strong>esos días sean felices</strong>, por eso creamos nuestro programa de referidos. Participar es muy sencillo:</p>
+            <ul class="order-description-list">
+              <li>
+                <span>
+                  <span class="order-description-list-number">1.</span>
+                  <strong>Comparte el link para referir</strong> a tus amigas y cuéntales como funciona The Women Box.
+                </span>
+              </li>
+              <hr>
+              <li>
+                <span>
+                  <span class="order-description-list-number">2.</span>
+                  Por cada amiga que se suscriba a través de tu link, recibirás <strong>$5.000 en regalos adicionales</strong> para tu próxima caja.
+                </span>
+              </li>
+              <hr>
+              <li>
+                <span>
+                  <span class="order-description-list-number">3.</span>
+                  Tus referidas podrán ganar <strong>tres meses gratis de suscripción</strong> en las rifas que realizaremos cada mes durante el programa de referidos.
+                </span>
+              </li>
+              <hr>
+              <li>
+                <span>
+                  <span class="order-description-list-number">4.</span>
+                  Además tus referidas también podrán <strong>referir y ganar regalos</strong>.
+                </span>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
-      <div class="social-btn">
-        <a class="twitter-share-button"
-          href="https://twitter.com/intent/tweet?"
-          data-size="small"
-          data-text="Hello World"
-          data-url="https://www.thewomenbox.com?referred_by=<%= current_user.id %>"
-        >
-          Tweet
-        </a>
-      </div>
-      <div class="social-btn">
-        <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: es_ES</script>
-        <script type="IN/Share" data-url="https://www.thewomenbox.com?referred_by=<%= current_user.id %>"></script>
-      </div>
-      <div class="social-btn">
-          <a target="_blank" class="share-on-whatsapp-btn" href="https://wa.me/?text=https://www.thewomenbox.com?referred_by=<%= current_user.id %>">
-            <i class="fab fa-whatsapp"></i>
-              Compartir
-          </a>
+      <div class="col-xs-12 col-sm-6">
+        <div class="text-center background-light-pink-transparent referral-link-box">
+          <h2 class="page-subtitle">Tus premios</h2>
+          <div class="number-of-referrals">
+            <% if @referred_users.zero? %>
+              <p>Aún no has referido a nadie. Aquí verás el número de amigas que has referido y el monto en regalos que recibirás en tu próxima caja</p>
+            <% else %>
+              <p>Has referido <%= pluralize(@referred_users, "suscriptora", "suscriptoras") %></p>
+            <% end %>
+          </div>
+          <hr class="black-divider">
+          <h2 class="page-subtitle">Tu link para referir</h2>
+          <div class="link-container">
+            <input id="referral-link" type="text" value="<%= root_url(referred_by: current_user.id) %>" disabled>
+          </div>
+          <div class="social-btns-container">
+            <div class="social-btn" style="margin-top: 5.5px;">
+              <button class="btn clipboard-copier" data-clipboard-text="<%= root_url(referred_by: current_user.id) %>" data-toggle="tooltip" data-placement="bottom" title="Copiado" data-trigger="click">
+                  <i class="far fa-copy"></i> Copiar
+              </button>
+            </div>
+            <div class="social-btn" style="margin-top: 0px;">
+              <div class="fb-share-button"
+                  data-href="https://www.thewomenbox.com?referred_by=<%= current_user.id %>"
+                  data-layout="button"
+                  data-size="small"
+                  data-mobile-iframe="false">
+              </div>
+            </div>
+            <div class="social-btn" style="margin-top: 5.5px;">
+              <a class="twitter-share-button"
+                href="https://twitter.com/intent/tweet?"
+                data-size="small"
+                data-text="Suscríbete y gana 3 meses de suscripción gratis a The Women Box"
+                data-url="https://www.thewomenbox.com?referred_by=<%= current_user.id %>"
+              >
+                Tweet
+              </a>
+            </div>
+            <div class="social-btn" style="margin-top: 5.5px; padding-top: 3px;">
+              <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: es_ES</script>
+              <script type="IN/Share" data-url="https://www.thewomenbox.com?referred_by=<%= current_user.id %>"></script>
+            </div>
+            <div class="social-btn" style="margin-top: 5.5px;">
+                <a target="_blank" class="share-on-whatsapp-btn" href="https://wa.me/?text=https://www.thewomenbox.com?referred_by=<%= current_user.id %>">
+                  <i class="fab fa-whatsapp"></i>
+                    Compartir
+                </a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+  </div>
 </div>
 <%= render 'shared/footer', background: "background-light-pink", border_top:"" %>
 

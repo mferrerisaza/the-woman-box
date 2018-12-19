@@ -14,23 +14,26 @@
         <%= t(".sign_out", default: "Cerrar Sesión") %>
       <% end %>
     </div>
-    <div class="navbar-wagon-item hidden-md hidden-lg">
-      <div class="dropdown">
-        <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
-        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-          <li>
-            <%= link_to user_path(current_user), class: "navbar-wagon-item navbar-wagon-link" do %>
-              <i class="fas fa-user"></i>
-              Mi Cuenta
-            <% end %>
-          </li>
-          <li>
-            <%= link_to destroy_user_session_path, class: "navbar-wagon-item navbar-wagon-link", method: :delete do %>
-              <i class="fas fa-sign-out-alt"></i>
-              <%= t(".sign_out", default: "Cerrar Sesión") %>
-            <% end %>
-          </li>
-        </ul>
+    <div class="navbar-wagon-right hidden-md hidden-lg">
+      <%= link_to "¡Refiere y Gana!", referral_program_path, class: "hidden-md hidden-lg navbar-wagon-item navbar-wagon-link link-bold link-underline" %>
+      <div class="navbar-wagon-item hidden-md hidden-lg">
+        <div class="dropdown">
+          <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+            <li>
+              <%= link_to user_path(current_user), class: "navbar-wagon-item navbar-wagon-link" do %>
+                <i class="fas fa-user"></i>
+                Mi Cuenta
+              <% end %>
+            </li>
+            <li>
+              <%= link_to destroy_user_session_path, class: "navbar-wagon-item navbar-wagon-link", method: :delete do %>
+                <i class="fas fa-sign-out-alt"></i>
+                <%= t(".sign_out", default: "Cerrar Sesión") %>
+              <% end %>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   <% else %>

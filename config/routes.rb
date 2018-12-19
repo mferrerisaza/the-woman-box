@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   root to: 'pages#home'
   resources :orders, except: [:delete] do
-    resources :payments, only: [:new, :create]
+    resources :payments, only: [:index, :new, :create]
     post 'payments/cancel', to: "payments#cancel"
   end
   resources :plans, only: :index

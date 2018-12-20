@@ -49,6 +49,9 @@ class Order < ApplicationRecord
   end
 
   def double_box?
+    # Run
+    # rails orders:update_next_deliveries
+    # To update double_box and next delivery dates for all orders
     days_between_use_and_next_delivery.to_i > PERIOD_DURATION
   end
 
@@ -63,13 +66,15 @@ class Order < ApplicationRecord
   def anticipation_days
     # How many days in advance we delivered fisthe box against next user period
     ad = ((first_period_subsribed + (PERIOD_DURATION * deliveries).days) - next_delivery).to_i
-    return ad if ad > 0
-    ad += 30 while ad < 0
+    return ad if ad > 0 # This means "delivering with anticipation"
+    ad += 30 while ad < 0 # Loop to return a integer when we deliver with anticipation
     return ad
   end
 
   def delivery_dates_difference
+    # Next month delivery - This month delivery
     return ((next_delivery + 1.month) - next_delivery).to_i if next_delivery
+    # Add delivery date to the order in case it doesn't have it
     self.update(next_delivery: delivery_date)
     ((next_delivery + 1.month) - next_delivery).to_i
   end
@@ -82,6 +87,9 @@ class Order < ApplicationRecord
 
   def parse_delivery_date(day, delivery_margin, order)
     next_delivery = Date.parse("`#{day}-#{delivery_margin.month}-#{delivery_margin.year}`")
+    unless order.deliveries?
+      order.update(deliveries: 0)
+    end
     next_delivery + order.deliveries.months
   end
 end

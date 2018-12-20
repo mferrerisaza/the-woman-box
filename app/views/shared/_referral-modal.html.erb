@@ -1,0 +1,12 @@
+<div class="modal fade" id="referralModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content" style="background-image: linear-gradient(to left, rgba(0, 0, 0, 0.57), rgba(0, 0, 0, 0.67)), url('<%= cl_image_path("the-woman-box/stamping.jpg")%>');">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <div class="text-center" style="width: 90%;">
+          <h3 class="modal-title text-center font-bold" id="myModalLabel">¿Quieres más regalos en tu box?</h3>
+          <p>Recibe en tu próxima caja <strong><u>$5.000 en artículos por cada amiga</u></strong> que refieras</p>
+        </div>
+          <%= link_to "muéstrame como", referral_program_path, class: "button2 banner-call-to-actions" %>
+    </div>
+  </div>
+</div>

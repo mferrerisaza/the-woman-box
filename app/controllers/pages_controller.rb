@@ -10,4 +10,9 @@ class PagesController < ApplicationController
 
   def terms_and_conditions
   end
+
+  def referral_program
+    redirect_to root_path, alert: "Aún no tienes una suscripción activa" unless current_user.active_orders?
+    @referred_users = User.number_of_referred_users_with_active_orders(current_user.id)
+  end
 end

@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :capture_referal
 
   include Pundit
 
@@ -39,6 +40,10 @@ class ApplicationController < ActionController::Base
     { host: ENV["HOST"] || "localhost:3000" }
   end
 
+  def capture_referal
+    session[:referred_by] = params[:referred_by] if params[:referred_by]
+  end
+
   private
 
   def skip_pundit?
@@ -48,8 +53,9 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    added_attrs = [:phone, :first_name, :last_name, :email, :password, :password_confirmation, :remember_me]
-    devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
-    devise_parameter_sanitizer.permit :account_update, keys: added_attrs
+    added_attrs_on_signup = %i[phone first_name last_name email password password_confirmation remember_me referred_by]
+    added_attrs_on_update = %i[phone first_name last_name email password password_confirmation remember_me]
+    devise_parameter_sanitizer.permit :sign_up, keys: added_attrs_on_signup
+    devise_parameter_sanitizer.permit :account_update, keys: added_attrs_on_update
   end
 end

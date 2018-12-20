@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :orders, dependent: :nullify
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  belongs_to :referrer, class_name: 'User', foreign_key: 'referred_by', optional: true
 
   validates :first_name, :last_name, :phone, presence: true
   DOC_TYPE = %w[NIT CC CE TI PPN SSN LIC DNI]
@@ -26,5 +27,13 @@ class User < ApplicationRecord
 
   def active_orders?
     orders.where(status: "Pagada").size.positive?
+  end
+
+  def self.number_of_referred_users(id)
+    where(referred_by: id).count
+  end
+
+  def self.number_of_referred_users_with_active_orders(id)
+    where(referred_by: id).joins(:orders).where( orders: { status: "Pagada" }).count
   end
 end

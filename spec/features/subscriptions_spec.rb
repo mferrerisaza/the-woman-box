@@ -19,17 +19,32 @@ RSpec.feature "Subscriptions", type: :feature do
     fill_payment_details
   end
 
+  scenario "user subscribes succesfully from referrer link", js: true do
+    data_setup
+    click_landing_call_to_action(@referrer.id)
+    select_subscription_plan
+    create_account
+    fill_delivery_details
+    fill_payment_details
+    expect(User.number_of_referred_users_with_active_orders(@referrer.id)).to eq 1
+  end
+
   private
 
   def data_setup
     @type = FactoryBot.create(:type)
     @size = FactoryBot.create(:size, type: @type)
     @plan = FactoryBot.create(:plan, size: @size)
+    @referrer = FactoryBot.create(:user)
     @user = FactoryBot.build(:user)
   end
 
-  def click_landing_call_to_action
-    visit root_path
+  def click_landing_call_to_action(referrer_id = nil)
+    if referrer_id
+      visit root_path(referred_by: referrer_id)
+    else
+      visit root_path
+    end
     within ".banner" do
       expect(page).to have_content "SUSCRÍBETE"
       click_link "Suscríbete"

@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
-  skip_before_action :authenticate_user!
+  skip_before_action :authenticate_user!, except: %i[index thank_you]
   before_action :set_order, only: %i[edit update]
-  skip_after_action :verify_authorized, only: :create
+  skip_after_action :verify_authorized, only: %i[create thank_you]
 
   def index
     UpdateOrderStatusJob.perform_now(current_user.id)
@@ -38,6 +38,9 @@ class OrdersController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def thank_you
   end
 
   private

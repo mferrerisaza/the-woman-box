@@ -1,0 +1,13 @@
+<div class="show-container padding-bottom-mid padding-top-mid background-light-pink padding-left-xsmall padding-right-xsmall">
+  <div class="profile-section-container margin-bottom-mid background-light-pink-transparent padding-section-mid padding-side-desktop thank-you-card" style="background-size: contain; background-position: center;background-image: url('<%= cl_image_path("the-woman-box/flowers_2.png")%>');">
+    <h2 class="text-center title padding-left-small">
+      ¡Muchas Gracias <%= current_user.first_name %>!
+    </h2>
+    <p class="padding-top-mid text-center">Estamos muy felices de tenerte entre nuestras sucriptoras.</p>
+    <p class="padding-top-mid text-center">¡Tu caja estara contigo pronto!</p>
+    <p class="padding-top-mid text-center"><strong>¿Quieres más regalos en tu caja?</strong> cuéntale a una amiga acerca de nosotros y recibe $5.000 más en contenido por cada amiga que se suscriba
+    </p>
+    <%= link_to "Conseguir más regalos", referral_program_path, class:"padding-left-mid font-small link-decoration-none button2 cancel-btn font-small"  %>
+  </div>
+</div>
+<%= render 'shared/footer', background: "background-light-pink", border_top:"" %>

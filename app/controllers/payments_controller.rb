@@ -88,7 +88,7 @@ class PaymentsController < ApplicationController
       if subscription_status == "active"
         @order.update(payment: charge.to_json, status: 'Pagada', next_delivery: @order.delivery_date)
         flash[:notice] = "Tu pago ha sido procesado con éxito, bienvenida a The Women Box"
-        redirect_to orders_path
+        redirect_to thank_you_orders_path
       elsif subscription_status == "canceled"
         @order.update(payment: charge.to_json, status: "Cancelada")
         transaction_status = charge[:data][:estado]

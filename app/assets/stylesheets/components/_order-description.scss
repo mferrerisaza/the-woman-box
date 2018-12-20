@@ -19,6 +19,11 @@
     width: 90%;
     border-radius: 4px;
     margin-bottom: 10%;
+    p {
+      padding: 8px;
+      font-size: 14px;
+      color: $my-black;
+    }
     .order-description-list {
       list-style: none;
       margin: 0;
@@ -36,6 +41,11 @@
           color: $my-dark-pink;
           padding-right: 8px;
         }
+      }
+      .order-description-list-number {
+        font-weight: bold;
+        color: $my-dark-pink;
+        padding-right: 8px;
       }
     }
   }

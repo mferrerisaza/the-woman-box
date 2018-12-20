@@ -87,6 +87,7 @@ class Order < ApplicationRecord
 
   def parse_delivery_date(day, delivery_margin, order)
     next_delivery = Date.parse("`#{day}-#{delivery_margin.month}-#{delivery_margin.year}`")
+    # Add deliveries counter to the order in case it doesn't have it
     order.update(deliveries: 0) unless order.deliveries?
     next_delivery + order.deliveries.months
   end

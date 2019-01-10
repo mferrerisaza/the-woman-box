@@ -8,4 +8,8 @@ class UserPolicy < ApplicationPolicy
   def show?
     record.id == user.id
   end
+
+  def deliveries?
+    user.admin?
+  end
 end

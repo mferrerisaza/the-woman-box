@@ -1,0 +1,22 @@
+<div class="container text-center">
+  <h1>Entregas</h1>
+
+  <table class="tg">
+      <tr>
+        <th class="">Usuaria</th>
+        <th class="">Ultima entrega</th>
+        <th class="">Próxima Entrega</th>
+        <th class="">Anterior Entrega Doble</th>
+        <th class="">Próxima Entrega Doble</th>
+      </tr>
+    <% @users.each do |user| %>
+      <tr>
+        <td class=""><%= user.full_name %></td>
+        <td class="">Anterior Entrega</td>
+        <td class="">Proxima Entrega</td>
+        <td class="">Anterior Entrega Caja Doble</td>
+        <td class="">Próxima Entrega Caja Doble</td>
+      </tr>
+    <% end %>
+  </table>
+</div>

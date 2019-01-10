@@ -88,7 +88,7 @@ class PaymentsController < ApplicationController
     if charge[:subscription]
       subscription_status = charge[:subscription][:status]
       if subscription_status == "active"
-        @order.update(payment: charge.to_json, status: 'Pagada')
+        @order.update(payment: charge.to_json, status: 'Pagada', next_delivery: @order.delivery_date)
         flash[:notice] = "Tu pago ha sido procesado con éxito, bienvenida a The Women Box"
         redirect_to thank_you_orders_path
       elsif subscription_status == "canceled"
@@ -129,7 +129,7 @@ class PaymentsController < ApplicationController
       puts e
     end
     if subscription[:status]
-      order.update(status: 'Cancelada')
+      order.update(status: 'Cancelada',  next_delivery: nil)
       flash[:notice] = "La suscripción ha sido cancelada"
     end
     redirect_to orders_path

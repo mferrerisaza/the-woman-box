@@ -16,10 +16,11 @@ class OrdersController < ApplicationController
   def create
     plan = Plan.find(order_params[:plan_id])
     if current_user
-      order = Order.create!(plan_sku: plan.sku, amount: plan.price, status: 'Incompleta', user: current_user)
+      order = Order.create!(plan_sku: plan.sku, amount: plan.price,
+                status: 'Incompleta', user: current_user, deliveries: 0)
       redirect_to edit_order_path(order)
     else
-      session[:order] = { plan_sku: plan.sku, amount: plan.price.to_i, status: 'Incompleta' }
+      session[:order] = { plan_sku: plan.sku, amount: plan.price.to_i, status: 'Incompleta', deliveries: 0}
       redirect_to new_user_registration_path
     end
   end
@@ -32,6 +33,7 @@ class OrdersController < ApplicationController
   def update
     authorize @order
     if @order.update(order_params)
+      set_next_delivery(@order)
       redirect_to new_order_payment_path(@order)
     else
       render 'edit'
@@ -57,5 +59,10 @@ class OrdersController < ApplicationController
       :city,
       :address_aditional_info
     )
+  end
+
+  def set_next_delivery(order)
+    order.update(next_delivery: order.delivery_date)
+    order.update(next_double: order.double_box?)
   end
 end

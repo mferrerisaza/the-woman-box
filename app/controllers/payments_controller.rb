@@ -48,9 +48,11 @@ class PaymentsController < ApplicationController
       name: card_params[:name],
       email: card_params[:email],
       phone: current_user.phone,
+      cell_phone: current_user.phone,
+      city: @order.city,
+      address: @order.address,
       default: true
     }
-
     begin
       customer = Epayco::Customers.create customer_info
     rescue Epayco::Error => e

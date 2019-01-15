@@ -7,4 +7,7 @@ class PlansController < ApplicationController
     @plans = Plan.where(size_id: params[:size_id]) if params[:size_id].present?
     render json: @plans
   end
+
+  def select_plan
+  end
 end

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     end
     post 'payments/cancel', to: "payments#cancel"
   end
+  get 'select_plan', to: "plans#select_plan", as: :select_plan
   resources :plans, only: :index
   resources :sizes, only: :index
   get 'privacy_policy', to: "pages#privacy_policy", as: :privacy_policy

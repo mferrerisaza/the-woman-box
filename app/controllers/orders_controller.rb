@@ -17,10 +17,10 @@ class OrdersController < ApplicationController
     plan = Plan.find(order_params[:plan_id])
     if current_user
       order = Order.create!(plan_sku: plan.sku, amount: plan.price,
-                status: 'Incompleta', user: current_user, deliveries: 0)
+                            status: 'Incompleta', user: current_user, deliveries: 0)
       redirect_to edit_order_path(order)
     else
-      session[:order] = { plan_sku: plan.sku, amount: plan.price.to_i, status: 'Incompleta', deliveries: 0}
+      session[:order] = { plan_sku: plan.sku, amount: plan.price.to_i, status: 'Incompleta', deliveries: 0 }
       redirect_to new_user_registration_path
     end
   end

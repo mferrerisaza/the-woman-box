@@ -6,7 +6,7 @@
           <h4>RESUMEN DE TU ORDEN</h6>
           <%= link_to "Cambiar", new_order_path %>
         </div>
-        <p class="order-selection-description">Suscripción mensual a The Women Box (<strong><%= @plan.name %></strong>)</p>
+        <p class="order-selection-description"><%= order_description(@plan.billing_type) %> (<strong><%= @plan.name %></strong>)</p>
         <hr>
         <% if controller_name == "payments" %>
           <div class="order-selection-top">
@@ -38,7 +38,7 @@
           <li>
             <span>
               <i class="fas fa-check"></i>
-              Por solo <strong>$34.900</strong> al mes + envío <strong>GRATIS</strong>.
+              Por solo <strong><%= plan_price(params[:plan_type]) %></strong> + envío <strong>GRATIS</strong>.
             </span>
           </li>
           <hr>
@@ -52,7 +52,11 @@
           <li>
             <span>
               <i class="fas fa-check"></i>
-              No hay ningún contrato, puedes <strong>cancelar cuando quieras</strong>.
+              <% if params[:plan_type] == "Recurrente"  %>
+                No hay ningún contrato, puedes <strong>cancelar cuando quieras</strong>.
+              <% else %>
+                Un único pago, <strong>sin compromisos</strong>
+              <% end %>
             </span>
           </li>
         </ul>

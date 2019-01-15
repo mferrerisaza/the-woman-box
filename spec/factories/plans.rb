@@ -5,5 +5,6 @@ FactoryBot.define do
     price 34_900
     sequence(:sku) { |n| "Plan#{n}34900" }
     association :size
+    billing_type "Recurrente"
   end
 end

@@ -49,14 +49,22 @@ RSpec.feature "Subscriptions", type: :feature do
       expect(page).to have_content "SUSCRÍBETE"
       click_link "Suscríbete"
     end
+
+    aggregate_failures do
+      expect(page).to have_css ".bundle-card"
+    end
+
+    within "[data-billing-type = 'Recurrente']" do
+      click_link "Arma tu box"
+    end
+  end
+
+  def select_subscription_plan
     aggregate_failures do
       expect(page).to have_css ".order-description"
       expect(page).to have_select "order[type_id]"
       expect(page).to have_button('Siguiente', disabled: true)
     end
-  end
-
-  def select_subscription_plan
     select @type.name, from: "Seleccionar tipo:"
     aggregate_failures do
       expect(page).to have_select "order[size]"

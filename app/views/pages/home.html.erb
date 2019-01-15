@@ -3,7 +3,7 @@
   <div class="banner-content">
     <h1>lo esencial para el período en tu puerta</h1>
     <p>Recibe toallas o tampones de tu elección y regalos de temporada todos los meses</p>
-    <%= link_to "Suscríbete", new_order_path, class: "button2 banner-call-to-actions" %>
+    <%= link_to "Suscríbete", select_plan_path, class: "button2 banner-call-to-actions" %>
   </div>
 </div>
 
@@ -68,7 +68,7 @@
     <div class="text-center">
       <div class="flex-center flex-justify-around display-block-mobile">
         <div class="step-description">
-          <a href="<%= new_order_path %>">
+          <a href="<%= select_plan_path %>">
             <div class="icon padding-bottom-small">
               <%= image_tag "tampon.svg", class:"avatar-big"%>
             </div>
@@ -111,7 +111,7 @@
           <h4 class="banner-title"><strong>Por solo $34.900 al mes + <u>envío GRATIS</u></strong></h4>
         </div>
         <div class="padding-left-big padding-left-mid  mobile-hidden">
-          <%= link_to "Suscríbete", new_order_path, class: "button2 banner-call-to-actions" %>
+          <%= link_to "Suscríbete", select_plan_path, class: "button2 banner-call-to-actions" %>
         </div>
       </div>
       <div class="product-condditions-list flex-center flex-justify-center">

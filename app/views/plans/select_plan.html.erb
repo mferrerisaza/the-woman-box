@@ -1,29 +1,71 @@
 <div class="new-order-wrapper">
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-3">
-      <div class="package-card">
-        <h4>Plan Mensual</h4>
-        <hr>
-        <strong><h4>$34,900</h4></strong>
-        <hr>
-        <ul>
-          <li><i class="fab fa-gratipay"></i></i>Sin cláusulas de permanencia</li>
-          <li><i class="fab fa-gratipay"></i></i>Sin contratos</li>
+    <h2 class="text-center select-bundle-headline">Selecciona tu plan</h2>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-lg-3">
+      <div class="bundle-card">
+        <h4 class="bundle-card-title">Suscripción Mensual</h4>
+        <hr class="bundle-card-divider">
+        <h4 class="text-center bundle-card-price"><strong> <i>$34,900 COP</i></strong></h4>
+        <p class="text-center bundle-card-price-type">Por mes*</p>
+        <hr class="bundle-card-divider">
+        <ul class="bundle-card-list">
+          <li><i class="fab fa-gratipay"></i></i>Envío gratis</li>
           <li><i class="fab fa-gratipay"></i></i>Cancela cuando quieras</li>
+          <li><i class="fab fa-gratipay"></i></i>El pago se renueva automáticamente</li>
         </ul>
+        <%= link_to "Arma tu box", new_order_path(plan_type: "Recurrente"), class: "bundle-card-button banner-call-to-actions"  %>
       </div>
     </div>
-    <div class="col-xs-12 col-sm-3">
-
+    <div class="col-xs-12 col-sm-6 col-lg-3">
+      <div class="bundle-card">
+        <h4 class="bundle-card-title">Compra única</h4>
+        <hr class="bundle-card-divider">
+        <h4 class="text-center bundle-card-price"><strong> <i>$34,900 COP</i></strong></h4>
+        <p class="text-center bundle-card-price-type">Pago único*</p>
+        <hr class="bundle-card-divider">
+        <ul class="bundle-card-list">
+          <li><i class="fab fa-gratipay"></i></i>Envío gratis</li>
+          <li><i class="fab fa-gratipay"></i></i>Solo un pago</li>
+          <li><i class="fab fa-gratipay"></i></i>Prueba The Women Box sin compromisos</li>
+        </ul>
+        <%= link_to "Arma tu box", new_order_path(plan_type: "1Mes"), class: "bundle-card-button banner-call-to-actions"  %>
+      </div>
     </div>
-    <div class="col-xs-12 col-sm-3">
-
+    <div class="col-xs-12 col-sm-6 col-lg-3">
+      <div class="bundle-card">
+        <h4 class="bundle-card-title">Paquete de 3 Meses</h4>
+        <hr class="bundle-card-divider">
+        <h4 class="text-center bundle-card-price"><strong> <i>$99,465 COP</i></strong></h4>
+        <p class="text-center bundle-card-price-type">Pago único*</p>
+        <hr class="bundle-card-divider">
+        <ul class="bundle-card-list">
+          <li><i class="fab fa-gratipay"></i></i>Envío gratis</li>
+          <li><i class="fab fa-gratipay"></i></i>Solo un pago</li>
+          <li><i class="fab fa-gratipay"></i></i>Ahorra <strong>5% mensual</strong></li>
+        </ul>
+        <%= link_to "Arma tu box", new_order_path(plan_type: "3Meses"), class: "bundle-card-button banner-call-to-actions"  %>
+      </div>
     </div>
-    <div class="col-xs-12 col-sm-3">
-
+    <div class="col-xs-12 col-sm-6 col-lg-3">
+      <div class="bundle-card">
+        <h4 class="bundle-card-title">Paquete de 6 Meses</h4>
+        <hr class="bundle-card-divider">
+        <h4 class="text-center bundle-card-price"><strong> <i>$188,460 COP</i></strong></h4>
+        <p class="text-center bundle-card-price-type">Pago único*</p>
+        <hr class="bundle-card-divider">
+        <ul class="bundle-card-list">
+          <li><i class="fab fa-gratipay"></i></i>Envío gratis</li>
+          <li><i class="fab fa-gratipay"></i></i>Solo un pago</li>
+          <li><i class="fab fa-gratipay"></i></i>Ahorra <strong>10% mensual</strong></li>
+        </ul>
+        <%= link_to "Arma tu box", new_order_path(plan_type: "6Meses"), class: "bundle-card-button banner-call-to-actions"  %>
+      </div>
     </div>
   </div>
+</div>
 </div>
 <%= render 'shared/footer', background: "background-white", border_top:"" %>
 <%= render 'shared/tawk-payment' %>

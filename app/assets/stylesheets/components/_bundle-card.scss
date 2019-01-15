@@ -1,0 +1,50 @@
+.select-bundle-headline {
+  font-weight: bold;
+  font-size: 32px;
+  color: $my-black;
+  margin: 24px 0px;
+}
+.bundle-card {
+  border: 1px solid $my-light-gray;
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  // align-items: center;
+  padding: 16px;
+  min-height: 400px;
+  margin-bottom: 8px;
+
+  .bundle-card-title{
+    font-weight: bold;
+    color: $my-black;
+    text-align: center;
+  }
+
+  .bundle-card-price {
+    font-weight: normal;
+    color: $my-dark-pink;
+    margin-bottom: 0px;
+  }
+  .bundle-card-price-type {
+    font-weight: lighter;
+    color: $my-black;
+    font-size: 13px;
+  }
+
+  .bundle-card-divider {
+    border: 0.5px solid $my-light-gray;
+    margin: 16px 30px;
+  }
+
+  .bundle-card-list {
+    list-style: none;
+    text-align: center;
+    padding: 0;
+    flex: 1 0 40%;
+    font-size: 14px;
+    .fab.fa-gratipay {
+      padding-right: 4px;
+      color: $my-dark-pink;
+    }
+  }
+}

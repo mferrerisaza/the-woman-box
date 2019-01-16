@@ -1,40 +1,69 @@
-<div class="new-order-wrapper">
-  <div class="form-container">
-    <%= render "shared/progressbar", active_tab: 3 %>
-    <h2 class="form-headline">AHORA VAMOS A NECESITAR ALGUNOS DATOS PARA EL ENVÍO</h2>
-    <p class="form-subheadline">
-      Cuéntanos dónde quieres que te enviemos la caja todos los meses, se lo más especifica que puedas por favor, esto facilitará nuestro trabajo más adelante. También vamos a necesitar saber cuándo fue tú último período para elegir la mejor fecha de envío <strong>(por ahora solo tenemos envios disponibles en Colombia).</strong>
-    </p>
-    <%= simple_form_for(@order)  do |f| %>
-      <div class="row">
-        <div class="col-xs-12 col-sm-6">
-          <%= f.input :address, placeholder: "Ej: Calle 11a # 42-18",label: "Dirección de entrega" %>
+<% unless @order.status == "Pagada" %>
+  <div class="new-order-wrapper">
+    <div class="form-container">
+      <%= render "shared/progressbar", active_tab: 3 %>
+      <h2 class="form-headline">AHORA VAMOS A NECESITAR ALGUNOS DATOS PARA EL ENVÍO</h2>
+      <p class="form-subheadline">
+        Cuéntanos dónde quieres que te enviemos la caja todos los meses, se lo más especifica que puedas por favor, esto facilitará nuestro trabajo más adelante. También vamos a necesitar saber cuándo fue tú último período para elegir la mejor fecha de envío <strong>(por ahora solo tenemos envios disponibles en Colombia).</strong>
+      </p>
+      <%= simple_form_for(@order)  do |f| %>
+        <div class="row">
+          <div class="col-xs-12 col-sm-6">
+            <%= f.input :address, placeholder: "Ej: Calle 11a # 42-18",label: "Dirección de entrega" %>
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <%= f.input :country, label: "País", priority_countries: ["CO"], selected: "CO" %>
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <%= f.input :province, placeholder: "Ej: Antioquia",label: "Departamento / Provincia" %>
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <%= f.input :city, placeholder: "Ej: Medellín", label: "Ciudad" %>
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <%= f.input :address_aditional_info, label: "Información adicional", placeholder: "Ej: Torre 1 Apto 302" %>
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <%= f.input :last_period,
+                        label: "¿En qué fecha comenzó tu último periodo?",
+                        placeholder: "Ej: 10 Nov 2018",
+                        input_html: {class: "datepicker"}
+            %>
+          </div>
         </div>
-        <div class="col-xs-12 col-sm-6">
-          <%= f.input :country, label: "País", priority_countries: ["CO"], selected: "CO" %>
-        </div>
-        <div class="col-xs-12 col-sm-6">
-          <%= f.input :province, placeholder: "Ej: Antioquia",label: "Departamento / Provincia" %>
-        </div>
-        <div class="col-xs-12 col-sm-6">
-          <%= f.input :city, placeholder: "Ej: Medellín", label: "Ciudad" %>
-        </div>
-        <div class="col-xs-12 col-sm-6">
-          <%= f.input :address_aditional_info, label: "Información adicional", placeholder: "Ej: Torre 1 Apto 302" %>
-        </div>
-        <div class="col-xs-12 col-sm-6">
-          <%= f.input :last_period,
-                      label: "¿En qué fecha comenzó tu último periodo?",
-                      placeholder: "Ej: 10 Nov 2018",
-                      input_html: {class: "datepicker"}
-          %>
-        </div>
-
-      </div>
-        <%= f.button :submit, "Siguiente", class:"btn button banner-call-to-actions button-right" %>
-    <% end %>
+        <%= f.button :submit, "Siguiente", class:"btn button banner-call-to-actions button-right padding-right-mid" %>
+      <% end %>
+    </div>
+    <%= render 'shared/order-description', show_order_box: true %>
   </div>
-  <%= render 'shared/order-description', show_order_box: true %>
-</div>
-<%= render 'shared/footer', background: "background-white", border_top:"" %>
-<%= render 'shared/tawk-payment' %>
+  <%= render 'shared/footer', background: "background-white", border_top:"" %>
+  <%= render 'shared/tawk-payment' %>
+<% else %>
+  <div class="new-order-wrapper">
+    <div class="form-container">
+      <h2 class="form-headline">Actualiza tu dirección de envío</h2>
+      <%= simple_form_for(@order)  do |f| %>
+        <div class="row">
+          <div class="col-xs-12 col-sm-6">
+            <%= f.input :address, placeholder: "Ej: Calle 11a # 42-18",label: "Dirección de entrega" %>
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <%= f.input :country, label: "País", priority_countries: ["CO"], selected: "CO" %>
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <%= f.input :province, placeholder: "Ej: Antioquia",label: "Departamento / Provincia" %>
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <%= f.input :city, placeholder: "Ej: Medellín", label: "Ciudad" %>
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <%= f.input :address_aditional_info, label: "Información adicional", placeholder: "Ej: Torre 1 Apto 302" %>
+          </div>
+          <div class="send-btn-container">
+            <%= f.button :submit, "Actualizar Dirección", class:"btn button banner-call-to-actions button-right send-btn" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

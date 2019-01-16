@@ -57,8 +57,8 @@ RSpec.feature "Subscriptions", type: :feature do
       visit root_path
     end
     within ".banner" do
-      expect(page).to have_content "SUSCRÍBETE"
-      click_link "Suscríbete"
+      expect(page).to have_content "ARMA TU BOX"
+      click_link "ARMA TU BOX"
     end
 
     aggregate_failures do
@@ -152,7 +152,7 @@ RSpec.feature "Subscriptions", type: :feature do
     end
 
     fill_in "Fecha de expiración", with: "12"
-    fill_in "card[exp_year]", with: "2018"
+    fill_in "card[exp_year]", with: "2019"
     fill_in "CVC", with: "123"
     fill_in "Número de documento", with: "1040182869"
     expect(page).to have_button('Iniciar Suscripción', disabled: false)

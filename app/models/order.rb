@@ -21,6 +21,11 @@ class Order < ApplicationRecord
     return "último día"
   end
 
+  def delivery_group_message
+    return "El último día de cada mes" if self.delivery_date_message == "último día"
+    "El día #{self.delivery_date_message} de cada mes"
+  end
+
   def delivery_date
     delivery_margin = created_at + 10.days
     if delivery_margin.day >= 1 && delivery_margin.day <= 10

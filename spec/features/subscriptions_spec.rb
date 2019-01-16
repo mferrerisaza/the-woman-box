@@ -46,8 +46,8 @@ RSpec.feature "Subscriptions", type: :feature do
       visit root_path
     end
     within ".banner" do
-      expect(page).to have_content "SUSCRÍBETE"
-      click_link "Suscríbete"
+      expect(page).to have_content "ARMA TU BOX"
+      click_link "ARMA TU BOX"
     end
     aggregate_failures do
       expect(page).to have_css ".order-description"

@@ -34,6 +34,12 @@
                 <% JSON %>
                 Fecha próximo pago: <%= order.next_period_start %>
               </div>
+              <div class="normal">
+                Fechas de entrega: <%= order.delivery_group_message %>
+              </div>
+              <div class="normal">
+                Dirección de envío: <%= order.address %> <%= link_to "(Editar)", edit_order_path(order), class: "btn-color-black"  %>
+              </div>
             <% end %>
           </div>
           <% if order.status == "Pagada" %>

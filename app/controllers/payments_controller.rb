@@ -9,6 +9,7 @@ class PaymentsController < ApplicationController
 
   def create
     authorize @order, :order_of_current_user?
+    @plan = Plan.find_by(sku: @order.plan_sku)
     create_card_token(card_params) # unless current_user.tokenized?
     create_epayco_customer(card_params) # unless current_user.epayco_customer?
     create_epayco_suscription(card_params)

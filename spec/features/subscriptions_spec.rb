@@ -2,31 +2,42 @@ require 'rails_helper'
 
 RSpec.feature "Subscriptions", type: :feature do
   after do
-    begin
-      Epayco::Subscriptions.cancel JSON.parse(Order.last.payment)["subscription"]["_id"]
-      Epayco::Plan.delete Order.last.plan_sku
-    rescue Epayco::Error => e
-      puts e
+    if Order.last.payment
+      begin
+        Epayco::Subscriptions.cancel JSON.parse(Order.last.payment)["subscription"]["_id"]
+        Epayco::Plan.delete Order.last.plan_sku
+      rescue Epayco::Error => e
+        puts e
+      end
     end
   end
 
-  scenario "user subscribes succesfully (from banner to order summary)", js: true do
+  scenario "user subscribes succesfully (from banner to order summary)", js: true, vcr: true do
     data_setup
     click_landing_call_to_action
     select_subscription_plan
     create_account
     fill_delivery_details
-    fill_payment_details
+    fill_payment_details("Aceptada")
   end
 
-  scenario "user subscribes succesfully from referrer link", js: true do
+  scenario "user subscribes succesfully from referrer link", js: true, vcr: true do
     data_setup
     click_landing_call_to_action(@referrer.id)
     select_subscription_plan
     create_account
     fill_delivery_details
-    fill_payment_details
+    fill_payment_details("Aceptada")
     expect(User.number_of_referred_users_with_active_orders(@referrer.id)).to eq 1
+  end
+
+  scenario "user subscribes unsuccesfully (from banner to order summary) rejected card", js: true, vcr: true do
+    data_setup
+    click_landing_call_to_action
+    select_subscription_plan
+    create_account
+    fill_delivery_details
+    fill_payment_details("Rechazada")
   end
 
   private
@@ -117,7 +128,7 @@ RSpec.feature "Subscriptions", type: :feature do
     end
   end
 
-  def fill_payment_details
+  def fill_payment_details(expected_response)
     expect(page).to have_css(".payment-methods")
     active_tab = find(".active-number > .num").text
     expect(active_tab).to eq "4"
@@ -130,7 +141,16 @@ RSpec.feature "Subscriptions", type: :feature do
       expect(page).to have_field("Correo Electrónico", with: @user.email)
       expect(page).to have_button('Iniciar Suscripción', disabled: true)
     end
-    fill_in "Número de tarjeta de crédito", with: "4575623182290326"
+    if expected_response == "Aceptada"
+      fill_in "Número de tarjeta de crédito", with: "4575623182290326"
+    elsif expected_response == "Rechazada"
+      fill_in "Número de tarjeta de crédito", with: "4151611527583283"
+    elsif expected_response == "Fallida"
+      fill_in "Número de tarjeta de crédito", with: "5170394490379427"
+    elsif expected_response == "Pendiente"
+      fill_in "Número de tarjeta de crédito", with: "373118856457642"
+    end
+
     fill_in "Fecha de expiración", with: "12"
     fill_in "card[exp_year]", with: "2018"
     fill_in "CVC", with: "123"
@@ -138,7 +158,15 @@ RSpec.feature "Subscriptions", type: :feature do
     expect(page).to have_button('Iniciar Suscripción', disabled: false)
     create_epayco_plan
     click_button('Iniciar Suscripción')
-    expect(Order.last.status).to eq "Pagada"
+    if expected_response == "Aceptada"
+      expect(Order.last.status).to eq "Pagada"
+    elsif expected_response == "Rechazada"
+      expect(Order.last.status).to eq "Inactiva"
+    elsif expected_response == "Fallida"
+      expect(Order.last.status).to eq "Incompleta"
+    elsif expected_response == "Pendiente"
+      expect(Order.last.status).to eq "Pendiente"
+    end
   end
 
   def create_epayco_plan

@@ -4,18 +4,43 @@
     <%= render "shared/progressbar", active_tab: 4 %>
     <h2 class="form-headline">YA CASI TERMINAMOS, SOLO NOS FALTAN LOS DATOS DE PAGO </h2>
     <p class="form-subheadline">
-        <i class="fas fa-info-circle"></i>Por seguridad no almacenamos ninguna información relacionada con tus datos de pago, por este motivo en caso de querer comprar otra suscripción deberas introducir todos los datos nuevamente.
+        <i class="fas fa-info-circle"></i>
+        <% if @plan.billing_type == "Recurrente" %>
+          Por seguridad no almacenamos ninguna información relacionada con tus datos de pago, por este motivo en caso de querer comprar otra suscripción deberas introducir todos los datos nuevamente.
+        <% else  %>
+          Por seguridad no almacenamos ninguna información relacionada con tus datos de pago, por este motivo al hacer click en el botón para continuar se abrirá una ventana emergente donde podrás completar tu pago de forma segura con la nuestra pasarela de pagos.
+        <% end %>
+
     </p>
     <div class="payment-methods">
-      <h2 class="form-headline">Seleccionar Forma de pago</h2>
-      <div class="methods-pic-wrapper">
-        <div class="methods-pic-container">
-          <div class="methods-pic" style="background-image: url('<%= cl_image_path("the-woman-box/medios_de_pago.png")%>');">
+      <% if @plan.billing_type == "Recurrente" %>
+        <h2 class="form-headline">Seleccionar Forma de pago</h2>
+        <div class="methods-pic-wrapper">
+          <div class="methods-pic-container">
+            <div class="methods-pic" style="background-image: url('<%= cl_image_path("the-woman-box/medios_de_pago.png")%>');">
+            </div>
+            <p class="form-subheadline text-center">Tarjeta de crédito</p>
           </div>
-          <p class="form-subheadline text-center">Tarjeta de crédito</p>
         </div>
-      </div>
-
+      <% else  %>
+        <form style="float: right;">
+              <script
+                  src="https://checkout.epayco.co/checkout.js"
+                  class="epayco-button"
+                  data-epayco-key="3beafefcdd3eb0e9462b4dbdc65cc09a"
+                  data-epayco-amount="<%= @plan.price.to_i %>"
+                  data-epayco-name="<%= @plan.name %>"
+                  data-epayco-description="<%= order_description(@plan.billing_type) %>"
+                  data-epayco-currency="cop"
+                  data-epayco-country="co"
+                  data-epayco-test="<%= Rails.env.production? ? "false" : "true" %>"
+                  data-epayco-external="false"
+                  data-epayco-button="<%= image_url('button.png') %>"
+                  data-epayco-response="<%= order_unique_payment_url(@order) %>"
+                  >
+              </script>
+        </form>
+      <% end %>
     </div>
     <%= form_with url: order_payments_path, local: true, class:"hidden", id: "customer-form" do |f| %>
       <%= f.hidden_field "card[plan_sku]", value: @order.plan_sku %>

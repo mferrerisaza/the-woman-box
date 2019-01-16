@@ -4,7 +4,7 @@
       <div class="order-selection">
         <div class="order-selection-top">
           <h4>RESUMEN DE TU ORDEN</h6>
-          <%= link_to "Cambiar", new_order_path %>
+          <%= link_to "Cambiar", new_order_path(plan_type: @plan.billing_type) %>
         </div>
         <p class="order-selection-description"><%= order_description(@plan.billing_type) %> (<strong><%= @plan.name %></strong>)</p>
         <hr>

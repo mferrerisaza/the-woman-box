@@ -34,7 +34,12 @@ class OrdersController < ApplicationController
     authorize @order
     if @order.update(order_params)
       set_next_delivery(@order)
-      redirect_to new_order_payment_path(@order)
+      if @order.status == "Pagada"
+        redirect_to orders_path
+        flash[:notice] = "Tu información de envío ha sido actualizada con éxito"
+      else
+        redirect_to new_order_payment_path(@order)
+      end
     else
       render 'edit'
     end

@@ -124,7 +124,7 @@ RSpec.feature "Subscriptions", type: :feature do
     end
     fill_in "Número de tarjeta de crédito", with: "4575623182290326"
     fill_in "Fecha de expiración", with: "12"
-    fill_in "card[exp_year]", with: "2018"
+    fill_in "card[exp_year]", with: "2019"
     fill_in "CVC", with: "123"
     fill_in "Número de documento", with: "1040182869"
     expect(page).to have_button('Iniciar Suscripción', disabled: false)

@@ -31,13 +31,13 @@ RSpec.feature "Subscriptions", type: :feature do
     expect(User.number_of_referred_users_with_active_orders(@referrer.id)).to eq 1
   end
 
-  scenario "user subscribes unsuccesfully (from banner to order summary) rejected card", js: true, vcr: true do
+  scenario "user subscribes unsuccesfully pending transaction", js: true, vcr: true do
     data_setup
     click_landing_call_to_action
     select_subscription_plan
     create_account
     fill_delivery_details
-    fill_payment_details("Rechazada")
+    fill_payment_details("Pendiente")
   end
 
   private
@@ -166,6 +166,10 @@ RSpec.feature "Subscriptions", type: :feature do
       expect(Order.last.status).to eq "Incompleta"
     elsif expected_response == "Pendiente"
       expect(Order.last.status).to eq "Pendiente"
+      aggregate_failures do
+        expect(page).to have_content "Transacción pendiente"
+        expect(page).to have_css ".alert-warning"
+      end
     end
   end
 

@@ -77,9 +77,9 @@ class Order < ApplicationRecord
   end
 
   def delivery_dates_difference
-    # Next month delivery - This month delivery
+    # Next month delivery - This month delivery
     return ((next_delivery + 1.month) - next_delivery).to_i if next_delivery
-    # Add delivery date to the order in case it doesn't have it
+    # Add delivery date to the order in case it doesn't have it
     self.update(next_delivery: delivery_date)
     ((next_delivery + 1.month) - next_delivery).to_i
   end
@@ -92,7 +92,7 @@ class Order < ApplicationRecord
 
   def parse_delivery_date(day, delivery_margin, order)
     next_delivery = Date.parse("`#{day}-#{delivery_margin.month}-#{delivery_margin.year}`")
-    # Add deliveries counter to the order in case it doesn't have it
+    # Add deliveries counter to the order in case it doesn't have it
     order.update(deliveries: 0) unless order.deliveries?
     next_delivery + order.deliveries.months
   end

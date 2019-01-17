@@ -15,6 +15,23 @@
   float: right;
 }
 
+.bundle-card-button {
+  display: inline-block;
+  padding: 14px 30px 10px 30px;
+  border: none;
+  font-family: $bebas-neue-font;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 0px;
+  margin: 0 auto;
+}
+
 .button2 {
   display: inline-block;
   padding: 14px 30px 10px 30px;
@@ -101,6 +118,9 @@
   &:focus {
     color: $my-black;
   }
+}
+.btn-decoration-underline{
+  text-decoration: underline;
 }
 .link-decoration-none {
   &:hover {

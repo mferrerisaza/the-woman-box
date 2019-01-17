@@ -58,7 +58,12 @@ function getData(url, callback){
 function addListenerToSizeSelect(select) {
   select.addEventListener("change", (event) => {
     const value = event.currentTarget.value;
-    getData(`/plans?size_id=${value}`, createPlanCards);
+    const planTypeParam = new URLSearchParams(document.location.search).get("plan_type")
+    if (planTypeParam) {
+      getData(`/plans?size_id=${value}&plan_type=${planTypeParam}`, createPlanCards);
+    } else {
+      getData(`/plans?size_id=${value}`, createPlanCards);
+    }
   })
 }
 

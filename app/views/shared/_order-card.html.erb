@@ -1,0 +1,33 @@
+<% plan = Plan.find_by(sku: order.plan_sku) %>
+  <div class="flex flex-justify-between flex-wrap-wrap font-small plans-list flex-center padding-bottom-mid">
+    <div class="main-info">
+      <div class="bold color-black">
+        Suscripción: <%= order_plan(plan.billing_type, plan.name) %>
+      </div>
+      <div class="normal">
+        <strong>Estado:</strong> <span class='<%= "order-status order-status-#{order.status.downcase}" %>'><%= order.status %></span>
+      </div>
+      <% if order.status == "Pagada" %>
+        <div class="normal">
+          <% if plan.billing_type == "Recurrente" %>
+            <strong>Fecha próximo pago:</strong> <%= order.next_period_start %>
+          <% else %>
+            <strong>Días restantes del plan:</strong> <%= order.remaining_active_days %>
+          <% end %>
+        </div>
+        <div class="normal">
+          <strong>Se entrega:</strong> <%= order.delivery_group_message %>
+        </div>
+        <div class="normal">
+          <strong>Dirección de envío:</strong> <%= order.address %> <%= link_to "(Editar)", edit_order_path(order), class: "btn-color-black btn-decoration-underline"  %>
+        </div>
+      <% end %>
+    </div>
+    <% if order.status == "Pagada" && plan.billing_type == "Recurrente" %>
+      <%= link_to "Cancelar", order_payments_cancel_path(order.id), method: :post, data: { confirm: "¿Estás segura que deseas cancelar tu suscripción?" }, class: "link-decoration-none button cancel-btn font-small" %>
+    <% elsif order.status == "Incompleta" && order.address.nil? %>
+      <%= link_to "Completar suscripción", edit_order_path(order), class: "link-decoration-none button cancel-btn font-small"  %>
+    <% elsif order.status == "Incompleta" && order.address %>
+      <%= link_to "Completar suscripción", new_order_payment_path(order), class: "link-decoration-none button cancel-btn font-small"  %>
+    <% end %>
+  </div>

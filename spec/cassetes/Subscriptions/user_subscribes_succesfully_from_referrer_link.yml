@@ -1,0 +1,412 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.secure.payco.co/recurring/v1/plan/create
+    body:
+      encoding: UTF-8
+      string: '{"id_plan":"Plan234900","name":"Plan 2","description":"Cajita mensual","amount":34900,"currency":"cop","interval":"month","interval_count":1,"trial_days":0,"test":"TRUE","ip":"192.168.1.64"}'
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.4p296
+      Params:
+      - ''
+      Content-Type:
+      - application/json
+      Type:
+      - sdk
+      Content-Length:
+      - '190'
+      Host:
+      - api.secure.payco.co
+      Authorization:
+      - Basic M2JlYWZlZmNkZDNlYjBlOTQ2MmI0ZGJkYzY1Y2MwOWE6
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.10.3 (Ubuntu)
+      Date:
+      - Thu, 17 Jan 2019 00:30:36 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-store
+      Pragma:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept, X-User-Id, X-Auth-Token
+      Vary:
+      - Accept-Encoding
+      Content-Encoding:
+      - gzip
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA12QQQrCMBBF9z1FyFqKraVYt72ANyhjOmCkTUIyEYp4dyehAXWVzH//f5h5VULIQEAxyIsgH/GQlagUhh+JNoc8y9EjEAq3gJEZzEDA4MV/nvQ8ZcTOK7/tqRuOx2xkaGDFQkRb1BmD8tqRtjk2wkMTiBVNiLAUE6w2GmKeC3dRRe/RqC3FlHXFqw2hf3KW5dUauv+DSe1lzQ7Ia1Zn2NLKpZ0w0NcFUt6lymZo66Y/103dd5LBO5/B3h6okl/m/av3B41/ax1bAQAA
+    http_version: 
+  recorded_at: Thu, 17 Jan 2019 00:30:36 GMT
+- request:
+    method: post
+    uri: https://api.secure.payco.co/v1/tokens
+    body:
+      encoding: UTF-8
+      string: '{"card[number]":"4575623182290326","card[exp_year]":"2019","card[exp_month]":"12","card[cvc]":"123","test":"TRUE","ip":"192.168.1.64"}'
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.4p296
+      Params:
+      - ''
+      Content-Type:
+      - application/json
+      Type:
+      - sdk
+      Content-Length:
+      - '134'
+      Host:
+      - api.secure.payco.co
+      Authorization:
+      - Basic M2JlYWZlZmNkZDNlYjBlOTQ2MmI0ZGJkYzY1Y2MwOWE6
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.10.3 (Ubuntu)
+      Date:
+      - Thu, 17 Jan 2019 00:30:37 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-store
+      Pragma:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept, X-User-Id, X-Auth-Token
+      Vary:
+      - Accept-Encoding
+      Content-Encoding:
+      - gzip
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA4WPzQqDMBCE7z6F5FywWhDtra/Ri6zJFlN/IslGFPHdm0SU9tTb7jezM8kaxTEzBGQNu8ekLV48kcJtrMAGWn0rlykfW/usHyyIxnKO5sdPy4j+goMWu0kAgSOrm78bGM6SlFHB9KfIyVwjEAZPmiVZnmTXtDjETk7YK+GLX9AZdHQL3eEVZzfOY9WrgZo95bj2eEHQnrrU8uAD9OErkzTAzkhVv5GT56RaHFi0fQBGcrXdOgEAAA==
+    http_version: 
+  recorded_at: Thu, 17 Jan 2019 00:30:37 GMT
+- request:
+    method: post
+    uri: https://api.secure.payco.co/payment/v1/customer/create
+    body:
+      encoding: UTF-8
+      string: '{"token_card":"8ehakr39yv6pkuZbA","name":"Miguel Ferrer","email":"amparo4@gmail.com","phone":"3148509472","cell_phone":"3148509472","city":"Medellín","address":"Calle
+        11a 4218","default":true,"test":"TRUE","ip":"192.168.1.64"}'
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.4p296
+      Params:
+      - ''
+      Content-Type:
+      - application/json
+      Type:
+      - sdk
+      Content-Length:
+      - '227'
+      Host:
+      - api.secure.payco.co
+      Authorization:
+      - Basic M2JlYWZlZmNkZDNlYjBlOTQ2MmI0ZGJkYzY1Y2MwOWE6
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.10.3 (Ubuntu)
+      Date:
+      - Thu, 17 Jan 2019 00:30:38 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-store
+      Pragma:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept, X-User-Id, X-Auth-Token
+      Vary:
+      - Accept-Encoding
+      Content-Encoding:
+      - gzip
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA3WPsW5CMQxFd77CylwxVQxMFdAHDP0AxuAYZPTy/JQ4UhHi33HSgmBgi+89ObIvEwCX1WvJbg6aCn20pCBSfon0PJLNbpnIKwGWrBIpuVYGr97Ki72ffY5+WSVLgypGGROPyjLU9rsH7JkG0x2KKc0cBP7++NhylAGoBw5z2HR4WvNstQ986HbLRbhb76tsQ5W+xQZTVuCHj8WUHaX0v76VFD33tfVx9Ek+v441mKJEZ8C1HSn7E6FW6HH85HoD4hBun0EBAAA=
+    http_version: 
+  recorded_at: Thu, 17 Jan 2019 00:30:38 GMT
+- request:
+    method: post
+    uri: https://api.secure.payco.co/recurring/v1/subscription/create
+    body:
+      encoding: UTF-8
+      string: '{"id_plan":"Plan234900","customer":"HFcjGi6DbdifFYCBd","token_card":"8ehakr39yv6pkuZbA","doc_type":"CC","doc_number":"1040182869","address":"Calle
+        11a 4218","phone":"3148509472","cell_phone":"3148509472","test":"TRUE","ip":"192.168.1.64"}'
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.4p296
+      Params:
+      - ''
+      Content-Type:
+      - application/json
+      Type:
+      - sdk
+      Content-Length:
+      - '238'
+      Host:
+      - api.secure.payco.co
+      Authorization:
+      - Basic M2JlYWZlZmNkZDNlYjBlOTQ2MmI0ZGJkYzY1Y2MwOWE6
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.10.3 (Ubuntu)
+      Date:
+      - Thu, 17 Jan 2019 00:30:39 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-store
+      Pragma:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept, X-User-Id, X-Auth-Token
+      Vary:
+      - Accept-Encoding
+      Content-Encoding:
+      - gzip
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA32SS27bMBCG9zkFoXUckJIiW1mlUeC2ixRFm427EcYka9PgQ+AjgBHkSF31CLlYSSqyY6MIoAU138+Z4T/zfIFQ4Tz44Iob5G3glymiuHOw4TFU/AyOWjFQ8fpXI2o5MCiyJp09Z0lD5jNMZiUm7YhEjj7cVd/caljCo15di437MUIXKI3p35ejwVqufT9wKwzrYz/W/y/vmY7rsXozw+WJynmjuI3sOf7HSD829GVJd59Fc79m4vdy1d2xrI9cg8pvfRCbwCVa8ljGTpArEDJRUANYU99uUuCKGjUphq3R+X5F6sU1but5OaHYBt2C9l/HTtt53U6ICr/PRTnjUr7+0RMAxuxoUNGBlBwRAqguyeJwM+r7D4oyQ3u/HzLtuvdRHdQ6G1MQXGOyKBdNW0T8cnncg96FdR65F0YnqdBAvXjio7uHxHn86EScBQw8HK0XrJMizixd+S5Bl1XdYnxufCLo2D8/qd/BTnhAimsXQB5cUibktDnh5ExeEJp9pWaYtEJ7bp8gT1EZ7bfnoKdvycgb8FaAvId9msIh+bjwn/Jb0rql5STzR4xvqvg1Vw2ufh3dNOsdp1l74tHFyz/wr6YDdAMAAA==
+    http_version: 
+  recorded_at: Thu, 17 Jan 2019 00:30:39 GMT
+- request:
+    method: post
+    uri: https://api.secure.payco.co/payment/v1/charge/subscription/create
+    body:
+      encoding: UTF-8
+      string: '{"id_plan":"Plan234900","customer":"HFcjGi6DbdifFYCBd","token_card":"8ehakr39yv6pkuZbA","doc_type":"CC","doc_number":"1040182869","address":"Calle
+        11a 4218","phone":"3148509472","cell_phone":"3148509472","test":"TRUE","ip":"192.168.1.64"}'
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.4p296
+      Params:
+      - ''
+      Content-Type:
+      - application/json
+      Type:
+      - sdk
+      Content-Length:
+      - '238'
+      Host:
+      - api.secure.payco.co
+      Authorization:
+      - Basic M2JlYWZlZmNkZDNlYjBlOTQ2MmI0ZGJkYzY1Y2MwOWE6
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.10.3 (Ubuntu)
+      Date:
+      - Thu, 17 Jan 2019 00:30:41 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-store
+      Pragma:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept, X-User-Id, X-Auth-Token
+      Vary:
+      - Accept-Encoding
+      Content-Encoding:
+      - gzip
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA31U3W7TMBS+31NEud6qOM3SZldsHYUbYGJo0kAoOrVPN2+JbfxT0U17Kh6BF8N2k3QRhd7UOd93fv0dPx8lSWocpWhMepZY7fA4mCy3DdYajZLCoEdSBdsWhU13MP60I5ShhabBhGHSgA8DwgCl/PcvsXNowNgaqOVSBDr3btomo5gMLHjs2Z/9l8Z17WEqvSmvZlk2y493yNqHcTpQ0w8X04/mVi3hi7g95Xfm8wk5LWbl/DSbVrOSpJ0HQ0M1V7RLvoAHbiHxmY2DpidtoJE6wNOiyrLeyjchUdZ9rcDg2NJKgSzWsvh0lQ40EetOL8IhzOTKz9U79wQ0FlhknFNU/gw9EmbqAhxBpeXqFQjOSs2foG8ki7+9K+WrA+NCeh+j5RmpTjJyQsqEVGfT7KwYXNf+vn44Tnkk3lz3dipZ/boi0k9FBR6p8gkp5xMyKYvew3IlayZpnMhiuABJXbjo2DLJiozM83lZ9bCQ7cqniTfK7xw2yRK1Rj30rbBpOJP/ZmALvAkotAq0LN7cBcOEynZgCNXdwb4Nyh0DFoMiCynEUDD309zrJSibEEiKnMwHZQjmBcpjTak3vRzvVmkVtdYJvRNzzdlBuQ6x2FUDMVf4z0cKHK1F5C4aHpbmEDsME1rssSTf27slsP9bgjDrVroYPIYdzNT5cQu6Da5Uqj2fC4va704A/DLY+7+hmnYhyQBZzaG5hG2YXhaNL127CjWX7NqCjh2SMkg2SDcdEd4K1sP5CBb+ZbrxlDWnEHq9BIuHmV7S1sXrC+/SBodl4NrYV2/hbubOWNlifCDeL+nDO15erhhfL28XF2wQv3xEsQAdS5vjPTzqabXdlOrRfV2dDw3sHr1za7FVNhTw7XvQz9HLH6fIbeiNBQAA
+    http_version: 
+  recorded_at: Thu, 17 Jan 2019 00:30:41 GMT
+- request:
+    method: post
+    uri: https://api.secure.payco.co/recurring/v1/subscription/cancel
+    body:
+      encoding: UTF-8
+      string: '{"id":"MB3NsYpFaTnY5igsR","public_key":"<surprise1>","test":"TRUE","ip":"192.168.1.64"}'
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.4p296
+      Params:
+      - ''
+      Content-Type:
+      - application/json
+      Type:
+      - sdk
+      Content-Length:
+      - '108'
+      Host:
+      - api.secure.payco.co
+      Authorization:
+      - Basic M2JlYWZlZmNkZDNlYjBlOTQ2MmI0ZGJkYzY1Y2MwOWE6
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.10.3 (Ubuntu)
+      Date:
+      - Thu, 17 Jan 2019 00:30:42 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-store
+      Pragma:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept, X-User-Id, X-Auth-Token
+      Vary:
+      - Accept-Encoding
+      Content-Encoding:
+      - gzip
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA22OPQ7CMAxGd05hZUYsiKUjSEzAgFg6uk7UGpWkihMkVPVUHIGLkYSBIrH573vP4wJAScAQRVUQfDTLPLkZEWxNGqkDgkQhzwPx62mhSz1rB2yRAt9RoyoRiUQpNaeEx1AQO7Rk+oRpCiews5+MxoDpYEx17sx3/UdMzgLrCo7b9UnqYY8XW2+4lfPspQ4b7jljYUCPkKxRInp2K5UkU7G65mooZMXPR4vpDSHTY10NAQAA
+    http_version: 
+  recorded_at: Thu, 17 Jan 2019 00:30:42 GMT
+- request:
+    method: post
+    uri: https://api.secure.payco.co/recurring/v1/plan/remove/<surprise1>/Plan234900/
+    body:
+      encoding: UTF-8
+      string: '{"test":"TRUE","ip":"192.168.1.64"}'
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.4p296
+      Params:
+      - ''
+      Content-Type:
+      - application/json
+      Type:
+      - sdk
+      Content-Length:
+      - '35'
+      Host:
+      - api.secure.payco.co
+      Authorization:
+      - Basic M2JlYWZlZmNkZDNlYjBlOTQ2MmI0ZGJkYzY1Y2MwOWE6
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.10.3 (Ubuntu)
+      Date:
+      - Thu, 17 Jan 2019 00:30:43 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-store
+      Pragma:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept, X-User-Id, X-Auth-Token
+      Vary:
+      - Accept-Encoding
+      Content-Encoding:
+      - gzip
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA02NQQrDMAwE73mF0LmH0PaSvqL0B6otiktsB0sulJC/R3YJ9Cbtzu6uAwCKklbBG2ipfGpKZBF6sUl4nykBzyGGRD6Dy6WwU4qclLHDUp0z/j+v36WHHxzzh2Gxjh/rScmM1W77gm/tx8r5cp3GEc3aOpufb1tqbs8P2w7di9U/rQAAAA==
+    http_version: 
+  recorded_at: Thu, 17 Jan 2019 00:30:43 GMT
+recorded_with: VCR 4.0.0

@@ -1,7 +1,7 @@
 <div class="new-order-wrapper">
   <div class="form-container">
     <%= render "shared/progressbar", active_tab: 1 %>
-    <h2 class="form-headline">NUESTRO PLAN MENSUAL</h2>
+    <h2 class="form-headline"><%= plan_title(params[:plan_type]) %></h2>
     <p class="form-subheadline">
       Personaliza tu orden seleccionando el tipo de tampones o las toallas higiénicas que desees. Cada caja <strong>incluye 10 tampones o toallas de tu elección, 15 protectores y 10 pañitos húmedos.</strong>
     </p>

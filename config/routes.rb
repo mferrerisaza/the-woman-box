@@ -8,8 +8,10 @@ Rails.application.routes.draw do
     collection do
       get 'thank_you'
     end
+    get '/payments/one_off', to: "payments#unique_payment", as: :unique_payment
     post 'payments/cancel', to: "payments#cancel"
   end
+  get 'select_plan', to: "plans#select_plan", as: :select_plan
   resources :plans, only: :index
   resources :sizes, only: :index
   get 'privacy_policy', to: "pages#privacy_policy", as: :privacy_policy

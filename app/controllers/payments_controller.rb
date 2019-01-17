@@ -9,6 +9,7 @@ class PaymentsController < ApplicationController
 
   def create
     authorize @order, :order_of_current_user?
+    @plan = Plan.find_by(sku: @order.plan_sku)
     create_card_token(card_params) # unless current_user.tokenized?
     create_epayco_customer(card_params) # unless current_user.epayco_customer?
     create_epayco_suscription(card_params)
@@ -17,6 +18,34 @@ class PaymentsController < ApplicationController
   def cancel
     authorize @order, :order_of_current_user?
     cancel_epayco_subscription(@order)
+  end
+
+  def unique_payment
+    authorize @order, :order_of_current_user?
+    @plan = Plan.find_by(sku: @order.plan_sku)
+    url = "https://api.secure.payco.co/validation/v1/reference/#{params[:ref_payco]}"
+    data = open(url).read
+    charge = JSON.parse(data)
+    if charge["success"] == true
+      transaction_status = charge["data"]["x_response"]
+      transaction_response = charge["data"]["x_response_reason_text"]
+      if transaction_status == "Aceptada"
+        @order.update(payment: charge.to_json, status: 'Pagada', next_delivery: @order.delivery_date)
+        flash[:notice] = "Tu pago ha sido procesado con éxito, bienvenida a The Women Box"
+        redirect_to thank_you_orders_path
+      elsif transaction_status == "Pendiente"
+        @order.update(payment: charge.to_json, status: "Pendiente")
+        flash[:alert] = "Transacción #{transaction_status.downcase}, #{transaction_response.downcase}"
+        redirect_to orders_path
+      else
+        @order.update(payment: charge.to_json, status: "Incompleta")
+        flash.now[:alert] = "Transacción #{transaction_status.downcase}, #{transaction_response.downcase}"
+        render 'new'
+      end
+    else
+      flash.now[:alert] = charge['data']['description'].to_s
+      render 'new'
+    end
   end
 
   private

@@ -18,42 +18,11 @@
     </div>
     <% unless @orders.empty? %>
       <% @orders.each do |order| %>
-        <div class="flex flex-justify-between font-small plans-list flex-center padding-bottom-mid">
-          <div class="main-info">
-            <div class="bold">
-              <%= Plan.find_by(sku: order.plan_sku).name %>
-            </div>
-            <div class="normal">
-              <%= order.address %>
-            </div>
-            <div class="normal">
-              <%= order.status %>
-            </div>
-            <% if order.status == "Pagada" %>
-              <div class="normal">
-                <% JSON %>
-                Fecha próximo pago: <%= order.next_period_start %>
-              </div>
-              <div class="normal">
-                Fechas de entrega: <%= order.delivery_group_message %>
-              </div>
-              <div class="normal">
-                Dirección de envío: <%= order.address %> <%= link_to "(Editar)", edit_order_path(order), class: "btn-color-black"  %>
-              </div>
-            <% end %>
-          </div>
-          <% if order.status == "Pagada" %>
-            <%= link_to "Cancelar", order_payments_cancel_path(order.id), method: :post, class: "link-decoration-none button cancel-btn font-small" %>
-          <% elsif order.status == "Incompleta" && order.address.nil? %>
-            <%= link_to "Completar suscripción", edit_order_path(order), class: "link-decoration-none button cancel-btn font-small"  %>
-          <% elsif order.status == "Incompleta" && order.address %>
-            <%= link_to "Completar suscripción", new_order_payment_path(order), class: "link-decoration-none button cancel-btn font-small"  %>
-          <% end %>
-        </div>
+        <%= render 'shared/order-card', order: order %>
       <% end %>
     <% end %>
     <% if current_user.all_orders_cancelled? %>
-      <%= link_to "Suscribirme", new_order_path, class: "link-decoration-none button2 cancel-btn font-small" %>
+      <%= link_to "Suscribirme", select_plan_path, class: "link-decoration-none button2 cancel-btn font-small" %>
     <% end %>
   </div>
 </div>

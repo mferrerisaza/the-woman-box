@@ -17,7 +17,13 @@ class PagesController < ApplicationController
   end
 
   def referral_program
-    redirect_to root_path, alert: "Aún no tienes una suscripción activa" unless current_user.active_orders? || current_user.admin
+    if current_user.one_month_plan_counter == current_user.orders.size
+      message = "No puedes participar del programa de referidos con tu plan actual, este solo aplica para planes superiores a un mes"
+    end
+    unless current_user.active_orders? || current_user.admin
+      message = "Aún no tienes una suscripción activa"
+    end
+    redirect_to root_path, alert: message if message.present?
     @referred_users = User.number_of_referred_users_with_active_orders(current_user.id)
   end
 end

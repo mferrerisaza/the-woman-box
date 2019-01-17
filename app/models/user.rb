@@ -29,6 +29,14 @@ class User < ApplicationRecord
     orders.where(status: "Pagada").size.positive?
   end
 
+  def one_month_plan_counter
+    one_month_plans = 0
+    orders.each do |order|
+      one_month_plans += 1 if order.plan_sku[0..5] == "1Month"
+    end
+    one_month_plans
+  end
+
   def self.number_of_referred_users(id)
     where(referred_by: id).count
   end
@@ -36,4 +44,5 @@ class User < ApplicationRecord
   def self.number_of_referred_users_with_active_orders(id)
     where(referred_by: id).joins(:orders).where( orders: { status: "Pagada" }).count
   end
+
 end

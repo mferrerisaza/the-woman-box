@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
     if order.save
       edit_order_path(order)
     else
-      new_order_path
+      select_plan_path
     end
   end
 

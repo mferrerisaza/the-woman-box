@@ -11,9 +11,13 @@
   <div class="profile-section-container margin-bottom-mid background-light-pink-transparent padding-section-mid padding-side-desktop padding-top-mid">
     <div class="title margin-bottom-mid">
       <% if @orders.empty? %>
-        No cuentas con ninguna suscripción
+        <div class="padding-left-xsmall">
+          No cuentas con ninguna suscripción
+        </div>
       <% else %>
-        Suscripciones
+        <div class="padding-left-xsmall">
+          Suscripciones
+        </div>
       <% end %>
     </div>
     <% unless @orders.empty? %>

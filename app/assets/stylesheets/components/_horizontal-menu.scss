@@ -46,3 +46,31 @@
 .bold {
   font-weight: 600;
 }
+.color-black{
+  color: $my-black;
+}
+.order-status{
+  padding: 1px 4px;
+  border-radius: 4px;
+}
+
+.order-status-pendiente{
+  color: #914400;
+  background-color: $yellow;
+}
+.order-status-pagada{
+  color: #488135;
+  background-color: $my-green;
+}
+.order-status-inactiva{
+  color: $my-dark-gray;
+  background-color: #c6c6c6;
+}
+.order-status-incompleta{
+  color: white;
+  background-color: $blue;
+}
+.order-status-cancelada{
+  background: $my-dark-pink;
+  color: #4b1414;
+}

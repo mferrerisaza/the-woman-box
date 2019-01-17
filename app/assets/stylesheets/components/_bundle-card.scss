@@ -38,10 +38,15 @@
 
   .bundle-card-list {
     list-style: none;
-    text-align: center;
+    text-align: left;
     padding: 0;
+    padding-left: 24px;
     flex: 1 0 40%;
     font-size: 14px;
+    .fas.fa-check-circle {
+      padding-right: 4px;
+      color: $my-green;
+    }
     .fab.fa-gratipay {
       padding-right: 4px;
       color: $my-dark-pink;

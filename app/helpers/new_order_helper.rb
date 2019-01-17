@@ -46,4 +46,16 @@ module NewOrderHelper
       return "de cada mes"
     end
   end
+
+  def order_plan(plan_type, plan_name)
+    if plan_type == "Recurrente"
+      return "mensual (#{plan_name})"
+    elsif plan_type == "1Mes"
+      return "1 mes (#{plan_name})"
+    elsif plan_type == "3Meses"
+      return "3 meses (#{plan_name})"
+    elsif plan_type == "6Meses"
+      return "6 meses (#{plan_name})"
+    end
+  end
 end

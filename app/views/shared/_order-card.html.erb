@@ -12,7 +12,7 @@
           <% if plan.billing_type == "Recurrente" %>
             <strong>Fecha próximo pago:</strong> <%= order.next_period_start %>
           <% else %>
-            <strong>Días restantes:</strong>
+            <strong>Días restantes del plan:</strong> <%= order.remaining_active_days %>
           <% end %>
         </div>
         <div class="normal">

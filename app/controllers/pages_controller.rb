@@ -17,7 +17,7 @@ class PagesController < ApplicationController
   end
 
   def referral_program
-    if current_user.one_month_plan_counter == current_user.orders.size
+    if current_user.one_month_plan_counter == current_user.orders.size && current_user.orders.size > 0
       message = "No puedes participar del programa de referidos con tu plan actual, este solo aplica para planes superiores a un mes"
     end
     unless current_user.active_orders? || current_user.admin
